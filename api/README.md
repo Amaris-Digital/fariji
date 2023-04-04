@@ -1,5 +1,5 @@
 # Fariji API
-This API provides powers our application, [Fariji](https://moringa-library.web.app/). The API is built using Ruby on Rails.
+This API provides powers our application, [Fariji](). The API is built using Ruby on Rails.
 
 ## Technologies Used
 This application has been built with the following tools:
