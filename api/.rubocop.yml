@@ -1,0 +1,14 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'spec/**/**'
+    - 'app/models/*'
+    - 'app/graphql/**/**'
+    - 'app/controllers/graphql_controller.rb'
+    - 'db/**/**'
+    - 'config/**/**'
+    - 'bin/**/**'
+require:
+  - rubocop-graphql
+  - rubocop-rails
+  - rubocop-rspec
