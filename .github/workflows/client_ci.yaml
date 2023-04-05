@@ -9,15 +9,19 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+
     steps:
       - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
+      - name: Use Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v3
         with:
-          ruby-version: '3.0.2'
-          bundler-cache: false
-      - run: make api-gem-setup
-      - run: export RAILS_ENV=test && export APP_ENV=test && make api-db-migrate
-      - run: make api-test
+          node-version: ${{matrix.node-version}}
+      - run: make client-build
+      - run: make client-test
 
   linters:
     runs-on: ubuntu-latest
