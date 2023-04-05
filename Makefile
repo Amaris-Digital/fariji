@@ -23,6 +23,10 @@ api-lint-check:
 api-lint-fix:
 	cd api && rake lint:fix
 
+## Start Rails server
+api-start:
+	cd api && rails s -p 9292
+
 # @CLIENT
 ## Build
 client-build:
