@@ -25,8 +25,10 @@ jobs:
           ruby-version: '3.0.2'
           bundler-cache: false
       - run: make api-gem-setup
-      - run: export RAILS_ENV=test && export APP_ENV=test && make api-db-migrate
-      - run: make api-test
+      - run: make api-db-migrate && make api-test
+        env:
+          RAILS_ENV: "test"
+          DATABASE_URL: "postgres://postgres@localhost:5432/test_database_name"
 
   linters:
     runs-on: ubuntu-latest
