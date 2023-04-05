@@ -1,8 +1,7 @@
-function App() {
-
+function App(): JSX.Element {
   return (
-    <div>
-      <h1>Test</h1>
+    <div className="text-2xl text-rose-600">
+      Hello World
     </div>
   )
 }
