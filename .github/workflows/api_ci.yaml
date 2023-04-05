@@ -28,7 +28,7 @@ jobs:
       - run: make api-db-migrate && make api-test
         env:
           RAILS_ENV: "test"
-          DATABASE_URL: "postgres://postgres@localhost:5432/test_database_name"
+          DATABASE_URL: "postgres://postgres@localhost:5432/api_test?user=postgres&password=postgres"
 
   linters:
     runs-on: ubuntu-latest
