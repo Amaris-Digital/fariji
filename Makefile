@@ -3,6 +3,10 @@
 api-gem-setup:
 	cd api && bundle install
 
+## DB Create
+api-db-create:
+	cd api && rails db:create
+
 ## DB Migration
 api-db-migrate:
 	cd api && rails db:migrate
