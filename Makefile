@@ -24,6 +24,10 @@ api-lint-fix:
 client-build:
 	cd client && npm ci && npm run build
 
+## Start
+client-start:
+	cd client && npm run dev
+
 ## Install npm packages
 client-npm-setup:
 	cd client && npm install
@@ -31,6 +35,10 @@ client-npm-setup:
 ## ESLint check
 client-lint-check:
 	cd client && npm run lint
+
+## ESLint auto-fix
+client-lint-fix:
+	cd client && npm run lint:fix
 
 ## NPM tests
 client-test:

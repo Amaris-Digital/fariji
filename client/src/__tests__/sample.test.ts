@@ -1,5 +1,4 @@
 // sample test suite
-// @ts-ignore
 const sum = (a: number, b: number):number => a + b;
 const minus = (a: number, b:number): number => a - b;
 const divide = (a: number, b: number): number => a / b;
