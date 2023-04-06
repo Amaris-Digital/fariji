@@ -35,6 +35,7 @@ services:
   nginx:
     restart: always
     depends_on:
+      - client
       - api
     build:
       context: ./nginx
