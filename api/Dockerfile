@@ -15,7 +15,7 @@ RUN bundle install
 COPY . .
 
 # Expose the port that the application will run on
-EXPOSE 9292
+EXPOSE 3000
 
 # Start the application
-CMD ["bundle", "exec", "rails", "server", "-p", "9292"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]

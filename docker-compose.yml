@@ -3,7 +3,7 @@ services:
   api:
     build: ./api
     ports:
-      - "9292:9292"
+      - "3000:3000"
     env_file:
       - .env
     depends_on:
@@ -15,7 +15,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - /tmp/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
@@ -35,7 +35,6 @@ services:
   nginx:
     restart: always
     depends_on:
-      - client
       - api
     build:
       context: ./nginx

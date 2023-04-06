@@ -66,5 +66,10 @@ start:
 stop:
 	docker compose stop
 
+# Display logs
 show-logs:
 	docker compose  logs
+
+# Remove Docker environment
+clean:
+	docker compose down
