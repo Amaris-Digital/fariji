@@ -14,8 +14,6 @@ services:
     image: postgres:12-alpine
     ports:
       - "5432:5432"
-    env_file:
-      - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
@@ -38,7 +36,6 @@ services:
     restart: always
     depends_on:
       - api
-      - client
     build:
       context: ./nginx
       dockerfile: Dockerfile
@@ -49,6 +46,6 @@ services:
 
 networks:
   fariji:
-    driver: local
+    driver: bridge
 volumes:
   postgres_data:
