@@ -25,7 +25,12 @@ jobs:
           ruby-version: '3.0.2'
           bundler-cache: false
       - run: make api-gem-setup
-      - run: make api-db-create && make api-db-migrate && make api-test
+      - run: |
+            cd api 
+            export RAILS_ENV=test
+            rails db:create 
+            rails db:migrate 
+            rspec spec/
         env:
           RAILS_ENV: "test"
           DATABASE_URL: "postgres://postgres@localhost:5432/api_test?user=postgres&password=postgres"

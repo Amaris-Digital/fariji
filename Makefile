@@ -54,22 +54,29 @@ client-test:
 
 
 # @DOCKER
-# Build Docker images
+## Build Docker images
 docker-build:
 	docker compose up --build -d --remove-orphans
 
-#  Start Docker environment
+##  Start Docker environment
 start:
 	docker compose up
 
-# Stop Docker environment
+## Stop Docker environment
 stop:
 	docker compose stop
 
-# Display logs
+## Display logs
 show-logs:
 	docker compose  logs
 
-# Remove Docker environment
+## Remove Docker environment
 clean:
 	docker compose down
+
+
+
+# @CI META
+## Run in test env
+ci-api-test:
+    cd api && export RAILS_ENV=test && rails db:create && rails db:migrate && rspec spec/
