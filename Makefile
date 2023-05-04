@@ -74,9 +74,3 @@ show-logs:
 clean:
 	docker compose down
 
-
-
-# @CI META
-## Run in test env
-ci-api-test:
-    cd api && export RAILS_ENV=test && rails db:create && rails db:migrate && rspec spec/
