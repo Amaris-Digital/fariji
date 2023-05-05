@@ -1,0 +1,2 @@
+class Xyz < ApplicationRecord
+end
