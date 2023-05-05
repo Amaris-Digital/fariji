@@ -6,7 +6,7 @@ const Home = (): JSX.Element => {
 
     const {header, setHeader} = useHeader();
     useEffect(() => {
-        setHeader("Home Page")
+        setHeader("Home Page Header")
     }, [setHeader])
 
     return (
