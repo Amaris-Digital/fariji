@@ -1,7 +1,12 @@
+import Home from "./pages/Home";
+import {Route, Routes} from "react-router-dom";
+
 function App(): JSX.Element {
   return (
-    <div className="text-2xl text-rose-600">
-      Hello World
+    <div>
+      <Routes>
+          <Route path={"/"} element={ <Home/> } />
+      </Routes>
     </div>
   )
 }
