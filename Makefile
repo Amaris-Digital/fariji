@@ -23,6 +23,10 @@ api-lint-check:
 api-lint-fix:
 	cd api && rake lint:fix
 
+## Start Rails server
+api-start:
+	cd api && rails s -p 9292
+
 # @CLIENT
 ## Build
 client-build:
@@ -50,17 +54,23 @@ client-test:
 
 
 # @DOCKER
-# Build Docker images
+## Build Docker images
 docker-build:
 	docker compose up --build -d --remove-orphans
 
-#  Start Docker environment
+##  Start Docker environment
 start:
 	docker compose up
 
-# Stop Docker environment
+## Stop Docker environment
 stop:
 	docker compose stop
 
+## Display logs
 show-logs:
 	docker compose  logs
+
+## Remove Docker environment
+clean:
+	docker compose down
+
