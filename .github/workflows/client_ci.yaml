@@ -2,9 +2,9 @@ name: CLIENT
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [development, main]
   pull_request:
-    branches: [main]
+    branches: [development, main]
 
 jobs:
   tests:
