@@ -30,7 +30,7 @@ jobs:
             RAILS_ENV=test rails db:create && rails db:migrate
             rspec spec/
         env:
-          DB_NAME: "api_test"
+          DB_NAME_TEST: "api_test"
           DB_USER: "postgres"
           DB_PASSWORD: "postgres"
           RAILS_ENV: "test"

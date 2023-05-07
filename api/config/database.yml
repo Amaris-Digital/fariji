@@ -63,7 +63,6 @@ test:
   username: <%= ENV.fetch("DB_USER") %>
   database: <%= ENV.fetch("DB_NAME_TEST") %>
   password: <%= ENV.fetch("DB_PASSWORD") %>
-  host: db
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
