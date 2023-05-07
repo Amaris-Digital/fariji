@@ -11,6 +11,10 @@ api-db-create:
 api-db-migrate:
 	cd api && rails db:migrate
 
+## DOcker DB Migration
+api-db-migrate-docker:
+	docker compose run api rails db:migrate
+
 ## RSpec tests
 api-test:
 	cd api && rspec spec/

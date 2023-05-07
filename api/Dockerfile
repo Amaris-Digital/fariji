@@ -11,9 +11,6 @@ COPY .ruby-version ./
 # Install dependencies
 RUN bundle install
 
-# run database migrations
-RUN bundle exec rails db:migrate
-
 # Copy the rest of the application into the container
 COPY . .
 
