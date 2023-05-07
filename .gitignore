@@ -1,6 +1,9 @@
 # environment variables
 /.env
 .env
+.env.test
+.env.production
+
 
 # IDE files
 /.idea
