@@ -13,11 +13,13 @@ require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 require 'sprockets/railtie'
+require 'dotenv'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+Dotenv.load('../.env.local', '../.env.development', '../.env', '../.env.test')
 
 module Api
   class Application < Rails::Application
