@@ -1,0 +1,21 @@
+Index: Makefile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># @API\n## Install Gems\napi-gem-setup:\n\tcd api && bundle install\n\n## DB Create\napi-db-create:\n\tcd api && rails db:create\n\n## DB Migration\napi-db-migrate:\n\tcd api && rails db:migrate\n\n## Docker DB Migration\napi-db-migrate-docker:\n\tdocker compose run api rails db:migrate\n\n## RSpec tests\napi-test:\n\tcd api && rspec spec/\n\n## RSpec tests Docker (with coverage)\napi-test-docker:\n\tdocker compose run api rspec spec/\n\n\n## Rubocop linter (check)\napi-lint-check:\n\tcd api && rake lint:check\n\n## Rubocop linter (auto-fix in safe-mode)\napi-lint-fix:\n\tcd api && rake lint:fix\n\n## Start Rails server\napi-start:\n\tcd api && rails s -p 9292\n\n# @CLIENT\n## Build\nclient-build:\n\tcd client && npm ci && npm run build\n\n## Start\nclient-start:\n\tcd client && npm run dev\n\n## Install npm packages\nclient-npm-setup:\n\tcd client && npm install\n\n## ESLint check\nclient-lint-check:\n\tcd client && npm run lint\n\n## ESLint auto-fix\nclient-lint-fix:\n\tcd client && npm run lint:fix\n\n## NPM tests\nclient-test:\n\tcd client && npm run test\n\n\n# @DOCKER\n## Build Docker images\ndocker-build:\n\tdocker compose up --build -d --remove-orphans\n\n##  Start Docker environment\nstart:\n\tdocker compose up\n\n## Stop Docker environment\nstop:\n\tdocker compose stop\n\n## Display logs\nshow-logs:\n\tdocker compose  logs\n\n## Remove Docker environment\nclean:\n\tdocker compose down\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Makefile b/Makefile
+--- a/Makefile	
++++ b/Makefile	
+@@ -19,6 +19,10 @@
+ api-test:
+ 	cd api && rspec spec/
+ 
++## RSpec tests (with coverage)
++api-test-coverage:
++	cd api && COVERAGE=true rspec spec/
++
+ ## RSpec tests Docker (with coverage)
+ api-test-docker:
+ 	docker compose run api rspec spec/
