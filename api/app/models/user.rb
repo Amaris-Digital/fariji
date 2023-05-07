@@ -5,8 +5,9 @@ class User < ApplicationRecord
 
     validates :email, uniqueness: true
     validates :phone, presence: true, length: { minimum: 9, maximum: 12 }
-    validates :password, length: { minimum: 6 }
+    validates :password, length: { minimum: 6 }, presence: true, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+\z/, message: "must contain at least one letter and one number" }
     validate :at_least_eighteen_years_old
+  
 
 
     private

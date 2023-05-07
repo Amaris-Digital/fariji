@@ -11,6 +11,10 @@ api-db-create:
 api-db-migrate:
 	cd api && rails db:migrate
 
+#  DB Reset
+api-db-reset:
+	cd api && rails db:reset
+
 ## RSpec tests
 api-test:
 	cd api && rspec spec/
