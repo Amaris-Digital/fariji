@@ -11,13 +11,18 @@ api-db-create:
 api-db-migrate:
 	cd api && rails db:migrate
 
-## DOcker DB Migration
+## Docker DB Migration
 api-db-migrate-docker:
 	docker compose run api rails db:migrate
 
 ## RSpec tests
 api-test:
 	cd api && rspec spec/
+
+## RSpec tests Docker (with coverage)
+api-test-docker:
+	docker compose run api rspec spec/
+
 
 ## Rubocop linter (check)
 api-lint-check:

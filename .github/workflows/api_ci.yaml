@@ -30,6 +30,9 @@ jobs:
             RAILS_ENV=test rails db:create && rails db:migrate
             rspec spec/
         env:
+          DB_NAME: "api_test"
+          DB_USER: "postgres"
+          DB_PASSWORD: "postgres"
           RAILS_ENV: "test"
           DATABASE_URL: "postgres://postgres@localhost:5432/api_test?user=postgres&password=postgres"
 
