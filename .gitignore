@@ -1,3 +1,11 @@
 # environment variables
 /.env
 .env
+
+# IDE files
+/.idea
+*.iml
+*.ipr
+*.iws
+.idea/
+
