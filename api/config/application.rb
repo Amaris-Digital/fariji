@@ -23,7 +23,7 @@ Dotenv.load('../.env.local', '../.env.development', '../.env', '../.env.test')
 
 module Api
   class Application < Rails::Application
-    config.assets.precompile << "config/manifest.js"
+    config.assets.precompile << "app/assets/config/manifest.js"
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     # Configuration for the application, engines, and railties goes here.
