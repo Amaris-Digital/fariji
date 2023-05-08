@@ -58,6 +58,10 @@ client-test:
 docker-build:
 	docker compose up --build -d --remove-orphans
 
+## Build test Docker images
+docker-build-test:
+	docker compose -f docker-compose.test.yml up --build -d --remove-orphans
+
 ##  Start Docker environment
 start:
 	docker compose up
@@ -73,4 +77,5 @@ show-logs:
 ## Remove Docker environment
 clean:
 	docker compose down
+
 
