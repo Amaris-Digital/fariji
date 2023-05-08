@@ -89,3 +89,9 @@ production:
   database: api_production
   username: api
   password: <%= ENV["API_DATABASE_PASSWORD"] %>
+
+
+# Staging DB credentials for render preview deploys
+staging:
+  <<: *default
+  url: <%= ENV["STAGING_DATABASE_URL"] %>
