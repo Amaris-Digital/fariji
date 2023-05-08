@@ -5,7 +5,7 @@ services:
     ports:
       - "3000:3000"
     env_file:
-      - .env
+      - .env.test
     depends_on:
       - db
     networks:

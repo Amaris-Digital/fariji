@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  if Rails.env.development?
+  unless Rails.env.production?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
 
