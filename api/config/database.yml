@@ -61,7 +61,7 @@ development:
 test:
   <<: *default
   username: <%= ENV.fetch("DB_USER") %>
-  database: <%= ENV.fetch("DB_NAME") %>
+  database: <%= ENV.fetch("DB_NAME_TEST") %>
   password: <%= ENV.fetch("DB_PASSWORD") %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
