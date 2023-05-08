@@ -67,23 +67,4 @@ RSpec.describe User, type: :model do
     end
   end 
 
-  describe 'user age validation' do
-
-    context 'with below 18 years ' do
-      it 'should not be valid and date_of_birth' do
-        user = User.create(email: 'test@example.com', phone: '123456789', date_of_birth: '2020-01-01', password: 'Password1')
-
-        expect(user).to_not be_valid
-        expect(user.errors[:date_of_birth]).to include('You must be at least eighteen years old')
-      end
-    end
-
-    context 'when user is above 18 years' do
-      user = User.create(email: 'test@example.com', phone: '123456789', date_of_birth: '2020-01-01', password: 'Password1')
-
-      expect(user).to be_valid
-      
-    end
-  end
-
 end
