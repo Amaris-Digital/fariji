@@ -1,51 +1,39 @@
-version: '3'
+version: '3.9'
 services:
-  api:
-    build: ./api
-    ports:
-      - "3000:3000"
-    env_file:
-      - .env
-    depends_on:
-      - db
-    networks:
-      - fariji
-  db:
-    image: postgres:12-alpine
-    ports:
-      - "5432:5432"
-    volumes:
-      - /tmp/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
-    networks:
-      - fariji
-
+  
   client:
-    build: ./client
-    ports:
-      - "5173:5173"
-    restart: on-failure
-    networks:
-      - fariji
-
-
-  nginx:
-    restart: always
-    depends_on:
-      - api
-    build:
-      context: ./nginx
+    build: 
+      context: ./client
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
-    networks:
-      - fariji
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+    depends_on:
+      - api
+    env_file:
+      - .env
 
-networks:
-  fariji:
-    driver: bridge
-volumes:
-  postgres_data:
+  api:
+    build: 
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api:/app
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  db:
+    image: postgres:13.3-alpine
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: api_development

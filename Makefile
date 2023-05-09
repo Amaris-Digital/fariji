@@ -11,6 +11,22 @@ api-db-create:
 api-db-migrate:
 	cd api && rails db:migrate
 
+## DB Setup
+api-db-setup:
+	cd api && rails db:setup
+
+## DB destroy
+api-db-destroy:
+	cd api && rails db:drop
+
+## Set DB env to development
+api-db-dev:
+	cd api && rails db:environment:set RAILS_ENV=development
+
+## Set DB env to test
+api-db-test:
+	cd api && rails db:environment:set RAILS_ENV=test
+
 ## RSpec tests
 api-test:
 	cd api && rspec spec/
@@ -78,4 +94,11 @@ show-logs:
 clean:
 	docker compose down
 
+## Reset docker images and volumes
+reset:
+	docker compose down -v --rmi all
+
+## Prune system images
+prune:
+	docker system prune --all
 

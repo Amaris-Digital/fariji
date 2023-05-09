@@ -1,4 +1,5 @@
 # environment variables
+/env
 /.env
 .env
 .env.test
