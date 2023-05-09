@@ -1,6 +1,7 @@
 version: '3.9'
 services:
-  web:
+  
+  client:
     build: 
       context: ./client
       dockerfile: Dockerfile
@@ -25,11 +26,14 @@ services:
       - db
     env_file:
       - .env
+
   db:
     image: postgres:13.3-alpine
     ports:
       - "5432:5432"
+    env_file:
+      - .env
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_DB: api_development

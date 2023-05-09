@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   
-  web-test:
+  client:
     build: 
       context: ./client
       dockerfile: Dockerfile
@@ -10,11 +10,12 @@ services:
     volumes:
       - ./client:/app
     depends_on:
-      - api-test
+      - api
     env_file:
+      - .env
       - .env.test
 
-  api-test:
+  api:
     build: 
       context: ./api
       dockerfile: Dockerfile
@@ -23,17 +24,19 @@ services:
     volumes:
       - ./api:/app
     depends_on:
-      - db-test
+      - db
     env_file:
+      - .env
       - .env.test
   
-  db-test:
+  db:
     image: postgres:15-alpine
     ports:
       - "5432:5432"
     env_file:
+      - .env
       - .env.test
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME_TEST}
+      POSTGRES_DB: api_test

@@ -98,3 +98,7 @@ clean:
 reset:
 	docker compose down -v --rmi all
 
+## Prune system images
+prune:
+	docker system prune --all
+
