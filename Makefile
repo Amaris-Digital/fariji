@@ -5,23 +5,23 @@ api-gem-setup:
 
 ## DB Create
 api-db-create:
-	cd api && rails db:create
+	docker compose run api rails db:create
 
 ## DB Migration
 api-db-migrate:
-	cd api && rails db:migrate
+	docker compose run api rails db:migrate
 
 ## RSpec tests
 api-test:
-	cd api && rspec spec/
+	docker compose run api rspec spec/
 
 ## Rubocop linter (check)
 api-lint-check:
-	cd api && rake lint:check
+	docker compose run api rake lint:check
 
 ## Rubocop linter (auto-fix in safe-mode)
 api-lint-fix:
-	cd api && rake lint:fix
+	docker compose run api rake lint:fix
 
 ## Start Rails server
 api-start:
@@ -78,4 +78,11 @@ show-logs:
 clean:
 	docker compose down
 
+## Reset docker images and volumes
+reset:
+	docker compose down -v --rmi all
+
+## Prune system images
+prune:
+	docker system prune --all
 

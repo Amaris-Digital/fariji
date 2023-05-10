@@ -46,4 +46,4 @@ jobs:
           ruby-version: '3.0.2'
           bundler-cache: false
       - run: make api-gem-setup
-      - run: make api-lint-check
+      - run: cd api && rake lint:check

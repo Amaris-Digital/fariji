@@ -1,53 +1,42 @@
-version: '3'
+version: '3.9'
 services:
+  
+  client:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+    depends_on:
+      - api
+    env_file:
+      - .env
+      - .env.test
+
   api:
-    build: ./api
+    build: 
+      context: ./api
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    env_file:
-      - .env.test
+    volumes:
+      - ./api:/app
     depends_on:
       - db
-    networks:
-      - fariji
+    env_file:
+      - .env
+      - .env.test
+  
   db:
-    image: postgres:12-alpine
+    image: postgres:15-alpine
     ports:
       - "5432:5432"
     env_file:
       - .env
-    volumes:
-      - /tmp/db:/var/lib/postgresql/data
+      - .env.test
     environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME_TEST}
-    networks:
-      - fariji
-
-  client:
-    build: ./client
-    ports:
-      - "5173:5173"
-    restart: on-failure
-    networks:
-      - fariji
-
-
-  nginx:
-    restart: always
-    depends_on:
-      - api
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    ports:
-      - "8080:80"
-    networks:
-      - fariji
-
-networks:
-  fariji:
-    driver: bridge
-volumes:
-  postgres_data:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: api_test
