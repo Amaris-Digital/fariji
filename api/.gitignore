@@ -37,3 +37,10 @@
 
 # IDEA config files
 /.idea
+
+# environment variables
+/env
+/.env
+.env
+.env.test
+.env.production
