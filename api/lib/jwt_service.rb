@@ -16,5 +16,18 @@ module TokenAuthentication
     rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
         nil
     end
+
+    #refreshing a jwt token
+    def self.refresh(token)
+        decoded = decode(token)
+        if decoded && decoded[:exp] > Time.now.to_i
+            payload = decoded.reject { |key, value| key == 'exp' }
+            encode(payload, Time.now.to_i + 24.hours.to_i)
+        else
+            nil
+        end
+      end
+    end
+
     
 end
