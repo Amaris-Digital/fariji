@@ -3,7 +3,7 @@
 require 'jwt'
 
 # JWTService
-module TokenAuthentication
+module TokenAuthorization
   # encoding data into a jwt token
 
   def self.encode(payload, exp = 24.hours.from_now)
