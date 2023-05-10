@@ -81,6 +81,8 @@ This application is built with Docker, you will need to have the following insta
 
 make sure you are in the root directory when running make commands
 
+### General
+
 1. Build Docker container and start service.
    ```
    make docker-build
@@ -93,6 +95,23 @@ make sure you are in the root directory when running make commands
    ```
    make show-logs
    ```
+4. Stop container.
+
+   ```
+   make start
+   ```
+
+5. reset containers
+   ```
+   make reset
+   ```
+6. Pruning system images
+   ```
+   make prune
+   ```
+
+### Server commands
+
 4. Build Docker container and start service.
    ```
    make api-gem-setup
@@ -109,74 +128,72 @@ make sure you are in the root directory when running make commands
    make api-db-migrate
    ```
 
-7. Installing frontend dependancies
+7. Starting the server
+   ```
+   make api-start
+   ```
+8. Running backend linters tests
 
    ```
-   make client-build
+   make api-lint-fix
    ```
 
-8. Installing npm packages in the client
+9. Running api tests
 
    ```
-   make client-npm-setup
+   make api-test
    ```
 
-9. Starting the client
-
-   ```
-   make client-start
-   ```
-
-10. Client eslint checks
-
-    ```
-    make client-lint-check
-    ```
-
-11. Client eslint autofix
-
-    ```
-    make client-lint-fix
-    ```
-
-12. Client tests
-
-    ```
-    make client-test
-    ```
-
-13. Starting the server
+10. Starting the server
     ```
     make api-start
     ```
-14. Running backend linters tests
+11. Running backend linters tests
 
     ```
     make api-lint-fix
     ```
 
-15. Running api tests
+### Client
+
+10. Installing frontend dependancies
 
     ```
-    make api-test
+    make client-build
     ```
 
-16. Stop container.
+11. Installing npm packages in the client
 
     ```
-    make start
+    make client-npm-setup
     ```
 
-17. reset containers
+12. Starting the client
+
     ```
-    make reset
+    make client-start
     ```
-18. Pruning system images
+
+13. Client eslint checks
+
     ```
-    make prune
+    make client-lint-check
     ```
-19. All client sided routes are rendered from root, `/`. Example `http://localhost:8080/admin` - Admin React Page
-20. All API endpoints are rendered from `/api/`. Example `http://localhost:8080/api/admin` - Admin endpoint
+
+14. Client eslint autofix
+
+    ```
+    make client-lint-fix
+    ```
+
+15. Client tests
+
+    ```
+    make client-test
+    ```
+
+16. All client sided routes are rendered from root, `/`. Example `http://localhost:8080/admin` - Admin React Page
+17. All API endpoints are rendered from `/api/`. Example `http://localhost:8080/api/admin` - Admin endpoint
 
 **NB: All requests are listening from port `8080`.**
 
