@@ -192,8 +192,8 @@ make sure you are in the root directory when running make commands
     make client-test
     ```
 
-16. All client sided routes are rendered from root, `/`. Example `http://localhost:8080/admin` - Admin React Page
-17. All API endpoints are rendered from `/api/`. Example `http://localhost:8080/api/admin` - Admin endpoint
+16. All client sided routes are rendered from root, `/`. Example `http://localhost:5173/admin` - Admin React Page
+17. All API endpoints are rendered from `/api/`. Example `http://localhost:3000/api/admin` - Admin endpoint
 
 **NB: All requests are listening from port `8080`.**
 
@@ -216,7 +216,15 @@ This application has been built with these technologies:
 ## Authors
 
 - [Ian Okumu](https://github.com/otsembo)
-- [Add creds here]
+- [Naomi Rono](https://github.com/naomirono)
+- [Kimutai Kiprotich](https://github.com/kimutai01)
+- [Michael Munavu](https://github.com/MICHAELMUNAVU83)
+- [Awino Mackrine](https://github.com/mackrineawino)
+- [Timothy Kipngetich Kiyeng](https://github.com/timothykiyeng)
+- [Enid](https://github.com/MissDine)
+- [Cynthia Chelangat](https://github.com/chelahcynthia)
+- [Tosh](https://github.com/Muriithi-Gitonga)
+- [Emmanuel Karingi](https://github.com/emmanuelkaringi)
 
 ## Contribution Guide
 
@@ -254,7 +262,7 @@ MONGO_DB_URI='random env here'
 ## DO NOT commit your .env files to version control
 ```
 
-- Once your code is in the remote branch, create a pull request to the `main` branch.
+- Once your code is in the remote branch, create a pull request to the `development` branch.
 - Each pull request will require at least 1 peer code review approval for the merge to be completed.
 - Hurray, you have successfully contributed.
 
