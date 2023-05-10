@@ -46,26 +46,20 @@ To use the environment variables, create three environment files: `.env`, `.env.
 Use the following criteria to set your environment variables:
 
 - `.env` - Common variables that are not specific to any environment.
-- `.env.development` - Variables that are only specific to `development` or `test` environments.
-- `.env.production` - Variables that are only specific to production environment. Example: `ENTRY`.
+- `.env.test` - Variables that are only specific to `test` environments.
+- `.env.production` - Variables that are only specific to production environment.
 
 ```{shell}
 # DOCKER POSTRESQL DATABASE
 DB_USER='your database username'
 DB_PASSWORD='your database password'
 DB_NAME='database_name'
-GOOGLE_CLIENT_ID=your client id
-GOOGLE_CLIENT_SECRET=your secret key
 
-# DOMAIN
-CURRENT_SITE_DOMAIN=http://localhost:8080/
+
 
 # SENTRY
 SENTRY_DNS=8.8.8.8
 
-# COMMON_API_CREDS
-REACT_APP_API_URL=https://myApiServerUrl.com
-```
 
 NB:
 
@@ -83,11 +77,11 @@ make sure you are in the root directory when running make commands
 
 ### General
 
-1. Build Docker container and start service.
+1. Build Docker container and start services.
    ```
    make docker-build
    ```
-2. Build Docker container in test environment
+2. Build Docker and start services  in test environment
    ```
    make docker-build-test
    ```
@@ -95,7 +89,7 @@ make sure you are in the root directory when running make commands
    ```
    make show-logs
    ```
-4. Stop container.
+4. Start container.
 
    ```
    make start
@@ -112,90 +106,89 @@ make sure you are in the root directory when running make commands
 
 ### Server commands
 
-4. Build Docker container and start service.
+7. Build Docker container and start service.
    ```
    make api-gem-setup
    ```
-5. creating the database
+8. creating the database
 
    ```
    make api-db-create
    ```
 
-6. Making database migration
+9. Making database migration
 
    ```
    make api-db-migrate
    ```
 
-7. Starting the server
-   ```
-   make api-start
-   ```
-8. Running backend linters tests
+10. Running backend linters tests
 
    ```
    make api-lint-fix
    ```
 
-9. Running api tests
+11. Running api tests
 
    ```
    make api-test
    ```
 
-10. Starting the server
+12. Starting the server
     ```
     make api-start
-    ```
-11. Running backend linters tests
-
-    ```
-    make api-lint-fix
     ```
 
 ### Client
 
-10. Installing frontend dependancies
+13. Installing frontend dependancies
 
     ```
     make client-build
     ```
 
-11. Installing npm packages in the client
+14. Installing npm packages in the client
 
     ```
     make client-npm-setup
     ```
 
-12. Starting the client
+15. Starting the client
 
     ```
     make client-start
     ```
 
-13. Client eslint checks
+16. Client eslint checks
 
     ```
     make client-lint-check
     ```
 
-14. Client eslint autofix
+17. Client eslint autofix
 
     ```
     make client-lint-fix
     ```
 
-15. Client tests
+18. Client tests
 
     ```
     make client-test
     ```
 
-16. All client sided routes are rendered from root, `/`. Example `http://localhost:5173/admin` - Admin React Page
-17. All API endpoints are rendered from `/api/`. Example `http://localhost:3000/api/admin` - Admin endpoint
+19. If you are using the Docker environment, you do not need to perform the following tasks:
+     -Gem setup
+     -NPM setup
+     -Starting the backend server
+     -Starting the frontend server
+   These tasks are automatically done when the container is built using the 'make docker-build' command.
 
-**NB: All requests are listening from port `8080`.**
+20. Please note that all tests must be run in the test Docker environment to avoid corrupting your local development database.
+21. All client sided routes are rendered from root, `/`. Example `http://localhost:5173/admin` - Admin React Page
+22. All API endpoints are rendered from `/api/`. Example `http://localhost:3000/api/admin` - Admin endpoint
+    
+    **NB: All requests are listening from port `5173`.**
 
 ## Technologies Used
 
@@ -224,7 +217,7 @@ This application has been built with these technologies:
 - [Enid](https://github.com/MissDine)
 - [Cynthia Chelangat](https://github.com/chelahcynthia)
 - [Tosh](https://github.com/Muriithi-Gitonga)
-- [Emmanuel Karingi](https://github.com/emmanuelkaringi)
+- [Emmanuel Kariithi](https://github.com/emmanuelkaringi)
 
 ## Contribution Guide
 
@@ -254,7 +247,7 @@ git commit -m "Login: added JWT token in header"
 git push -u origin name/feature
 ```
 
-- Ensure you create three environment files: `.env`, `.env.production` and `.env.development`.
+- Ensure you create three environment files: `.env`, `.env.production` and `.env.test`.
   **Ensure you add any necessary variables in the appropriate file**. Example:
 
 ```
