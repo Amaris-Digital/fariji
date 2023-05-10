@@ -62,5 +62,5 @@ group :development do
   # gem "spring"
 end
 
-# JWT gem 
+# JWT
 gem 'jwt', '~> 1.5', '>= 1.5.4'
