@@ -41,7 +41,7 @@ This section will guide you through setting up and running this repository on yo
 
 ### Environment Variables
 
-To use the environment variables, create three environment files: `.env`, `.env.development` and `.env.production`.
+To use the environment variables, create three environment files: `.env`, `.env.test` and `.env.production`.
 
 Use the following criteria to set your environment variables:
 
@@ -49,7 +49,7 @@ Use the following criteria to set your environment variables:
 - `.env.test` - Variables that are only specific to `test` environments.
 - `.env.production` - Variables that are only specific to production environment.
 
-```{shell}
+
 # DOCKER POSTRESQL DATABASE
 DB_USER='your database username'
 DB_PASSWORD='your database password'
