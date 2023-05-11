@@ -77,105 +77,95 @@ make sure you are in the root directory when running make commands
 
 ### General
 
-1. Build Docker container and start services.
+- Build Docker container and start services.
    ```
    make docker-build
    ```
-2. Build Docker and start services  in test environment
+- Build Docker and start services  in test environment
    ```
    make docker-build-test
    ```
-3. Show logs from container processes.
+- Show logs from container processes.
    ```
    make show-logs
    ```
-4. Start container.
+- Start container.
    ```
    make start
    ```
-
-5. reset containers
+- reset containers
    ```
    make reset
    ```
-6. Pruning system images
+- Pruning system images
    ```
    make prune
    ```
 
 ### Server commands
 
-7. Build Docker container and start service.
+- Build Docker container and start service.
    ```
    make api-gem-setup
    ```
-8. creating the database
+- creating the database
    ```
    make api-db-create
    ```
-
-9. Making database migration
+- Making database migration
    ```
    make api-db-migrate
    ```
-
-10. Running backend linters tests
+- Running backend linters tests
    ```
    make api-lint-fix
    ```
-
-11. Running api tests
+- Running api tests
    ```
    make api-test
    ```
-
-12. Starting the server
+- Starting the server
     ```
     make api-start
     ```
 
 ### Client
 
-13. Installing frontend dependancies
+- Installing frontend dependancies
     ```
     make client-build
     ```
-
-14. Installing npm packages in the client
+- Installing npm packages in the client
     ```
     make client-npm-setup
     ```
-
-15. Starting the client
+- Starting the client
     ```
     make client-start
     ```
-
-16. Client eslint checks
+- Client eslint checks
     ```
     make client-lint-check
     ```
-
-17. Client eslint autofix
+- Client eslint autofix
     ```
     make client-lint-fix
     ```
-
-18. Client tests
+- Client tests
     ```
     make client-test
     ```
 
-19. If you are using the Docker environment, you do not need to perform the following tasks:
+- If you are using the Docker environment, you do not need to perform the following tasks:
      -Gem setup
      -NPM setup
      -Starting the backend server
      -Starting the frontend server
    These tasks are automatically done when the container is built using the 'make docker-build' command.
 
-20. Please note that all tests must be run in the test Docker environment to avoid corrupting your local development database.
-21. All client sided routes are rendered from root, `/`. Example `http://localhost:5173/admin` - Admin React Page
-22. All API endpoints are rendered from `/api/`. Example `http://localhost:3000/api/admin` - Admin endpoint
+- Please note that all tests must be run in the test Docker environment to avoid corrupting your local development database.
+- All client sided routes are rendered from root, `/`. Example `http://localhost:5173/admin` - Admin React Page
+- All API endpoints are rendered from `/api/`. Example `http://localhost:3000/api/admin` - Admin endpoint
     
     **NB: All requests are listening from port `5173`.**
 
