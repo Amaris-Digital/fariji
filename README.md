@@ -51,9 +51,11 @@ Use the following criteria to set your environment variables:
 
 
 # DOCKER POSTRESQL DATABASE
+```
 DB_USER='your database username'
 DB_PASSWORD='your database password'
 DB_NAME='database_name'
+```
 
 
 
