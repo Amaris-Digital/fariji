@@ -90,7 +90,6 @@ make sure you are in the root directory when running make commands
    make show-logs
    ```
 4. Start container.
-
    ```
    make start
    ```
@@ -111,25 +110,21 @@ make sure you are in the root directory when running make commands
    make api-gem-setup
    ```
 8. creating the database
-
    ```
    make api-db-create
    ```
 
 9. Making database migration
-
    ```
    make api-db-migrate
    ```
 
 10. Running backend linters tests
-
    ```
    make api-lint-fix
    ```
 
 11. Running api tests
-
    ```
    make api-test
    ```
@@ -142,37 +137,31 @@ make sure you are in the root directory when running make commands
 ### Client
 
 13. Installing frontend dependancies
-
     ```
     make client-build
     ```
 
 14. Installing npm packages in the client
-
     ```
     make client-npm-setup
     ```
 
 15. Starting the client
-
     ```
     make client-start
     ```
 
 16. Client eslint checks
-
     ```
     make client-lint-check
     ```
 
 17. Client eslint autofix
-
     ```
     make client-lint-fix
     ```
 
 18. Client tests
-
     ```
     make client-test
     ```
