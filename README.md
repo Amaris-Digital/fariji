@@ -50,19 +50,6 @@ Use the following criteria to set your environment variables:
 - `.env.production` - Variables that are only specific to production environment.
 
 
-# DOCKER POSTRESQL DATABASE
-```
-DB_USER='your database username'
-DB_PASSWORD='your database password'
-DB_NAME='database_name'
-```
-
-
-
-# SENTRY
-SENTRY_DNS=8.8.8.8
-
-
 NB:
 
 - Ensure you use the prefix `REACT_APP_` to store all the variables that are needed in the React Application. Example: `REACT_APP_NAME=janedoe`
@@ -75,7 +62,7 @@ This application is built with Docker, you will need to have the following insta
 - `Makefile` - Use the link below to install https://makefiletutorial.com/.
 - `Docker` - https://www.docker.com/.
 
-make sure you are in the root directory when running make commands
+Make sure you are in the root directory when running make commands.
 
 ### General
 
@@ -106,10 +93,6 @@ make sure you are in the root directory when running make commands
 
 ### Server commands
 
-- Build Docker container and start service.
-   ```
-   make api-gem-setup
-   ```
 - creating the database
    ```
    make api-db-create
