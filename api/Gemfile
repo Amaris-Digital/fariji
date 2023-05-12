@@ -55,6 +55,7 @@ group :development, :test, :staging do
   gem 'rspec-rails', '~>6.0.0'
   gem 'sass-rails'
   gem 'shoulda'
+  gem 'twilio-ruby'
 end
 
 group :development do
