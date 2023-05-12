@@ -1,4 +1,4 @@
-module Types
+module Mutations
     module Inputs
       class ResetPasswordInput < BaseInputObject
         argument :phone, String, required: true, description: "User's phone number"
