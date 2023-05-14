@@ -1,9 +1,8 @@
-# frozen_string_literal: true
-
 require 'jwt'
 require 'dotenv'
+require 'active_support/core_ext/numeric/time'
 
-# JWTService
+
 module TokenAuthorization
   # encoding data into a jwt token
 
@@ -19,10 +18,12 @@ module TokenAuthorization
 
   # decoding a jwt token
   def self.decode(token)
-    JWT.decode(token, Rails.application.secrets.secret_key_base)[0]
+    JWT.decode(token, ENV['SECRET_KEY'])[0]
   rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
     nil
   end
+  
+  
 
   # refreshing a jwt token
   def self.refresh(token)
