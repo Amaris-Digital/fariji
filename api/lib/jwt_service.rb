@@ -1,29 +1,28 @@
+# frozen_string_literal: true
+
 require 'jwt'
 require 'dotenv'
 require 'active_support/core_ext/numeric/time'
 
-
+# This module provides JWT token encoding and decoding functionality.
 module TokenAuthorization
   # encoding data into a jwt token
 
   def self.encode(payload, exp = 24.hours.from_now)
     payload[:exp] = exp.to_i
     begin
-      JWT.encode(payload, ENV['SECRET_KEY'])
+      JWT.encode(payload, ENV.fetch('SECRET_KEY'))
     rescue JWT::EncodeError => e
-      raise StandardError.new("Error encoding payload: #{e.message}")
+      raise StandardError, "Error encoding payload: #{e.message}"
     end
   end
-  
 
   # decoding a jwt token
   def self.decode(token)
-    JWT.decode(token, ENV['SECRET_KEY'])[0]
+    JWT.decode(token, ENV.fetch('SECRET_KEY'))[0]
   rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
     nil
   end
-  
-  
 
   # refreshing a jwt token
   def self.refresh(token)
