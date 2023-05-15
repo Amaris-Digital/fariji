@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 # This module provides JWT token encoding and decoding functionality.
 module TokenAuthorization
   # encoding data into a jwt token
