@@ -5,7 +5,6 @@ class CreateOtps < ActiveRecord::Migration[7.0]
       t.integer :otp
       t.datetime :expiry
       t.boolean :valid
-      t.string :timestamps
 
       t.timestamps
     end

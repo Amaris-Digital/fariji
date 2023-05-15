@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_15_101743) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_15_201051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_101743) do
     t.integer "otp"
     t.datetime "expiry"
     t.boolean "valid"
-    t.string "timestamps"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_otps_on_user_id"
