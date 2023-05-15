@@ -2,6 +2,7 @@
 
 require 'jwt'
 require 'dotenv'
+Dotenv.load
 require 'active_support/core_ext/numeric/time'
 
 # This module provides JWT token encoding and decoding functionality.
