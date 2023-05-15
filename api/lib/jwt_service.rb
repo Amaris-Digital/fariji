@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-require 'jwt'
-require 'dotenv'
-require 'active_support/core_ext/numeric/time'
-Dotenv.load('.env')
 
 # This module provides JWT token encoding and decoding functionality.
 module TokenAuthorization
