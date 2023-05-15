@@ -23,9 +23,16 @@ module TokenAuthorization
   # refreshing a jwt token
   def self.refresh(token)
     decoded = decode(token)
-    return unless decoded && decoded[:exp] > Time.now.to_i
-
-    payload = decoded.except('exp')
-    encode(payload, Time.now.to_i + 24.hours.to_i)
+    return nil unless decoded
+  
+    if decoded.key?(:exp) && decoded[:exp] > Time.now.to_i
+      # generate a new token with a fresh expiration time
+      payload = decoded.dup
+      payload[:exp] = Time.now.to_i + 1.week.to_i
+      encode(payload)
+    else
+      nil
+    end
   end
+  
 end
