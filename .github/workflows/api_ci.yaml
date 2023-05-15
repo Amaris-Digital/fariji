@@ -36,6 +36,7 @@ jobs:
           DB_NAME_TEST: "api_test"
           RAILS_ENV: "test"
           DATABASE_URL: "postgres://postgres@localhost:5432/api_test?user=postgres&password=postgres"
+          SECRET_KEY: "your_secret_key"
 
   linters:
     runs-on: ubuntu-latest
