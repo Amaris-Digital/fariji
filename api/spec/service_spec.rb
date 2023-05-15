@@ -1,7 +1,7 @@
 require 'jwt'
 require 'dotenv'
 require_relative '../lib/jwt_service'
-Dotenv.load('.env')
+Dotenv.load('.env.test')
 
 RSpec.describe TokenAuthorization do
   describe '.encode' do
