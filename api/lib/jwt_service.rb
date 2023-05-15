@@ -24,15 +24,12 @@ module TokenAuthorization
   def self.refresh(token)
     decoded = decode(token)
     return nil unless decoded
-  
-    if decoded.key?(:exp) && decoded[:exp] > Time.now.to_i
-      # generate a new token with a fresh expiration time
-      payload = decoded.dup
-      payload[:exp] = Time.now.to_i + 1.week.to_i
-      encode(payload)
-    else
-      nil
-    end
+
+    return unless decoded.key?(:exp) && decoded[:exp] > Time.now.to_i
+
+    # generate a new token with a fresh expiration time
+    payload = decoded.dup
+    payload[:exp] = Time.now.to_i + 1.week.to_i
+    encode(payload)
   end
-  
 end
