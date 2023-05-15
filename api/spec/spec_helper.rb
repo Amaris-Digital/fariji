@@ -94,5 +94,7 @@ RSpec.configure do |config|
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'active_support/all'
+require 'dotenv'
+require_relative '../lib/jwt_service'
 
 end

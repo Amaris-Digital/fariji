@@ -1,13 +1,11 @@
-require 'jwt'
-require 'dotenv'
-require_relative '../../lib/jwt_service'
-Dotenv.load('.env.test')
+require_relative '../spec_helper'
 
 RSpec.describe TokenAuthorization do
+  
   describe '.encode' do
     it 'encodes a payload into a JWT token' do
       payload = { user_id: 123 }
-      token = described_class.encode(payload)
+      token = TokenAuthorization.encode(payload)
 
       decoded_payload = JWT.decode(token, ENV['SECRET_KEY'], true, algorithm: 'HS256')[0]
       decoded_payload = decoded_payload.transform_keys(&:to_sym)
@@ -27,7 +25,7 @@ RSpec.describe TokenAuthorization do
     end
   end
 
-describe '.refresh' do
+  describe '.refresh' do
     let(:payload) { { user_id: 123 } }
     let(:token) { TokenAuthorization.encode(payload, 1.minute.from_now.to_i) }
   
