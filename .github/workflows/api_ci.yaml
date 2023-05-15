@@ -28,7 +28,7 @@ jobs:
       - run: |
             cd api 
             RAILS_ENV=test rails db:create && rails db:migrate
-            rspec spec/
+            rspec spec/ --format documentation
         env:
           DB_NAME: ${{ secrets.DB_NAME_TEST }}
           DB_USER: ${{ secrets.DB_USER }}
