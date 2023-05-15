@@ -5,39 +5,23 @@ api-gem-setup:
 
 ## DB Create
 api-db-create:
-	cd api && rails db:create
+	docker compose run api rails db:create
 
 ## DB Migration
 api-db-migrate:
-	cd api && rails db:migrate
-
-## DB Setup
-api-db-setup:
-	cd api && rails db:setup
-
-## DB destroy
-api-db-destroy:
-	cd api && rails db:drop
-
-## Set DB env to development
-api-db-dev:
-	cd api && rails db:environment:set RAILS_ENV=development
-
-## Set DB env to test
-api-db-test:
-	cd api && rails db:environment:set RAILS_ENV=test
+	docker compose run api rails db:migrate
 
 ## RSpec tests
 api-test:
-	cd api && rspec spec/
+	docker compose run api rspec spec/
 
 ## Rubocop linter (check)
 api-lint-check:
-	cd api && rake lint:check
+	docker compose run api rake lint:check
 
 ## Rubocop linter (auto-fix in safe-mode)
 api-lint-fix:
-	cd api && rake lint:fix
+	docker compose run api rake lint:fix
 
 ## Start Rails server
 api-start:
