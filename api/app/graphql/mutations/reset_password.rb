@@ -8,7 +8,7 @@ module Mutations
     field :status, String, null: false
     field :message, String, null: false
 
-    def resolve(phone:, email:, otp:, password)
+    def resolve(phone:, email:, otp:, password:)
       user = User.where(phone: phone).or(User.where(email: email))
 
 
