@@ -1,8 +1,6 @@
 module Mutations
   class SendOtp < BaseMutation
 
-    require_relative '../../../lib/app_messaging_service.rb'
-
     argument :phone, String, required: true
 
     field :message, String, null: false
