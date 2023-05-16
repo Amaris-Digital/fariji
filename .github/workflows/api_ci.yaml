@@ -28,14 +28,15 @@ jobs:
       - run: |
             cd api 
             RAILS_ENV=test rails db:create && rails db:migrate
-            rspec spec/
+            rspec spec/ --format documentation
         env:
-          DB_NAME: "api_test"
-          DB_USER: "postgres"
-          DB_PASSWORD: "postgres"
-          DB_NAME_TEST: "api_test"
-          RAILS_ENV: "test"
-          DATABASE_URL: "postgres://postgres@localhost:5432/api_test?user=postgres&password=postgres"
+          DB_NAME: ${{ secrets.DB_NAME_TEST }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME_TEST: ${{ secrets.DB_NAME_TEST }}
+          RAILS_ENV: ${{ secrets.RAILS_ENV }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
   linters:
     runs-on: ubuntu-latest
