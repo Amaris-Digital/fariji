@@ -9,6 +9,7 @@ AllCops:
     - 'spec/**/**'
     - 'app/models/*'
     - 'app/controllers/graphql_controller.rb'
+    - 'app/graphql/**/**'
     - 'db/**/**'
     - 'config/**/**'
     - 'bin/**/**'

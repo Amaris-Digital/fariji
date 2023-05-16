@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Mutations
   class SendOtp < BaseMutation
-
     argument :phone, String, required: true
 
     field :message, String, null: false
@@ -10,8 +11,8 @@ module Mutations
 
       otp = rand(2000..9000)
 
-      expiry = Time.now + 5.minutes
-   
+      expiry = 5.minutes.from_now
+
       otp_record = Otp.find_or_initialize_by(user: user)
       otp_record.update(otp: otp, valid: true, expiry: expiry)
 
