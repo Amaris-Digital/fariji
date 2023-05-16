@@ -29,17 +29,6 @@ RSpec.describe TokenAuthorization do
     let(:payload) { { user_id: 123 } }
     let(:token) { TokenAuthorization.encode(payload, 1.minute.from_now.to_i) }
   
-    # context 'when the token is valid and not expired' do
-    #     it 'refreshes the token' do
-    #         refreshed_token = TokenAuthorization.refresh(token)
-    #         expect(refreshed_token).not_to be_nil
-          
-    #         decoded_payload = TokenAuthorization.decode(refreshed_token)
-    #         expect(decoded_payload.symbolize_keys).to eq(payload.merge(exp: Time.now.to_i + 1.week.to_i))
-    #       end
-          
-    # end
-  
     context 'when the token is expired' do
       let(:token) { TokenAuthorization.encode(payload, 1.minute.ago.to_i) }
   
