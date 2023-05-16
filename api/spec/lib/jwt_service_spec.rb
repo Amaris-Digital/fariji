@@ -1,3 +1,4 @@
+require 'jwt' 
 require_relative '../spec_helper'
 
 RSpec.describe TokenAuthorization do
