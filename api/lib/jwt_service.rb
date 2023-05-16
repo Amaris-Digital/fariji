@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'jwt'
+
 # This module provides JWT token encoding and decoding functionality.
 module TokenAuthorization
   # encoding data into a jwt token
@@ -9,10 +11,10 @@ module TokenAuthorization
     begin
       JWT.encode(payload, ENV.fetch('SECRET_KEY'))
     rescue JWT::EncodeError => e
-      puts "Error encoding payload: #{e.message}"
-      return nil
+      Rails.logger.error("Error encoding payload: #{e.message}")
+      nil
     end
-  end  
+  end
 
   # decoding a jwt token
   def self.decode(token)
