@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-module AppMessagingService # rubocop:disable Style/Documentation
+# This is a reusable module that handles sending out of otp codes via sms
+module AppMessagingService
   def self.send_otp(phone, otp)
     client = Twilio::REST::Client.new(ENV.fetch('TWILIO_ACCOUNT_SID'), ENV.fetch('TWILIO_AUTH_TOKEN'))
     message = client.messages.create(
