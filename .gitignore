@@ -4,6 +4,7 @@
 .env
 .env.test
 .env.production
+.env.development
 
 
 # IDE files

@@ -13,7 +13,7 @@ api-db-migrate:
 
 ## RSpec tests
 api-test:
-	docker compose run api rspec spec/
+	docker compose run api rspec spec/ --format documentation
 
 ## Rubocop linter (check)
 api-lint-check:
