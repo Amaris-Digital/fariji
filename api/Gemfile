@@ -59,7 +59,6 @@ group :development, :test, :staging do
   gem 'rspec-rails', '~>6.0.0'
   gem 'sass-rails'
   gem 'shoulda'
-  gem 'byebug'
   gem 'factory_bot_rails'
 end
 
