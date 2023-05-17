@@ -1,30 +1,37 @@
 # frozen_string_literal: true
 
+require_all 'lib'
+
 module Types
   class MutationType < Types::BaseObject
+    include TokenAuthorization
     # TODO: remove me
-    field :register, Types::UserType, null: false do
+    field :register, Types::AppResponseType, null: false, description: "Register a new user" do
       argument :phone, String, required: true
       argument  :email, String, required:false
       argument :date_of_birth, GraphQL::Types::ISO8601DateTime, required: true
       argument :isMuslim, Boolean, required: false
       argument :password, String, required: true
-      argument :password_confirmation, String, required: true
-
     end
   
     def register(**kwargs)
     
-      user = User.create!(
-        kwargs
-      )
+      user = User.new(kwargs)
 
-      user 
-
-      rescue ActiveRecord::RecordInvalid => e
-        raise GraphQL::ExecutionError, "Invalid input: #{e.record.errors.full_messages.join(', ')}"
+      if user.save
+        authToken = TokenAuthorization.encode( { user_id: user.id } )
+        {
+          status: 'success',
+          message: 'user registered successfully',
+          body: authToken
+        }
+      else
+        {
+          status: 'unprocessible_entity',
+          message: 'user registration failed',
+          body: user.errors.full_messages.join(', ')
+        }
       end
-
     end
-  
+  end
 end
