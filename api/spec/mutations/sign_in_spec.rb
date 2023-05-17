@@ -5,7 +5,7 @@ module Mutations
     RSpec.describe SignIn, type: :request do
       describe '.resolve' do
         context 'When the login credentials are correct' do
-          user = FactoryBot.create(:user)
+          user = FactoryBot.create(:user, email: Faker::Internet.unique.email, )
         it 'creates a user session' do
           expect do
           post '/graphql', params: { query: query(id: user.id) }
