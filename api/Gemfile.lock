@@ -96,6 +96,7 @@ GEM
     irb (1.6.3)
       reline (>= 0.3.0)
     json (2.6.3)
+    jwt (2.7.0)
     loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -119,6 +120,10 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
+    nokogiri (1.14.3-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.14.3-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.14.3-x86_64-linux)
       racc (~> 1.4)
     parallel (1.22.1)
@@ -239,15 +244,19 @@ GEM
     zeitwerk (2.6.7)
 
 PLATFORMS
+  aarch64-linux
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
+  activesupport (~> 7.0)
   bcrypt (~> 3.1.7)
   bootsnap
   debug
   dotenv-rails
   graphiql-rails
   graphql
+  jwt
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)

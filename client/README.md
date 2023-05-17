@@ -32,8 +32,17 @@ This section will guide you through setting up and running this repository on yo
 Meta
 ----
 Authors:
-* [Ian Okumu](https://github.com/otsembo)
-    * [please add you author creds here]
+- [Ian Okumu](https://github.com/otsembo)
+- [Naomi Rono](https://github.com/naomirono)
+- [Kimutai Kiprotich](https://github.com/kimutai01)
+- [Michael Munavu](https://github.com/MICHAELMUNAVU83)
+- [Awino Mackrine](https://github.com/mackrineawino)
+- [Timothy Kipngetich Kiyeng](https://github.com/timothykiyeng)
+- [Enid](https://github.com/MissDine)
+- [Cynthia Chelangat](https://github.com/chelahcynthia)
+- [Tosh](https://github.com/Muriithi-Gitonga)
+- [Emmanuel Karingi](https://github.com/emmanuelkaringi)
+
 
 **Status**: `maintained, and is currently in development`
 
