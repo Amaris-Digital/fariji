@@ -17,9 +17,9 @@ module Mutations
         end
         context 'When the login credentials are incorrect' do
           user = FactoryBot.create(:user)
-          it 'incorrect phone and password' do
+          it 'incorrect phone or password' do
             expect do 
-            post '/graphql', params: { query: query(id: user.id) }
+            post '/graphql', params: { query: query.gsub(id: user.id, password: "wrong-password") }
             expect(response).to have_http_status(:unprocessable_entity)
         end 
       end
