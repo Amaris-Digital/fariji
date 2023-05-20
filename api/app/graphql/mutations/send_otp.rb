@@ -26,7 +26,7 @@ module Mutations
       otp_record.expiry = expiry
       otp_record.save!
 
-      AppMessagingService.send_otp(user, otp)
+      AppMessagingService.send_otp(user, otp, ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'], ENV['TWILIO_PHONE_NUMBER'])
 
       { status: 'success', message: 'OTP sent successfully' }
     end
