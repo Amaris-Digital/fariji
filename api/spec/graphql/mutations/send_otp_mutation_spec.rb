@@ -28,9 +28,7 @@ RSpec.describe Mutations::SendOtp, type: :request do
         puts "user #{user}"
         
         expect(response).to have_http_status(200)
-        puts response.body
         json_response = JSON.parse(response.body)
-        puts json_response
         data = json_response['data']['sendOtp']
         
         expect(data['status']).to eq('success')
