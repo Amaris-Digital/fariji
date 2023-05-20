@@ -1,5 +1,5 @@
 require 'rails_helper'
-require_relative '../../../lib/app_messaging_service'
+require_relative '../../spec_helper'
 RSpec.describe Mutations::SendOtp, type: :request do
 
     let!(:user) { User.create!(
