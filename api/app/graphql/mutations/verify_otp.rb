@@ -14,7 +14,6 @@ module Mutations
       return { status: 'failed', message: 'User not found' } unless user
 
       otp_record = Otp.find_by(user: user)
-      puts "Stored OTP: #{otp_record.attributes}"
       unless otp_record&.is_valid? && otp_record.expiry >= otp_record.created_at
         return { status: 'failed',
                  message: 'OTP has expired or is invalid' }
