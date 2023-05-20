@@ -2,9 +2,11 @@
 
 module Mutations
   class SendOtp < BaseMutation
+    
     argument :phone, String, required: true
 
     field :message, String, null: false
+    field :status, String, null: false
 
     def resolve(phone:)
       user = User.find_by(phone: phone)
@@ -14,7 +16,7 @@ module Mutations
       expiry = 5.minutes.from_now
 
       otp_record = Otp.find_or_initialize_by(user: user)
-      otp_record.update(otp: otp, valid: true, expiry: expiry)
+      otp_record.update(otp: otp, is_valid: true, expiry: expiry)
 
       AppMessagingService.send_otp(user, otp)
 
