@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:phone) }
     it { is_expected.to validate_presence_of(:date_of_birth) }
-    it { is_expected.to validate_length_of(:phone).is_at_least(9).is_at_most(12) }
+    it { is_expected.to validate_length_of(:phone).is_at_least(9).is_at_most(15) }
     it { is_expected.to validate_presence_of(:password) }
     it { is_expected.to validate_length_of(:password).is_at_least(6) }
   end
