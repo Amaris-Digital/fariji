@@ -25,9 +25,10 @@ RSpec.describe Mutations::SendOtp, type: :request do
 
       
       it 'sends the OTP successfully' do
-        puts "user #{user}"
+        # puts "user #{user}"
         
         expect(response).to have_http_status(200)
+
         json_response = JSON.parse(response.body)
         data = json_response['data']['sendOtp']
         
@@ -43,7 +44,7 @@ RSpec.describe Mutations::SendOtp, type: :request do
   end
 
   def mutation(phone: )
-    <<-gql
+    <<~GQL
       mutation {
         sendOtp(
           phone: "#{phone}"
@@ -52,7 +53,7 @@ RSpec.describe Mutations::SendOtp, type: :request do
           message
         }
       }
-    gql
+    GQL
   end
  
 end
