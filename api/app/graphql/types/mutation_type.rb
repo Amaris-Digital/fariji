@@ -23,13 +23,13 @@ module Types
         {
           status: 'success',
           message: 'user registered successfully',
-          body: authToken
+          body: { authToken: authToken }
         }
       else
         {
           status: 'unprocessible_entity',
           message: 'user registration failed',
-          body: user.errors.full_messages.join(', ')
+          body:{ errors: user.errors.full_messages}
         }
       end
     end
