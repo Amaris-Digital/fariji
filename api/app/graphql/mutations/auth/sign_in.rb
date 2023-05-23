@@ -15,14 +15,12 @@
          
           user = User.find_by(phone: phone)
           unless user && user.authenticate(password)
-             #raise GraphQL::ExecutionError.new("Invalid phone number or password.")
             return { status: 'forbidden', message: 'Invalid phone number or password.' }
           end
           
           token = TokenAuthorization.encode({user_id: user.id})
 
           unless token
-            # raise GraphQL::ExecutionError.new("Server was unable to create a token. Please try again later.")
             return { status: 'failed', message: 'Unable to generate token.' }
           end
           
