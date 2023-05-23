@@ -9,12 +9,12 @@ RSpec.describe Mutations::Auth::SignIn do
       let(:valid_input) { { phone: user.phone, password: user.password } }
       let(:expected_token) { 'some_generated_token' }
 
-      it 'returns the user token and user object' do
+      it 'returns the user token and success message' do
         expect(TokenAuthorization).to receive(:encode).with({ user_id: user.id }).and_return(expected_token)
 
         result = signin_mutation.resolve(input: valid_input)
 
-        expect(result).to eq({ token: expected_token, user: user })
+        expect(result).to eq({ data:{ token: expected_token }, message: 'user signed in successfully', status: 'success' })
       end
     end
 

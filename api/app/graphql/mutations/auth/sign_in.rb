@@ -15,16 +15,26 @@
          
           user = User.find_by(phone: phone)
           unless user && user.authenticate(password)
-            return { status: 'forbidden', message: 'Invalid phone number or password.' }
+            return { 
+              status: 'forbidden',
+              message: 'Invalid phone number or password.' }
           end
           
           token = TokenAuthorization.encode({user_id: user.id})
 
           unless token
-            return { status: 'failed', message: 'Unable to generate token.' }
+            return { 
+              status: 'failed', 
+              message: 'Unable to generate token.' 
+            }
           end
           
-          { token: token, user: user }
+          return { 
+            status: "success",
+            message: "user signed in successfully",
+            data: {
+              token: token,
+            }}
         end
        
       end
