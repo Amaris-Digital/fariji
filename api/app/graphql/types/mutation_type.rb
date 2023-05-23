@@ -33,5 +33,6 @@ module Types
         }
       end
     end
+    field :sign_in, mutation: Mutations::Auth::SignIn
   end
 end
