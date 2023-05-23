@@ -19,7 +19,7 @@ const Registration = () => {
   //   };
   const sigUpOne = (
     <div className='flex flex-col h-[100vh] justify-between'>
-      <div className='flex justify-between p-2'>
+      <div className='flex justify-between p-4'>
         <div className='flex gap-1'>
           Step 1<span className='text-[#626262]'>of 4</span>
         </div>
@@ -56,7 +56,7 @@ const Registration = () => {
 
   const signUpTwo = (
     <div className='flex flex-col h-[100vh] justify-between'>
-      <div className='flex justify-between p-2'>
+      <div className='flex justify-between p-4'>
         <div className='flex gap-1'>
           Step 2<span className='text-[#626262]'>of 4</span>
         </div>
@@ -72,6 +72,46 @@ const Registration = () => {
         </p>
       </div>
 
+      <form className='flex flex-col gap-4 items-center justify-center'>
+        <div>
+          <p className='text-[#A6A6A6]'>Phone Number</p>
+          <input
+            type='text'
+            className='w-[312px]  text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
+            style={{
+              borderRadius: '8px',
+            }}
+            placeholder='+254'
+          />
+        </div>
+
+        <div>
+          <div className='flex justify-between text-[#A6A6A6]'>
+            <p>Date Of Birth</p>
+            <p>DD/MM/YY</p>
+          </div>
+          <input
+            type='date'
+            className='w-[312px] text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
+            style={{
+              borderRadius: '8px',
+            }}
+          />
+        </div>
+
+        <div>
+          <p className='text-[#A6A6A6]'>Set a new password</p>
+          <input
+            type='password'
+            className='w-[312px]  text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
+            style={{
+              borderRadius: '8px',
+            }}
+            placeholder='****'
+          />
+        </div>
+      </form>
+
       <div className='justify-center pb-12 flex gap-4 flex-col text-center items-center'>
         <button
           className='w-[312px] h-[41px] text-white bg-[#2A6476]'
@@ -82,12 +122,12 @@ const Registration = () => {
           Create Now
         </button>
       </div>
-      <p className=' flex  gap-1 text-center '>
+      <p className=' text-center  mx-auto w-[305px] '>
         By continuing you accept our standard
-        <span className='underline'>terms and conditions</span>
-        and our <span className='underline'>privacy policy.</span>
+        <span className='underline px-2'>terms and conditions</span>
+        and our <span className=' px-2 underline'>privacy policy.</span>
       </p>
-      <p className='flex '>
+      <p className='text-center flex justify-center pb-12 '>
         Already have an account?
         <p>Sign In</p>
       </p>
@@ -101,8 +141,48 @@ const Registration = () => {
   )
 
   const signUpFour = (
-    <div className='flex flex-col  h-screen'>
-      <p>Already have o4</p>
+    <div className='flex flex-col h-[100vh] justify-between'>
+      <div className='flex justify-between p-4'>
+        <div className='flex gap-1'>
+          Step 4<span className='text-[#626262]'>of 4</span>
+        </div>
+        <div>Exit</div>
+      </div>
+
+      <div className='justify-center pb-12 flex gap-2 flex-col text-center items-center'>
+        <p className='w-[298px] text-3xl font-bold'>What is your main reason for joining?</p>
+        <p className='w-[285px] text-center'>This will help us make great recommendations.</p>
+      </div>
+
+      <div className='justify-center pb-24 flex gap-4 flex-col text-center items-center'>
+        <button
+          className='w-[312px] h-[41px] border-[#a6a6a6] border-2 bg-white'
+          style={{
+            borderRadius: '40px',
+          }}
+        >
+          To plan for my departure
+        </button>
+        <button
+          className='w-[312px] h-[41px] border-[#a6a6a6] border-2 bg-white'
+          style={{
+            borderRadius: '40px',
+          }}
+        >
+          I am helping to raise funeral expenses
+        </button>
+      </div>
+
+      <div className='justify-center pb-12 flex gap-4 flex-col text-center items-center'>
+        <button
+          className='w-[312px] h-[41px] text-white bg-[#2A6476]'
+          style={{
+            borderRadius: '8px',
+          }}
+        >
+          Continue
+        </button>
+      </div>
     </div>
   )
   return (
