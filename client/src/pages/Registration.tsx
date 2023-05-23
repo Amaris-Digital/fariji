@@ -1,11 +1,8 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-import 'swiper/css/autoplay'
-import 'swiper/css/scrollbar'
 import { Link } from 'react-router-dom'
 import uploadimage from '../assets/uploadimage.svg'
-import { Pagination, Scrollbar } from 'swiper'
 
 const Registration = () => {
   //   const swipe = () => {
@@ -149,7 +146,11 @@ const Registration = () => {
       </div>
 
       <div className='justify-center flex gap-2 flex-col text-center items-center h-[139px] w-[139px] mx-auto bg-[#DBDBDB] rounded-full'>
-        <img src={uploadimage} alt='uploadimage' className='w-[56px] h-[56px] flex mx-auto justify-center items-center' />
+        <img
+          src={uploadimage}
+          alt='uploadimage'
+          className='w-[56px] h-[56px] flex mx-auto justify-center items-center'
+        />
       </div>
 
       <div className='justify-center pb-24 flex gap-4 flex-col text-center items-center'>
@@ -213,15 +214,7 @@ const Registration = () => {
   )
   return (
     <div>
-      <Swiper
-        loop={false}
-        scrollbar={{
-          draggable: true,
-          hide: false,
-        }}
-        modules={[Pagination, Scrollbar]}
-        className=' swiper-container'
-      >
+      <Swiper loop={false} className=' swiper-container'>
         <SwiperSlide>{sigUpOne}</SwiperSlide>
         <SwiperSlide>{signUpTwo}</SwiperSlide>
         <SwiperSlide className='flex  justify-center h-screen'>{signUpThree}</SwiperSlide>
