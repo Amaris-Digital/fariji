@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 interface AppShellProps {
-    children: ReactNode;
-  }
+  children: React.ReactNode;
+}
   
 
 const AppShell: React.FC<AppShellProps> = ({ children }) => {
