@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AppShell: React.FC = ( { children } ) => {
+const AppShell: React.FC = () => {
   return (
     <div>
       <header>
