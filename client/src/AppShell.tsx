@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-const AppShell: React.FC = () => {
-  return (
+interface AppShellProps {
+    children: ReactNode;
+  }
+  
+
+const AppShell: React.FC<AppShellProps> = ({ children }) => {
+  return (  
     <div>
       <header>
         <h1>Fariji</h1>
