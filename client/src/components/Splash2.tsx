@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Splash1: React.FC = () => {
+const Splash2: React.FC = () => {
   return (
     <div className=" w-[360px] h-800px] bg-[#FFFFFF] ">
         <div className="flex flex-row justify-end items-center pt-[56px] px-[24px] pb-[16px] gap-[16px] absolute w-[360px] h-[102px] right-0 top-0">
@@ -33,4 +33,4 @@ const Splash1: React.FC = () => {
   );
 };
 
-export default Splash1;
+export default Splash2;
