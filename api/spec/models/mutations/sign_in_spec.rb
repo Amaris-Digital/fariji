@@ -14,7 +14,7 @@ RSpec.describe Mutations::Auth::SignIn do
 
         result = signin_mutation.resolve(input: valid_input)
 
-        expect(result).to eq({ data:{ token: expected_token }, message: 'user signed in successfully', status: 'success' })
+        expect(result).to eq({ data: { token: expected_token }, message: 'user signed in successfully', status: 'success', token: expected_token })
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe Mutations::Auth::SignIn do
       it 'returns an error message' do
         result = signin_mutation.resolve(input: invalid_input)
 
-        expect(result).to eq({ status: 'forbidden', message: 'Invalid phone number or password.' })
+        expect(result).to eq({ status: 'forbidden', message: 'Invalid phone number or password.', token: nil })
       end
     end
 
@@ -36,7 +36,7 @@ RSpec.describe Mutations::Auth::SignIn do
 
         result = signin_mutation.resolve(input: valid_input)
 
-        expect(result).to eq({ status: 'failed', message: 'Unable to generate token.' })
+        expect(result).to eq({ status: 'failed', message: 'Unable to generate token.', token: nil })
       end
     end
   end

@@ -6,7 +6,9 @@
   
         argument :input, Types::Inputs::SignInInput, required: true
   
-        field :token, String, null: false, description: "User's Authorizations Token to be used in Authenticated mutations and queries"
+        field :status, String, null: false, description: "Sign-in status"
+        field :message, String, null: false, description: "Sign-in message"
+        field :token, String, null: true, description: "User's Authorizations Token to be used in Authenticated mutations and queries"
         field :user, Types::UserType, null: false, description: "User output"
   
         def resolve(input:)
@@ -17,7 +19,9 @@
           unless user && user.authenticate(password)
             return { 
               status: 'forbidden',
-              message: 'Invalid phone number or password.' }
+              message: 'Invalid phone number or password.',
+              token: nil 
+            }
           end
           
           token = TokenAuthorization.encode({user_id: user.id})
@@ -25,7 +29,8 @@
           unless token
             return { 
               status: 'failed', 
-              message: 'Unable to generate token.' 
+              message: 'Unable to generate token.', 
+              token: nil
             }
           end
           
@@ -34,7 +39,9 @@
             message: "user signed in successfully",
             data: {
               token: token,
-            }}
+            },
+            token: token
+          }
         end
        
       end
