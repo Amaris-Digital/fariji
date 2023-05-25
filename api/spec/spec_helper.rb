@@ -96,5 +96,6 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'active_support/all'
 require 'dotenv'
 require_relative '../lib/jwt_service'
+require_relative '../lib/app_messaging_service'
 
 end
