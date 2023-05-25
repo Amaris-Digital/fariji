@@ -8,7 +8,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Helvetica', 'Arial', 'sans-serif'],
+        fira: ['Fira', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       fontSize: {
         h1: '40px',
