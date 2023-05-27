@@ -9,7 +9,7 @@
         field :status, String, null: false, description: "Sign-in status"
         field :message, String, null: false, description: "Sign-in message"
         field :token, String, null: true, description: "User's Authorizations Token to be used in Authenticated mutations and queries"
-        field :user, Types::UserType, null: false, description: "User output"
+        field :user, Types::UserType, null: true, description: "User output"
   
         def resolve(input:)
           phone = input[:phone]
@@ -20,7 +20,8 @@
             return { 
               status: 'forbidden',
               message: 'Invalid phone number or password.',
-              token: nil 
+              token: nil,
+              
             }
           end
           
@@ -30,7 +31,8 @@
             return { 
               status: 'failed', 
               message: 'Unable to generate token.', 
-              token: nil
+              token: nil,
+             
             }
           end
           
@@ -40,7 +42,8 @@
             data: {
               token: token,
             },
-            token: token
+            token: token,
+            user: user
           }
         end
        
