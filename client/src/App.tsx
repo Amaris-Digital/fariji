@@ -1,7 +1,7 @@
 import Home from './pages/Home'
 import Login from './pages/Login'
 import { Route, Routes } from 'react-router-dom'
-import { ApolloClient, InMemoryCache, ApolloProvider, gql, HttpLink, from } from '@apollo/client'
+import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client'
 
 const link = from([new HttpLink({ uri: 'http://localhost:3000/graphql' })])
 

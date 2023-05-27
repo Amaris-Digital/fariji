@@ -15,7 +15,7 @@ const Login = () => {
   const [password, setPassword] = useState<string>('')
   const navigate = useNavigate()
 
-  const [signInData, { loading, error }] = useMutation(SIGN_IN_MUTATION)
+  const [signInData, { loading }] = useMutation(SIGN_IN_MUTATION)
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault()
@@ -58,7 +58,7 @@ const Login = () => {
             type='text'
             value={phone}
             name='phone'
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => { setPhone(e.target.value); }}
             placeholder='+254'
             required
             className='w-full rounded placeholder-[var(--primary)]'
@@ -71,7 +71,7 @@ const Login = () => {
             type='password'
             value={password}
             name='password'
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => { setPassword(e.target.value); }}
             placeholder='****'
             required
             className='w-full rounded placeholder-[var(--primary)]'
