@@ -38,7 +38,7 @@ const App: React.FC = () => {
     <div>
       <Routes>
         {!isAppInstalled && currentSplash === 1 && (
-          <Route path="/" element={<AndroidLarge1 />} />
+          <Route path="/android-large1" element={<AndroidLarge1 />} />
         )}
 
         <Route path="/home" element={<Home />} />
