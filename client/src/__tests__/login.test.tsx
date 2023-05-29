@@ -63,7 +63,9 @@ describe('Login component', () => {
     fireEvent.click(getByText('Sign In'))
 
     // Wait for the sign-in process to complete
-    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/'))
+    await waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith('/');
+    });
 
     // Check if token is stored in localStorage
     expect(localStorage.getItem('token')).toBe(mockToken)
@@ -111,10 +113,10 @@ describe('Login component', () => {
     fireEvent.click(getByText('Sign In'))
 
     // Wait for the sign-in process to complete
-    await waitFor(() =>
+    await waitFor(() => {
       expect(global.alert).toHaveBeenCalledWith(
-        'You have entered a wrong phone number or password',
-      ),
-    )
+        'You have entered a wrong phone number or password'
+      );
+    });
   })
 })
