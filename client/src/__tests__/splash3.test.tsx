@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Splash3, { Splash3Props } from '../components/Splash3';
+import Splash3, { type Splash3Props } from '../components/Splash3';
 
 describe('Splash3', () => {
   const mockOnNext = jest.fn();
