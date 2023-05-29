@@ -1,6 +1,14 @@
 import React from 'react';
 
-const Splash1: React.FC = () => {
+export interface Splash1Props {
+  onNext: () => void;
+}
+
+const Splash1: React.FC<Splash1Props> = ({ onNext }) => {
+  const handleNext = () => {
+    onNext();
+  };
+
   return (
     <div className=" w-[360px] h-800px] bg-[#FFFFFF] ">
         <div className="flex flex-row justify-end items-center pt-[56px] px-[24px] pb-[16px] gap-[16px] absolute w-[360px] h-[102px] right-0 top-0">
@@ -54,7 +62,10 @@ const Splash1: React.FC = () => {
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
           </p>
         </div>
-        <button className="flex flex-row justify-center items-center px-[24px] py-[10px] gap-[10px] w-[312px] h-[41px] bg-[#2A6476] rounded-lg">
+        <button 
+        className="flex flex-row justify-center items-center px-[24px] py-[10px] gap-[10px] w-[312px] h-[41px] bg-[#2A6476] rounded-lg"
+        onClick={handleNext}
+        >
           Next
         </button>
       </div>
