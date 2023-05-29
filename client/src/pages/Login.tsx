@@ -24,7 +24,6 @@ const Login = () => {
       variables: { phone, password },
     })
       .then((response) => {
-      
         const data = response.data.signIn
         if (data.token) {
           localStorage.setItem('token', data.token)
@@ -52,26 +51,36 @@ const Login = () => {
         </div>
 
         <form onSubmit={handleSignIn}>
-          <label className='text-sm'>Phone number</label>
+          <label htmlFor='phoneNumber' className='text-sm'>
+            Phone number
+          </label>
           <br />
           <input
             type='text'
+            id='phoneNumber'
             value={phone}
             name='phone'
-            onChange={(e) => { setPhone(e.target.value); }}
+            onChange={(e) => {
+              setPhone(e.target.value)
+            }}
             placeholder='+254'
             required
             className='w-full rounded placeholder-[var(--primary)]'
           />
           <br />
           <br />
-          <label className='text-sm'>Password</label>
+          <label htmlFor='password' className='text-sm'>
+            Password
+          </label>
           <br />
           <input
             type='password'
+            id='password'
             value={password}
             name='password'
-            onChange={(e) => { setPassword(e.target.value); }}
+            onChange={(e) => {
+              setPassword(e.target.value)
+            }}
             placeholder='****'
             required
             className='w-full rounded placeholder-[var(--primary)]'
@@ -91,7 +100,7 @@ const Login = () => {
         </form>
         <br />
         <p className='font-medium text-sm text-center'>
-          Do not have an account? <Link to='/signup'>Sign Up</Link>
+          Don&apos;t have an account? <Link to='/signup'>Sign Up</Link>
         </p>
         <br />
       </div>

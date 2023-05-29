@@ -10,17 +10,13 @@ const client = new ApolloClient({
   link,
 })
 
-
-
 function App(): JSX.Element {
   return (
     <ApolloProvider client={client}>
-      <div>
-        <Routes>
-          <Route path={'/'} element={<Home />} />
-          <Route path={'/login'} element={< Login />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path={'/'} element={<Home />} />
+        <Route path={'/login'} element={<Login />} />
+      </Routes>
     </ApolloProvider>
   )
 }
