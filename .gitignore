@@ -13,4 +13,6 @@
 *.ipr
 *.iws
 .idea/
+.vscode/
+
 
