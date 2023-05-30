@@ -30,7 +30,7 @@ const App: React.FC = () => {
         const timeout = setTimeout(() => {
           handleNextSplash();
         }, 10000); // 10 seconds
-        return () => clearTimeout(timeout);
+        return () => { clearTimeout(timeout); };
       }
     }
   }, [isAppInstalled, currentSplash, navigate]);
