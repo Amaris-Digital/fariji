@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This is a reusable module that handles file uploads
 module UploadImage
   def self.call(input, user)
     file = input[:avatar]
@@ -8,11 +11,9 @@ module UploadImage
       content_type: file.content_type
     )
 
-    if blob.persisted?
-      user.avatar.attach(blob)
-      return { success: true }
-    else
-      return { success: false }
-    end
+    return { success: false } unless blob.persisted?
+
+    user.avatar.attach(blob)
+    { success: true }
   end
 end

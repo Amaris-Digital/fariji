@@ -57,6 +57,7 @@ gem 'rubocop-rspec', require: false
 
 group :development, :test, :staging do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'apollo_upload_server'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
@@ -65,5 +66,4 @@ group :development, :test, :staging do
   gem 'sass-rails'
   gem 'shoulda'
   gem 'twilio-ruby'
-  gem 'apollo_upload_server'
 end
