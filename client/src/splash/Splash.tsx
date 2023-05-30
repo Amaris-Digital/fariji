@@ -11,7 +11,7 @@ export interface SplashProps {
 export const Splash1: React.FC = () => {
   return (
     <div
-      className="relative w-[360px] h-[800px] bg-[#FF9549]"
+      className="relative w-full h-screen bg-[#FF9549]"
     >
       <div
         className="absolute w-[165.74px] h-[52.28px] left-[104px] top-[374px]"
@@ -31,7 +31,7 @@ export const Splash1: React.FC = () => {
     };
   
     return (
-      <div className=" w-[360px] h-800px] bg-[#FFFFFF] ">
+      <div className=" w-full h-screen] bg-[#FFFFFF] ">
           <div className="flex flex-row justify-end items-center pt-[56px] px-[24px] pb-[16px] gap-[16px] absolute w-[360px] h-[102px] right-0 top-0">
           <p className="w-[30px] h-[21px] font-sans font-normal font-medium text-[14px] leading-[150%] tracking-wide text-[#252626]" style={{ letterSpacing: '0.003em'}}>
           Skip
@@ -70,7 +70,7 @@ export const Splash1: React.FC = () => {
     };
   
     return (
-      <div className=" w-[360px] h-800px] bg-[#FFFFFF] ">
+      <div className=" w-full h-screen bg-[#FFFFFF] ">
           <div className="flex flex-row justify-end items-center pt-[56px] px-[24px] pb-[16px] gap-[16px] absolute w-[360px] h-[102px] right-0 top-0">
           <p className="w-[30px] h-[21px] font-sans font-normal font-medium text-[14px] leading-[150%] tracking-wide text-[#252626]" style={{ letterSpacing: '0.003em'}}>
           Skip
@@ -109,7 +109,7 @@ export const Splash1: React.FC = () => {
     };
   
     return (
-      <div className=" w-[360px] h-800px] bg-[#FFFFFF] ">
+      <div className=" w-full h-screen bg-[#FFFFFF] ">
           <div className="flex flex-row justify-end items-center pt-[56px] px-[24px] pb-[16px] gap-[16px] absolute w-[360px] h-[102px] right-0 top-0">
           <p className="w-[30px] h-[21px] font-sans font-normal font-medium text-[14px] leading-[150%] tracking-wide text-[#252626]" style={{ letterSpacing: '0.003em'}}>
           Skip
