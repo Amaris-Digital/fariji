@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import Home from './pages/Home';
-import { Splash1, Splash2, Splash3, Splash4  } from './splash/Splash';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Splash1, Splash2, Splash3, Splash4 } from './splash/Splash';
 
 const App: React.FC = () => {
   const [isAppInstalled, setIsAppInstalled] = useState(false);
@@ -34,18 +33,40 @@ const App: React.FC = () => {
   return (
     <div>
       <Routes>
-        {!isAppInstalled && currentSplash === 1 && (
-          <Route path="/" element={<Splash1 />} />
-        )}
-
-        <Route path="/home" element={<Home />} />
         <Route path="/" element={<Splash1 />} />
 
         {!isAppInstalled && (
           <>
-            <Route path="/splash2" element={<Splash2 onNext={handleNextSplash} />} />
-            <Route path="/splash3" element={<Splash3 onNext={handleNextSplash} />} />
-            <Route path="/splash4" element={<Splash4 onNext={handleNextSplash} />} />
+            <Route
+              path="/splash2"
+              element={
+                currentSplash === 2 ? (
+                  <Splash2 onNext={handleNextSplash} />
+                ) : (
+                  <Navigate to="/" replace={true} />
+                )
+              }
+            />
+            <Route
+              path="/splash3"
+              element={
+                currentSplash === 3 ? (
+                  <Splash3 onNext={handleNextSplash} />
+                ) : (
+                  <Navigate to="/" replace={true} />
+                )
+              }
+            />
+            <Route
+              path="/splash4"
+              element={
+                currentSplash === 4 ? (
+                  <Splash4 onNext={handleNextSplash} />
+                ) : (
+                  <Navigate to="/" replace={true} />
+                )
+              }
+            />
           </>
         )}
       </Routes>
