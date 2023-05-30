@@ -3,23 +3,20 @@ import { render, fireEvent, waitFor } from '@testing-library/react'
 import { MockedProvider } from '@apollo/client/testing'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import Login, { SIGN_IN_MUTATION } from '../pages/Login'
+import { mockNavigate, useNavigate } from './utils/navigation'
 
-// Mock the useNavigate hook
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: jest.fn(),
-}))
-
-const mockNavigate = jest.fn()
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockNavigate,
-}))
+jest.mock('react-router-dom', () => {
+  return {
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: () => mockNavigate,
+  };
+});
 
 global.alert = jest.fn()
 
 describe('Login component', () => {
-  
+
+
   test('should sign in successfully', async () => {
     const mockToken = 'mockToken'
     const mocks = [
@@ -45,7 +42,7 @@ describe('Login component', () => {
       <MockedProvider mocks={mocks} addTypename={false}>
         <MemoryRouter initialEntries={['/login']}>
           <Routes>
-            <Route path='/login' element={<Login />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </MemoryRouter>
       </MockedProvider>,
@@ -64,8 +61,8 @@ describe('Login component', () => {
 
     // Wait for the sign-in process to complete
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/');
-    });
+      expect(mockNavigate).toHaveBeenCalledWith('/')
+    })
 
     // Check if token is stored in localStorage
     expect(localStorage.getItem('token')).toBe(mockToken)
@@ -91,11 +88,11 @@ describe('Login component', () => {
       },
     ]
 
-    const { getByLabelText, getByText } = render(
+    const { getByLabelText, getByText, queryByText } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <MemoryRouter initialEntries={['/login']}>
           <Routes>
-            <Route path='/login' element={<Login />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </MemoryRouter>
       </MockedProvider>,
@@ -114,9 +111,7 @@ describe('Login component', () => {
 
     // Wait for the sign-in process to complete
     await waitFor(() => {
-      expect(global.alert).toHaveBeenCalledWith(
-        'You have entered a wrong phone number or password'
-      );
-    });
+      expect(queryByText('You have entered a wrong phone number or password')).toBeInTheDocument()
+    })
   })
 })
