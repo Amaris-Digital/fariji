@@ -65,4 +65,5 @@ group :development, :test, :staging do
   gem 'sass-rails'
   gem 'shoulda'
   gem 'twilio-ruby'
+  gem 'apollo_upload_server'
 end
