@@ -26,6 +26,11 @@ const App: React.FC = () => {
     if (isAppInstalled) {
       if (currentSplash !== 1) {
         navigate('/');
+      } else {
+        const timeout = setTimeout(() => {
+          handleNextSplash();
+        }, 10000); // 10 seconds
+        return () => clearTimeout(timeout);
       }
     }
   }, [isAppInstalled, currentSplash, navigate]);
