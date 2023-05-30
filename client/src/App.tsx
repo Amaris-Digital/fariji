@@ -1,14 +1,9 @@
-import Home from './pages/Home'
-import Login from './pages/Login'
-import { Route, Routes } from 'react-router-dom'
-import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client'
-
-const link = from([new HttpLink({ uri: 'http://localhost:3000/graphql' })])
-
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link,
-})
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/client';
+import client from './utils/config';
+import Home from './pages/Home';
+import Login from './pages/Login';
 
 function App(): JSX.Element {
   return (
@@ -18,7 +13,7 @@ function App(): JSX.Element {
         <Route path={'/login'} element={<Login />} />
       </Routes>
     </ApolloProvider>
-  )
+  );
 }
 
-export default App
+export default App;
