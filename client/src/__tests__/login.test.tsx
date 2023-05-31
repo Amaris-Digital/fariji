@@ -1,18 +1,20 @@
-import React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
-import { MockedProvider } from '@apollo/client/testing'
-import { MemoryRouter, Route, Routes } from 'react-router-dom'
-import Login, { SIGN_IN_MUTATION } from '../pages/Login'
-import { mockNavigate, useNavigate } from '../utils/navigation'
+import React from 'react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import { MockedProvider } from '@apollo/client/testing';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import Login, { SIGN_IN_MUTATION } from '../pages/Login';
+import { mockNavigate } from '../utils/navigation';
 
-jest.mock('react-router-dom', () => {
-  return {
-    ...jest.requireActual('react-router-dom'),
-    useNavigate: () => mockNavigate,
-  };
-});
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockNavigate,
+}));
 
-global.alert = jest.fn()
+jest.mock('../assets/images/far2.png', () => 'test-image');
+jest.mock('../assets/logo.svg', () => 'test-logo');
+
+global.alert = jest.fn();
+
 
 describe('Login component', () => {
 
