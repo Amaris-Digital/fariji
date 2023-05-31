@@ -172,7 +172,7 @@ export const Splash1: React.FC = () => {
           const timeout = setTimeout(() => {
             handleNextSplash();
           }, 10000); // 10 seconds
-          return () => clearTimeout(timeout);
+          return () => { clearTimeout(timeout); };
         }
       }
     }, [isAppInstalled, currentSplash, navigate]);
