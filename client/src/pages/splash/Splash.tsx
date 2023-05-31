@@ -1,8 +1,10 @@
-import React from 'react';
-import Splash1Svg from '../assets/Splash1.svg';
-import Splash2Svg from '../assets/Splash2.svg';
-import Splash3Svg from '../assets/Splash3.svg';
-import Splash4Svg from '../assets/Splash4.svg';
+import React, { useEffect, useState } from 'react';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import Splash1Svg from '../../assets/Splash1.svg';
+import Splash2Svg from '../../assets/Splash2.svg';
+import Splash3Svg from '../../assets/Splash3.svg';
+import Splash4Svg from '../../assets/Splash4.svg';
+
 
 export interface SplashProps {
     onNext: () => void;
@@ -11,10 +13,10 @@ export interface SplashProps {
 export const Splash1: React.FC = () => {
   return (
     <div
-      className="relative w-full h-screen bg-[#FF9549]"
+      className="relative w-full h-screen bg-[#FF9549] flex items-center justify-center"
     >
       <div
-        className="absolute w-[165.74px] h-[52.28px] left-[104px] top-[374px]"
+        className="absolute "
       >
         <img 
         src={Splash1Svg} 
@@ -40,7 +42,7 @@ export const Splash1: React.FC = () => {
       <div className="absolute left-[6.6%] right-[6.95%] top-[16.88%] bottom-[46.12%] w-[311] h-[296]">
       <img 
         src={Splash2Svg} 
-        alt="Logo" />
+        alt="image" />
   
       </div>
         
@@ -79,7 +81,7 @@ export const Splash1: React.FC = () => {
       <div className="absolute left-[6.6%] right-[6.95%] top-[16.88%] bottom-[46.12%] w-[312] h-[306]">
       <img 
         src={Splash3Svg} 
-        alt="Logo" />
+        alt="image" />
   
       </div>
         
@@ -118,7 +120,7 @@ export const Splash1: React.FC = () => {
       <div className="absolute left-[6.6%] right-[6.95%] top-[16.88%] bottom-[46.12%] w-[311] h-[311]">
       <img 
         src={Splash4Svg} 
-        alt="Logo" />
+        alt="image" />
   
       </div>
         
@@ -141,3 +143,81 @@ export const Splash1: React.FC = () => {
       </div>
     );
   };
+
+  export const Splash: React.FC = () => {
+    const [isAppInstalled, setIsAppInstalled] = useState(false);
+    const [currentSplash, setCurrentSplash] = useState(1);
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      const storedIsAppInstalled = localStorage.getItem('isAppInstalled');
+      if (storedIsAppInstalled) {
+        setIsAppInstalled(true);
+      } else {
+        setIsAppInstalled(false);
+        setCurrentSplash(1);
+        localStorage.setItem('isAppInstalled', 'true');
+      }
+    }, []);
+  
+    const handleNextSplash = () => {
+      setCurrentSplash((prevSplash) => prevSplash + 1);
+    };
+  
+    useEffect(() => {
+      if (isAppInstalled) {
+        if (currentSplash !== 1) {
+          navigate('/');
+        } else {
+          const timeout = setTimeout(() => {
+            handleNextSplash();
+          }, 10000); // 10 seconds
+          return () => clearTimeout(timeout);
+        }
+      }
+    }, [isAppInstalled, currentSplash, navigate]);
+  
+    return (
+      <div>
+        <Routes>
+          <Route path="/" element={<Splash1 />} />
+  
+          {!isAppInstalled && (
+            <>
+              <Route
+                path="/splash2"
+                element={
+                  currentSplash === 2 ? (
+                    <Splash2 onNext={handleNextSplash} />
+                  ) : (
+                    <Navigate to="/" replace={true} />
+                  )
+                }
+              />
+              <Route
+                path="/splash3"
+                element={
+                  currentSplash === 3 ? (
+                    <Splash3 onNext={handleNextSplash} />
+                  ) : (
+                    <Navigate to="/" replace={true} />
+                  )
+                }
+              />
+              <Route
+                path="/splash4"
+                element={
+                  currentSplash === 4 ? (
+                    <Splash4 onNext={handleNextSplash} />
+                  ) : (
+                    <Navigate to="/" replace={true} />
+                  )
+                }
+              />
+            </>
+          )}
+        </Routes>
+      </div>
+    );
+  };
+  
