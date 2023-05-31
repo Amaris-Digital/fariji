@@ -4,6 +4,11 @@ require_all 'lib'
 
 module Types
   class MutationType < Types::BaseObject
+
+    field :reset_password, mutation: Mutations::ResetPassword
+    field :send_otp, mutation: Mutations::SendOtp
+    field :verify_otp, mutation: Mutations::VerifyOtp
+
     include TokenAuthorization
     # TODO: remove me
     field :register, Types::AppResponseType, null: false, description: "Register a new user" do
@@ -33,5 +38,6 @@ module Types
         }
       end
     end
+    field :sign_in, mutation: Mutations::Auth::SignIn
   end
 end
