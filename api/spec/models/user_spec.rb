@@ -98,12 +98,19 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
+    it 'should allow attaching a JPG image as the avatar' do
+      avatar_path = Rails.root.join('spec', 'fixtures', 'files', 'testing_2.jpg')
+      avatar = fixture_file_upload(avatar_path, 'image/jpg')
+      user.avatar.attach(avatar)
+      expect(user).to be_valid
+    end
+
     it 'should not allow attaching a non-image file as the avatar' do
       avatar_path = Rails.root.join('spec', 'fixtures', 'files', 'test.txt')
       avatar = fixture_file_upload(avatar_path, 'text/plain')
       user.avatar.attach(avatar)
       expect(user).to_not be_valid
-      expect(user.errors[:avatar]).to include('must be a PNG or JPEG image')
+      expect(user.errors[:avatar]).to include('must be a PNG, JPEG or JPG image')
     end
   end
 

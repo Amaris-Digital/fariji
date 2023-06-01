@@ -31,8 +31,8 @@ class User < ApplicationRecord
 
     def avatar_validations
       if avatar.attached?
-        unless ['image/png', 'image/jpeg'].include?(avatar.blob.content_type)
-          errors.add(:avatar, 'must be a PNG or JPEG image')
+        unless ['image/png', 'image/jpeg', 'image/jpg'].include?(avatar.blob.content_type)
+          errors.add(:avatar, 'must be a PNG, JPEG or JPG image')
         end
       end
     end
