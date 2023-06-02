@@ -18,6 +18,11 @@ module Types
       argument :isMuslim, Boolean, required: false
       argument :password, String, required: true
     end
+
+    field :uploadProfilePhoto, Types::AppResponseType, null: false, description: "Upload profile photo" do
+      argument :user_id, ID, required: true
+      argument :avatar, ApolloUploadServer::Upload, required: true
+    end
   
     def register(**kwargs)
     
@@ -38,6 +43,19 @@ module Types
         }
       end
     end
+
+    def uploadProfilePhoto(user_id:, avatar:)
+      user = User.find(user_id)
+      user.avatar.attach(io: avatar.tempfile, filename: avatar.original_filename, content_type: avatar.content_type) if avatar.present?
+    
+      {
+        status: 'success',
+        message: 'Profile photo uploaded successfully',
+        body: { user_id: user_id }
+      }
+    end
+
+
     field :sign_in, mutation: Mutations::Auth::SignIn
   end
 end

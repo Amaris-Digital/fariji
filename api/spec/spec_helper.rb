@@ -97,5 +97,6 @@ require 'active_support/all'
 require 'dotenv'
 require_relative '../lib/jwt_service'
 require_relative '../lib/app_messaging_service'
+require_relative '../lib/file_upload'
 
 end
