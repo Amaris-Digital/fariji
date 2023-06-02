@@ -5,22 +5,24 @@ import { Link } from 'react-router-dom'
 import uploadimage from '../assets/uploadimage.svg'
 
 const Registration = () => {
-  //   const swipe = () => {
-  //     const swiper = document.querySelector(".swiper-container").swiper;
-  //     swiper.slideNext();
-  //   };
+  const swipe = () => {
+    const swiper = document.querySelector('.swiper-container').swiper
+    swiper.slideNext()
+  }
 
-  //   const swipeBack = () => {
-  //     const swiper = document.querySelector(".swiper-container").swiper;
-  //     swiper.slidePrev();
-  //   };
+  const swipeBack = () => {
+    const swiper = document.querySelector('.swiper-container').swiper
+    swiper.slidePrev()
+  }
   const sigUpOne = (
     <div className='flex flex-col h-[100vh] justify-between'>
       <div className='flex justify-between p-4'>
         <div className='flex gap-1'>
           Step 1<span className='text-[#626262]'>of 4</span>
         </div>
-        <div>Exit</div>
+        <div className='text-[#2A6476] cursor-pointer' onClick={swipeBack}>
+          Exit
+        </div>
       </div>
 
       <div className='justify-center pb-12 flex gap-2 flex-col text-center items-center'>
@@ -36,6 +38,7 @@ const Registration = () => {
           style={{
             borderRadius: '8px',
           }}
+          onClick={swipe}
         >
           Yes
         </button>
@@ -57,7 +60,9 @@ const Registration = () => {
         <div className='flex gap-1'>
           Step 2<span className='text-[#626262]'>of 4</span>
         </div>
-        <div>Exit</div>
+        <div className='text-[#2A6476] cursor-pointer' onClick={swipeBack}>
+          Exit
+        </div>
       </div>
 
       <div className='justify-center pb-12 flex gap-2 flex-col text-center items-center'>
@@ -115,6 +120,7 @@ const Registration = () => {
           style={{
             borderRadius: '8px',
           }}
+          onClick={swipe}
         >
           Create Now
         </button>
@@ -137,7 +143,9 @@ const Registration = () => {
         <div className='flex gap-1'>
           Step 3<span className='text-[#626262]'>of 4</span>
         </div>
-        <div>Exit</div>
+        <div className='text-[#2A6476] cursor-pointer' onClick={swipeBack}>
+          Exit
+        </div>
       </div>
 
       <div className='justify-center pb-24 flex gap-2 flex-col text-center items-center'>
@@ -162,7 +170,9 @@ const Registration = () => {
         >
           Upload Photo
         </button>
-        <p>Skip</p>
+        <p className='text-[#2A6476] cursor-pointer' onClick={swipe}>
+          Skip
+        </p>
       </div>
     </div>
   )
@@ -173,7 +183,9 @@ const Registration = () => {
         <div className='flex gap-1'>
           Step 4<span className='text-[#626262]'>of 4</span>
         </div>
-        <div>Exit</div>
+        <div className='text-[#2A6476] cursor-pointer' onClick={swipeBack}>
+          Exit
+        </div>
       </div>
 
       <div className='justify-center pb-12 flex gap-2 flex-col text-center items-center'>
@@ -206,6 +218,7 @@ const Registration = () => {
           style={{
             borderRadius: '8px',
           }}
+          onClick={swipe}
         >
           Continue
         </button>
