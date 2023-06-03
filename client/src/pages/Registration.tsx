@@ -10,6 +10,12 @@ const Registration = () => {
     swiper.slideNext()
   }
 
+  const handleSubmit = (e) => {
+    console.log("hello");
+    
+    e.preventDefault();
+  }
+
   const swipeBack = () => {
     const swiper = document.querySelector('.swiper-container').swiper
     swiper.slidePrev()
@@ -120,7 +126,8 @@ const Registration = () => {
           style={{
             borderRadius: '8px',
           }}
-          onClick={swipe}
+          type='submit' onClick={(e) => handleSubmit(e)} 
+          
         >
           Create Now
         </button>
