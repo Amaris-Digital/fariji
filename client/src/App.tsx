@@ -1,6 +1,7 @@
 import Home from "./pages/Home";
 import Registration from "./pages/Registration";
 import {Route, Routes} from "react-router-dom";
+import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from} from "@apollo/client"
 
 function App(): JSX.Element {
   return (
