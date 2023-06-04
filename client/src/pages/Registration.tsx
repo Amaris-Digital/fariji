@@ -3,24 +3,13 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import { Link } from 'react-router-dom'
 import uploadimage from '../assets/uploadimage.svg'
-import { gql , useMutation } from '@apollo/client'
-import {useState } from 'react'
-
-
+import { gql, useMutation } from '@apollo/client'
+import { useState } from 'react'
 
 const Registration = () => {
-
   const REGISTER = gql`
-    mutation registerMutation(
-      $phone: String!
-      $dateOfBirth: ISO8601DateTime!
-      $password: String!
-    ){
-      register(
-        phone: $phone,
-        dateOfBirth: $dateOfBirth,
-        password: $password
-      ){
+    mutation registerMutation($phone: String!, $dateOfBirth: ISO8601DateTime!, $password: String!) {
+      register(phone: $phone, dateOfBirth: $dateOfBirth, password: $password) {
         status
         message
         body
@@ -28,7 +17,8 @@ const Registration = () => {
     }
   `
 
-  const [registerUser, { data, loading, error }] = useMutation(REGISTER);
+  const [registerUser, { data, loading, error }] = useMutation(REGISTER)
+  
   const swipe = () => {
     const swiper = document.querySelector('.swiper-container').swiper
     swiper.slideNext()
@@ -36,36 +26,37 @@ const Registration = () => {
 
   const [user, setUser] = useState({})
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-   console.log(new Date(user.dateOfBirth).toISOString());
-   
-    registerUser({
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    console.log(new Date(user.dateOfBirth).toISOString())
+
+    await registerUser({
       variables: {
         phone: user.phone,
-        dateOfBirth: new Date(user.dateOfBirth).toISOString().substring(0,10),
-        password: user.password
-      }
+        dateOfBirth: new Date(user.dateOfBirth).toISOString().substring(0, 10),
+        password: user.password,
+      },
     })
-    if (!loading) {
-      console.log(data);
+    console.log(data);
+    if (data.register.body.message != "sucess") {
+      console.log(data.register.body);
       
 
     }
+  
   }
 
   const swipeBack = () => {
     const swiper = document.querySelector('.swiper-container').swiper
     swiper.slidePrev()
   }
-  
-    if (!loading && !error && data!=undefined) {
-      console.log(data.register.body.authToken);
-      
 
-    }
-  
-  
+  if (!loading && !error && data != undefined) {
+   
+    console.log(data.register.body.authToken)
+  }
+ 
+
   const sigUpOne = (
     <div className='flex flex-col h-[100vh] justify-between'>
       <div className='flex justify-between p-4'>
@@ -131,10 +122,8 @@ const Registration = () => {
           <p className='text-[#A6A6A6]'>Phone Number</p>
           <input
             type='text'
-            name="phone"
-            onInput={
-              (e) => setUser({...user, phone: e.target.value})
-            }
+            name='phone'
+            onInput={(e) => setUser({ ...user, phone: e.target.value })}
             className='w-[312px]  text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
             style={{
               borderRadius: '8px',
@@ -150,11 +139,9 @@ const Registration = () => {
           </div>
           <input
             type='date'
-            name="date"
+            name='date'
             className='w-[312px] text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
-            onInput={
-              (e) => setUser({...user, dateOfBirth: e.target.value})
-            }
+            onInput={(e) => setUser({ ...user, dateOfBirth: e.target.value })}
             style={{
               borderRadius: '8px',
             }}
@@ -165,11 +152,9 @@ const Registration = () => {
           <p className='text-[#A6A6A6]'>Set a new password</p>
           <input
             type='password'
-            name="password"
+            name='password'
             className='w-[312px]  text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
-            onInput={
-              (e) => setUser({...user, password: e.target.value})
-            }
+            onInput={(e) => setUser({ ...user, password: e.target.value })}
             style={{
               borderRadius: '8px',
             }}
@@ -184,8 +169,8 @@ const Registration = () => {
           style={{
             borderRadius: '8px',
           }}
-          type='submit' onClick={handleSubmit}
-          
+          type='submit'
+          onClick={handleSubmit}
         >
           Create Now
         </button>
