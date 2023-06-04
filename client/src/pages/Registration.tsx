@@ -3,17 +3,31 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import { Link } from 'react-router-dom'
 import uploadimage from '../assets/uploadimage.svg'
+import { gql , useMutation } from '@apollo/client'
+import {useState } from 'react'
+
+
 
 const Registration = () => {
+
+  const REGISTER = gql`
+    mutation register(
+      $phone: String!
+      $dateOfBirth: String!
+      $pa
+    )
+  `
   const swipe = () => {
     const swiper = document.querySelector('.swiper-container').swiper
     swiper.slideNext()
   }
 
+  const [user, setUser] = useState({})
+
   const handleSubmit = (e) => {
-    console.log("hello");
-    
     e.preventDefault();
+
+    
   }
 
   const swipeBack = () => {
@@ -80,11 +94,15 @@ const Registration = () => {
         </p>
       </div>
 
-      <form className='flex flex-col gap-4 items-center justify-center'>
+      <form className='flex flex-col gap-4 items-center justify-center' onSubmit={handleSubmit}>
         <div>
           <p className='text-[#A6A6A6]'>Phone Number</p>
           <input
             type='text'
+            name="phone"
+            onInput={
+              (e) => setUser({...user, phone: e.target.value})
+            }
             className='w-[312px]  text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
             style={{
               borderRadius: '8px',
@@ -100,7 +118,11 @@ const Registration = () => {
           </div>
           <input
             type='date'
+            name="date"
             className='w-[312px] text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
+            onInput={
+              (e) => setUser({...user, dateOfBirth: e.target.value})
+            }
             style={{
               borderRadius: '8px',
             }}
@@ -111,7 +133,11 @@ const Registration = () => {
           <p className='text-[#A6A6A6]'>Set a new password</p>
           <input
             type='password'
+            name="password"
             className='w-[312px]  text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
+            onInput={
+              (e) => setUser({...user, password: e.target.value})
+            }
             style={{
               borderRadius: '8px',
             }}
@@ -126,7 +152,7 @@ const Registration = () => {
           style={{
             borderRadius: '8px',
           }}
-          type='submit' onClick={(e) => handleSubmit(e)} 
+          type='submit' onClick={handleSubmit}
           
         >
           Create Now
