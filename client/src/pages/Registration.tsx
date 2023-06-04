@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { FormEvent, FormEventHandler } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import { Link } from 'react-router-dom'
 import uploadimage from '../assets/uploadimage.svg'
 import { gql, useMutation } from '@apollo/client'
 import { useState } from 'react'
+
+type User = {
+  phone?: String,
+  dateOfBirth?: Date,
+  password?: String
+}
 
 const Registration = () => {
   const REGISTER = gql`
@@ -20,17 +26,19 @@ const Registration = () => {
   const [registerUser, { data, loading, error }] = useMutation(REGISTER)
   
   const swipe = () => {
-    const swiper = document.querySelector('.swiper-container').swiper
+    const swiper = (document.querySelector('.swiper-container') as any).swiper
     swiper.slideNext()
   }
 
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState<User>()
+  
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(new Date(user.dateOfBirth).toISOString())
+    if(!user) return
 
-    await registerUser({
+    if(!user.dateOfBirth) return 
+registerUser({
       variables: {
         phone: user.phone,
         dateOfBirth: new Date(user.dateOfBirth).toISOString().substring(0, 10),
@@ -38,16 +46,12 @@ const Registration = () => {
       },
     })
     console.log(data);
-    if (data.register.body.message != "sucess") {
-      console.log(data.register.body);
-      
-
-    }
+   
   
   }
 
   const swipeBack = () => {
-    const swiper = document.querySelector('.swiper-container').swiper
+    const swiper = (document.querySelector('.swiper-container') as any).swiper
     swiper.slidePrev()
   }
 
@@ -117,13 +121,16 @@ const Registration = () => {
         </p>
       </div>
 
-      <form className='flex flex-col gap-4 items-center justify-center' onSubmit={handleSubmit}>
+      <form  onSubmit={handleSubmit}className='flex flex-col gap-4 items-center justify-center' >
         <div>
           <p className='text-[#A6A6A6]'>Phone Number</p>
           <input
             type='text'
             name='phone'
-            onInput={(e) => setUser({ ...user, phone: e.target.value })}
+            onInput={(e) => {
+              setUser({...user, phone: (e.target as any).value})
+              
+            }}
             className='w-[312px]  text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
             style={{
               borderRadius: '8px',
@@ -141,7 +148,7 @@ const Registration = () => {
             type='date'
             name='date'
             className='w-[312px] text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
-            onInput={(e) => setUser({ ...user, dateOfBirth: e.target.value })}
+            onInput={(e) => setUser({ ...user, dateOfBirth: (e.target as any).value })}
             style={{
               borderRadius: '8px',
             }}
@@ -154,14 +161,14 @@ const Registration = () => {
             type='password'
             name='password'
             className='w-[312px]  text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
-            onInput={(e) => setUser({ ...user, password: e.target.value })}
+            onInput={(e) => setUser({ ...user, password: (e.target as any).value })}
             style={{
               borderRadius: '8px',
             }}
             placeholder='****'
           />
         </div>
-      </form>
+      
 
       <div className='justify-center pb-12 flex gap-4 flex-col text-center items-center'>
         <button
@@ -170,11 +177,12 @@ const Registration = () => {
             borderRadius: '8px',
           }}
           type='submit'
-          onClick={handleSubmit}
+         
         >
           Create Now
         </button>
       </div>
+      </form>
       <p className=' text-center  mx-auto w-[305px] '>
         By continuing you accept our standard
         <span className='underline px-2'>terms and conditions</span>
