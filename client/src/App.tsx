@@ -24,12 +24,12 @@ const client = new ApolloClient({
 
 function App(): JSX.Element {
   return (
-    <div>
+    <ApolloProvider client={client}>
       <Routes>
         <Route path={"/"} element={<Home />} />
         <Route path={"/signup"} element={<Registration/>} />
       </Routes>
-    </div>
+    </ApolloProvider>
   )
 }
 
