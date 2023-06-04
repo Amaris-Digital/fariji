@@ -11,12 +11,24 @@ import {useState } from 'react'
 const Registration = () => {
 
   const REGISTER = gql`
-    mutation register(
+    mutation registerMutation(
       $phone: String!
-      $dateOfBirth: String!
-      $pa
-    )
+      $dateOfBirth: ISO8601DateTime!
+      $password: String!
+    ){
+      register(
+        phone: $phone,
+        dateOfBirth: $dateOfBirth,
+        password: $password
+      ){
+        status
+        message
+        body
+      }
+    }
   `
+
+  const [registerUser, { data, loading, error }] = useMutation(REGISTER);
   const swipe = () => {
     const swiper = document.querySelector('.swiper-container').swiper
     swiper.slideNext()
@@ -26,8 +38,20 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+   console.log(new Date(user.dateOfBirth).toISOString());
+   
+    registerUser({
+      variables: {
+        phone: user.phone,
+        dateOfBirth: new Date(user.dateOfBirth).toISOString().substring(0,10),
+        password: user.password
+      }
+    })
+    if (!loading) {
+      console.log(data);
+      
 
-    
+    }
   }
 
   const swipeBack = () => {
