@@ -1,15 +1,15 @@
-import React, { FormEvent, FormEventHandler } from 'react'
+import  { type FormEvent, useState} from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-import { Link } from 'react-router-dom'
+
 import uploadimage from '../assets/uploadimage.svg'
 import { gql, useMutation } from '@apollo/client'
-import { useState } from 'react'
 
-type User = {
-  phone?: String,
+
+interface User  {
+  phone?: string,
   dateOfBirth?: Date,
-  password?: String
+  password?: string
 }
 
 const Registration = () => {
@@ -26,7 +26,8 @@ const Registration = () => {
   const [registerUser, { data, loading, error }] = useMutation(REGISTER)
   
   const swipe = () => {
-    const swiper = (document.querySelector('.swiper-container') as any).swiper
+    // @ts-expect-error - Description
+    const swiper = document.querySelector('.swiper-container') .swiper
     swiper.slideNext()
   }
 
@@ -51,11 +52,12 @@ registerUser({
   }
 
   const swipeBack = () => {
-    const swiper = (document.querySelector('.swiper-container') as any).swiper
+    // @ts-expect-error - Description
+    const swiper = document.querySelector('.swiper-container') .swiper
     swiper.slidePrev()
   }
 
-  if (!loading && !error && data != undefined) {
+  if (!loading && !error && data !== undefined) {
    
     console.log(data.register.body.authToken)
   }
@@ -127,7 +129,7 @@ registerUser({
           <input
             type='text'
             name='phone'
-            onInput={(e) => {
+            onInput={ function(e){ 
               setUser({...user, phone: (e.target as any).value})
               
             }}
@@ -148,7 +150,7 @@ registerUser({
             type='date'
             name='date'
             className='w-[312px] text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
-            onInput={(e) => setUser({ ...user, dateOfBirth: (e.target as any).value })}
+            onInput={ function(e){setUser({ ...user, dateOfBirth: (e.target as any).value })}}
             style={{
               borderRadius: '8px',
             }}
@@ -161,7 +163,7 @@ registerUser({
             type='password'
             name='password'
             className='w-[312px]  text-[#2A6476] placeholder-[#2A6476] border-[#A6A6A6] focus:outline-none h-[41px]'
-            onInput={(e) => setUser({ ...user, password: (e.target as any).value })}
+            onInput={ function(e){ setUser({ ...user, password: (e.target as any).value })}}
             style={{
               borderRadius: '8px',
             }}
