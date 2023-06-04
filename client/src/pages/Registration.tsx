@@ -58,6 +58,14 @@ const Registration = () => {
     const swiper = document.querySelector('.swiper-container').swiper
     swiper.slidePrev()
   }
+  
+    if (!loading && !error && data!=undefined) {
+      console.log(data.register.body.authToken);
+      
+
+    }
+  
+  
   const sigUpOne = (
     <div className='flex flex-col h-[100vh] justify-between'>
       <div className='flex justify-between p-4'>
