@@ -191,7 +191,7 @@ registerUser({
         and our <span className=' px-2 underline'>privacy policy.</span>
       </p>
       <p className='text-center flex justify-center pb-12 '>
-        Already have an account?
+        Already have an account?&nbsp;
         <p>Sign In</p>
       </p>
     </div>
