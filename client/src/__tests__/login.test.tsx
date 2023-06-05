@@ -10,7 +10,7 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockNavigate,
 }));
 
-jest.mock('../assets/images/far2.png', () => 'test-image');
+jest.mock('../assets/images/auth/login/far2.png', () => 'test-image');
 jest.mock('../assets/logo.svg', () => 'test-logo');
 
 global.alert = jest.fn();

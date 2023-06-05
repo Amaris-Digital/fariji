@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { gql, useMutation } from '@apollo/client'
-import Logo from '../assets/images/far2.png'
+import Logo from '../assets/images/auth/login/far2.png'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import Fariji from '../assets/logo.svg'
 
