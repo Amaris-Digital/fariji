@@ -1,14 +1,19 @@
-import Home from "./pages/Home";
-import {Route, Routes} from "react-router-dom";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/client';
+import client from './utils/config';
+import Home from './pages/Home';
+import Login from './pages/Login';
 
 function App(): JSX.Element {
   return (
-    <div>
+    <ApolloProvider client={client}>
       <Routes>
-          <Route path={"/"} element={ <Home/> } />
+        <Route path={'/'} element={<Home />} />
+        <Route path={'/login'} element={<Login />} />
       </Routes>
-    </div>
-  )
+    </ApolloProvider>
+  );
 }
 
-export default App
+export default App;
