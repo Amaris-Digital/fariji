@@ -167,12 +167,14 @@ export const Splash1: React.FC = () => {
     useEffect(() => {
       if (isAppInstalled) {
         if (currentSplash !== 1) {
-          navigate('/');
+          navigate(`/splash${currentSplash}`);
         } else {
           const timeout = setTimeout(() => {
             handleNextSplash();
           }, 10000); // 10 seconds
-          return () => { clearTimeout(timeout); };
+          return () => {
+            clearTimeout(timeout);
+          };
         }
       }
     }, [isAppInstalled, currentSplash, navigate]);
@@ -181,43 +183,18 @@ export const Splash1: React.FC = () => {
       <div>
         <Routes>
           <Route path="/" element={<Splash1 />} />
-  
           {!isAppInstalled && (
             <>
-              <Route
-                path="/splash2"
-                element={
-                  currentSplash === 2 ? (
-                    <Splash2 onNext={handleNextSplash} />
-                  ) : (
-                    <Navigate to="/" replace={true} />
-                  )
-                }
-              />
-              <Route
-                path="/splash3"
-                element={
-                  currentSplash === 3 ? (
-                    <Splash3 onNext={handleNextSplash} />
-                  ) : (
-                    <Navigate to="/" replace={true} />
-                  )
-                }
-              />
-              <Route
-                path="/splash4"
-                element={
-                  currentSplash === 4 ? (
-                    <Splash4 onNext={handleNextSplash} />
-                  ) : (
-                    <Navigate to="/" replace={true} />
-                  )
-                }
-              />
+              <Route path="/splash2" element={<Splash2 onNext={handleNextSplash} />} />
+              <Route path="/splash3" element={<Splash3 onNext={handleNextSplash} />} />
+              <Route path="/splash4" element={<Splash4 onNext={handleNextSplash} />} />
             </>
           )}
         </Routes>
       </div>
     );
   };
+  
+  
+  
   
