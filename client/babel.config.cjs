@@ -7,5 +7,5 @@ module.exports = {
     "plugins": [],
     targets: {
         node: "current"
-    }
+    },
 }

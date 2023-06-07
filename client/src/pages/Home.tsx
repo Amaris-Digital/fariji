@@ -1,6 +1,6 @@
 import Header from "../components/header";
 import useHeader from "../hooks/useHeader";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 
 const Home = (): JSX.Element => {
 

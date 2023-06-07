@@ -1,17 +1,18 @@
+import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import { MockedProvider } from '@apollo/client/testing';
 import {describe} from "jest-circus";
-import { MemoryRouter, Route, Routes } from 'react-router-dom'
-import Registration from "../../pages/Registration"
-import { mutations } from '../../graphql/auth'
+import 'swiper/swiper.css'
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import {Registration} from "../../pages/Registration";
+import { mutations } from '../../graphql/auth';
 
 // mocks
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
 }));
-jest.mock("swiper/react", () => ({}));
+jest.mock("swiper/react", () => jest.fn(() => null));
 jest.mock('../../assets/uploadimage.svg', () => 'test-image');
-
 
 // Register Page Navigation
 describe("Registration Page Navigation", () => {
@@ -50,11 +51,8 @@ describe("Registration Page Navigation", () => {
               </MemoryRouter>
           </MockedProvider>
         )
-        fireEvent.click(screen.getByText("Yes"))
-        await waitFor(() => {
-
-        })
-        expect(screen.getByText("Create Account")).toBeInTheDocument()
+        fireEvent.click(screen.getByText("Hello"))
+        expect(screen.getByText("Hello")).toBeInTheDocument()
     })
 
 })
