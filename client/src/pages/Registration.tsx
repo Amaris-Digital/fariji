@@ -1,9 +1,10 @@
 import  { type FormEvent, useState} from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
+
 
 import uploadimage from '../assets/uploadimage.svg'
-import { gql, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
+import { mutations } from '../graphql/auth'
 
 
 interface User  {
@@ -13,52 +14,26 @@ interface User  {
 }
 
 const Registration = () => {
-  const REGISTER = gql`
-    mutation registerMutation($phone: String!, $dateOfBirth: ISO8601DateTime!, $password: String!) {
-      register(phone: $phone, dateOfBirth: $dateOfBirth, password: $password) {
-        status
-        message
-        body
-      }
-    }
-  `
-
-  const [registerUser, { data, loading, error }] = useMutation(REGISTER)
-  
-  const swipe = () => {
-    // @ts-expect-error - Description
-    const swiper = document.querySelector('.swiper-container') .swiper
-    swiper.slideNext()
-  }
-
+  const [registerUser, { data, loading, error }] = useMutation(mutations.REGISTER)
   const [user, setUser] = useState<User>()
-  
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if(!user) return
-
     if(!user.dateOfBirth) return 
-registerUser({
-      variables: {
-        phone: user.phone,
-        dateOfBirth: new Date(user.dateOfBirth).toISOString().substring(0, 10),
-        password: user.password,
-      },
-    })
-    console.log(data);
-   
-  
+    registerUser({
+        variables: {
+            phone: user.phone,
+            dateOfBirth: new Date(user.dateOfBirth).toISOString().substring(0, 10),
+            password: user.password,
+        }}).then(r => {console.log(data)})
   }
 
-  const swipeBack = () => {
-    // @ts-expect-error - Description
-    const swiper = document.querySelector('.swiper-container') .swiper
-    swiper.slidePrev()
-  }
+  // @ts-expect-error - Possible null
+  const swipe = () => document.querySelector('.swiper-container')?.swiper.slideNext()
+  // @ts-expect-error - Possible null
+  const swipeBack = () => document.querySelector('.swiper-container')?.swiper.slidePrev()
 
   if (!loading && !error && data !== undefined) {
-   
     console.log(data.register.body.authToken)
   }
  
