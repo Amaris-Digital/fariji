@@ -72,7 +72,7 @@ stop:
 
 ## Display logs
 show-logs:
-	docker compose  logs
+	docker compose  logs --follow
 
 ## Remove Docker environment
 clean:
