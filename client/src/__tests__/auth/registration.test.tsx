@@ -1,58 +1,70 @@
 import React from "react";
-import { render, fireEvent, waitFor } from "@testing-library/react";
-import { MockedProvider } from '@apollo/client/testing';
-import {describe} from "jest-circus";
-import 'swiper/swiper.css'
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import {Registration} from "../../pages/Registration";
-import { mutations } from '../../graphql/auth';
+import { render } from "@testing-library/react";
+import { describe } from "jest-circus";
+import { SignUpOne } from "../../components/auth/SignUpOne";
+import { SignUpTwo } from "../../components/auth/SignUpTwo";
+import { SignUpThree } from "../../components/auth/SignUpThree";
+import { SignUpFour } from "../../components/auth/SignUpFour";
 
-// mocks
-jest.mock("react-router-dom", () => ({
-    ...jest.requireActual("react-router-dom"),
+jest.mock("../../pages/Registration", () => ({
+    swipe: jest.fn(),
+    swipeBack: jest.fn(),
 }));
-jest.mock("swiper/react", () => jest.fn(() => null));
-jest.mock('../../assets/uploadimage.svg', () => 'test-image');
 
-// Register Page Navigation
-describe("Registration Page Navigation", () => {
+jest.mock("../../assets/uploadimage.svg", () => ({
+    default: "mockedUploadImage",
+}));
 
-    test("should render form after clicking yes", async () => {
-        const authToken: string = "test-token"
-        const mocks =  [
-            {
-                request: {
-                    query: mutations.REGISTER,
-                    variables: {
-                        phone: "1234567890",
-                        dateOfBirth: "2021-09-01",
-                        password: "test-password"
-                    },
-                },
-                result: {
-                    data: {
-                        register: {
-                            status: "success",
-                            message: "User created successfully",
-                            body: {
-                                authToken
-                            }
-                        }
-                    }
-                }
-            }
-        ]
-        const screen = render(
-          <MockedProvider mocks={mocks} addTypename={false}>
-              <MemoryRouter initialEntries={["/signup"]}>
-                  <Routes>
-                      <Route path={"/signup"} element={<Registration/>} />
-                  </Routes>
-              </MemoryRouter>
-          </MockedProvider>
-        )
-        fireEvent.click(screen.getByText("Hello"))
-        expect(screen.getByText("Hello")).toBeInTheDocument()
-    })
+
+describe("Existence of UI elements", () => {
+    test("Page 1", () => {
+        const screen = render(<SignUpOne />);
+        const step = screen.findByText("Step 1 of 4")
+        const exit = screen.getByText("Exit")
+        const welcome = screen.findByText("Welcome to Fariji")
+        const acceptButton = screen.getByRole("button", { name: "Yes" })
+        const declineButton = screen.getByRole("button", { name: "No" })
+        expect(step).toBeTruthy();
+        expect(exit).toBeInTheDocument();
+        expect(welcome).toBeTruthy();
+        expect(acceptButton).toBeInTheDocument();
+        expect(declineButton).toBeInTheDocument();
+    });
+
+    test("Page 2", () => {
+        const screen = render(<SignUpTwo />);
+        const step = screen.findByText("Step 2 of 4")
+        const exit = screen.getByText("Exit")
+        const form = screen.findByRole("form")
+        const formSubmit = screen.findByRole("submit")
+        expect(step).toBeTruthy();
+        expect(exit).toBeInTheDocument();
+        expect(form).toBeTruthy();
+        expect(formSubmit).toBeTruthy();
+    });
+
+    test("Page 3", () => {
+        const screen = render(<SignUpThree />);
+        const step = screen.findByText("Step 3 of 4")
+        const exit = screen.getByText("Exit")
+        const addPhoto = screen.findByText("Add a Photo")
+        const uploadBtn = screen.getByRole("button", { name: "Upload Photo" })
+        const skipBtn = screen.getByText("Skip")
+        expect(step).toBeTruthy();
+        expect(exit).toBeInTheDocument();
+        expect(addPhoto).toBeTruthy();
+        expect(uploadBtn).toBeInTheDocument();
+        expect(skipBtn).toBeInTheDocument();
+    });
+
+    test("Page 4", () => {
+        const screen = render(<SignUpFour />);
+        const step = screen.findByText("Step 4 of 4")
+        const exit = screen.getByText("Exit")
+        const reason = screen.findByText("What is your reason for joining?")
+        expect(step).toBeTruthy();
+        expect(exit).toBeInTheDocument();
+        expect(reason).toBeTruthy();
+    });
 
 })

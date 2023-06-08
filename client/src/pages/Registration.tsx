@@ -2,7 +2,7 @@ import  React, { type FormEvent, useState} from 'react'
 import { useMutation, gql } from '@apollo/client'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper.css'
-import {SigUpOne} from "../components/auth/SignUpOne";
+import {SignUpOne} from "../components/auth/SignUpOne";
 import {SignUpTwo} from "../components/auth/SignUpTwo";
 import {SignUpThree} from "../components/auth/SignUpThree";
 import {SignUpFour} from "../components/auth/SignUpFour";
@@ -46,7 +46,7 @@ export const Registration = ():JSX.Element => {
 
   return (
       <Swiper loop={false} className='swiper-container'>
-        <SwiperSlide>{<SigUpOne/>}</SwiperSlide>
+        <SwiperSlide>{<SignUpOne/>}</SwiperSlide>
         <SwiperSlide>{<SignUpTwo handleSubmit={handleSubmit} user={user} setUser={setUser}/>}</SwiperSlide>
         <SwiperSlide className='flex  justify-center h-screen'>{<SignUpThree/>}</SwiperSlide>
         <SwiperSlide className='flex items-center  justify-center h-screen'>{<SignUpFour/>}</SwiperSlide>

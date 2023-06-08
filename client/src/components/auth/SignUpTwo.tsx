@@ -17,7 +17,6 @@ export const SignUpTwo = ({handleSubmit, setUser, user}: any): JSX.Element => {
                 <p className='w-[298px] text-3xl font-bold'>Create Account</p>
                 <p className='w-[285px] text-[#3F3F3F]'>Plan for the ones you love</p>
                 <p className='w-[285px] text-center text-[#3F3F3F]'>
-                    {' '}
                     Tell us a bit about yourself for a more personalised and meaningful experience.
                 </p>
             </div>
@@ -95,7 +94,7 @@ export const SignUpTwo = ({handleSubmit, setUser, user}: any): JSX.Element => {
             </p>
             <p className='text-center flex justify-center pb-12 '>
                 Already have an account?&nbsp;
-                <p>Sign In</p>
+                <span>Sign In</span>
             </p>
         </div>
     );

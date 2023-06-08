@@ -1,7 +1,7 @@
 import React from "react";
 import {swipe, swipeBack} from "../../pages/Registration";
 
-export const SigUpOne = (): JSX.Element => (
+export const SignUpOne = (): JSX.Element => (
     <div className='flex flex-col h-[100vh] justify-between'>
         <div className='flex justify-between p-4'>
             <div className='flex gap-1'>
