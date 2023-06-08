@@ -15,4 +15,6 @@
 .idea/
 .vscode/
 
+# mac files
+.DS_Store
 
