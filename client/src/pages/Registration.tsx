@@ -6,6 +6,7 @@ import {SignUpOne} from "../components/auth/SignUpOne";
 import {SignUpTwo} from "../components/auth/SignUpTwo";
 import {SignUpThree} from "../components/auth/SignUpThree";
 import {SignUpFour} from "../components/auth/SignUpFour";
+import {mutations} from "../graphql/auth";
 
 interface User  {
   phone?: string,
@@ -14,16 +15,7 @@ interface User  {
 }
 
 export const Registration = ():JSX.Element => {
-    const REGISTER = gql`
-        mutation registerMutation($phone: String!, $dateOfBirth: ISO8601DateTime!, $password: String!) {
-          register(phone: $phone, dateOfBirth: $dateOfBirth, password: $password) {
-            status
-            message
-            body
-          }
-        }
-      `
-    const [registerUser, { data, loading, error }] = useMutation(REGISTER)
+    const [registerUser, { data, loading, error }] = useMutation(mutations.REGISTER)
     const [user, setUser] = useState<User>()
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
