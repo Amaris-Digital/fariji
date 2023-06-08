@@ -1,7 +1,8 @@
 import React from "react";
 import {swipeBack} from "../../pages/Registration";
+import {AiOutlineLoading3Quarters} from "react-icons/ai";
 
-export const SignUpTwo = ({handleSubmit, setUser, user}: any): JSX.Element => {
+export const SignUpTwo = ({handleSubmit, setUser, user, isLoading}: any): JSX.Element => {
     return (
         <div className='flex flex-col h-[100vh] justify-between'>
             <div className='flex justify-between p-4'>
@@ -83,7 +84,13 @@ export const SignUpTwo = ({handleSubmit, setUser, user}: any): JSX.Element => {
                         type='submit'
 
                     >
-                        Create Now
+                        {isLoading ? (
+                            <div className='flex justify-center'>
+                                <AiOutlineLoading3Quarters className='animate-spin' />
+                            </div>
+                        ) : (
+                            'Create Now'
+                        )}
                     </button>
                 </div>
             </form>

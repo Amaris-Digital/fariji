@@ -1,17 +1,11 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { gql, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import Logo from '../assets/images/auth/login/far2.png'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import Fariji from '../assets/logo.svg'
+import {mutations} from "../graphql/auth";
 
-export const SIGN_IN_MUTATION = gql`
-  mutation signIn($phone: String!, $password: String!) {
-    signIn(input: { phone: $phone, password: $password }) {
-      token
-    }
-  }
-`
 
 const Login = () => {
   const [phone, setPhone] = useState('')
@@ -21,7 +15,7 @@ const Login = () => {
 
   const navigate = useNavigate()
 
-  const [signInData] = useMutation(SIGN_IN_MUTATION, {
+  const [signInData] = useMutation(mutations.LOGIN, {
     onCompleted: (data) => {
       const token = data.signIn.token
       if (token) {
@@ -121,7 +115,7 @@ const Login = () => {
             </button>
           </form>
           <p className='font-medium text-sm text-center mt-5 text-[var(--tertiary-dark)]'>
-            Already have an account? <Link to='/signup'>Sign Up</Link>
+            Already have an account? <Link to='/registration'>Sign Up</Link>
           </p>
         </div>
       </div>

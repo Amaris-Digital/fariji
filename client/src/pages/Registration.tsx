@@ -39,7 +39,7 @@ export const Registration = ():JSX.Element => {
   return (
       <Swiper loop={false} className='swiper-container'>
         <SwiperSlide>{<SignUpOne/>}</SwiperSlide>
-        <SwiperSlide>{<SignUpTwo handleSubmit={handleSubmit} user={user} setUser={setUser}/>}</SwiperSlide>
+        <SwiperSlide>{<SignUpTwo handleSubmit={handleSubmit} user={user} setUser={setUser} isLoading={loading}/>}</SwiperSlide>
         <SwiperSlide className='flex  justify-center h-screen'>{<SignUpThree/>}</SwiperSlide>
         <SwiperSlide className='flex items-center  justify-center h-screen'>{<SignUpFour/>}</SwiperSlide>
       </Swiper>

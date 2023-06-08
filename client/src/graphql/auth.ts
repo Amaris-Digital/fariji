@@ -11,6 +11,14 @@ const REGISTER = gql`
     }
 `
 
+const LOGIN = gql`
+  mutation signIn($phone: String!, $password: String!) {
+    signIn(input: { phone: $phone, password: $password }) {
+      token
+    }
+  }
+`
+
 export const mutations = {
-    REGISTER
+    REGISTER, LOGIN
 }

@@ -2,8 +2,9 @@ import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import Login, { SIGN_IN_MUTATION } from '../../pages/Login';
+import Login from '../../pages/Login';
 import { mockNavigate } from '../../utils/navigation';
+import {mutations} from "../../graphql/auth";
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -24,7 +25,7 @@ describe('Login component', () => {
     const mocks = [
       {
         request: {
-          query: SIGN_IN_MUTATION,
+          query: mutations.LOGIN,
           variables: {
             phone: 'mockPhone',
             password: 'mockPassword',
@@ -74,7 +75,7 @@ describe('Login component', () => {
     const mocks = [
       {
         request: {
-          query: SIGN_IN_MUTATION,
+          query: mutations.LOGIN,
           variables: {
             phone: 'mockPhone',
             password: 'mockPassword',
