@@ -49,8 +49,8 @@ client-lint-fix:
 	cd client && npm run lint:fix
 
 ## Prettier check
-#client-prettier-check:
-#	cd client && npm run prettier:check
+client-prettier-check:
+	cd client && npm run format:check
 
 ## Prettier auto-fix
 client-prettier-fix:

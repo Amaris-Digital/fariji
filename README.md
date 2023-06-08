@@ -140,13 +140,22 @@ Make sure you are in the root directory when running make commands.
     ```
     make client-test
     ```
+- Client prettier checks
+    ```
+    make client-prettier-check
+    ```
+- Client prettier autofix
+    ```
+    make client-prettier-fix
+    ```
 
 - If you are using the Docker environment, you do not need to perform the following tasks:
-     -Gem setup
-     -NPM setup
-     -Starting the backend server
-     -Starting the frontend server
-   These tasks are automatically done when the container is built using the 'make docker-build' command.
+  - Ruby gem setup
+  - npm setup
+  - Starting the backend server
+  - Starting the frontend server
+    
+**These tasks are automatically done when the container is built using the `make docker-build` command.**
 
 - Please note that all tests must be run in the test Docker environment to avoid corrupting your local development database.
 - All client sided routes are rendered from root, `/`. Example `http://localhost:5173/admin` - Admin React Page

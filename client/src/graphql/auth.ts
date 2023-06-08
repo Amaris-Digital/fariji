@@ -1,13 +1,13 @@
 import { gql } from '@apollo/client'
 
 const REGISTER = gql`
-    mutation registerMutation($phone: String!, $dateOfBirth: ISO8601DateTime!, $password: String!) {
-        register(phone: $phone, dateOfBirth: $dateOfBirth, password: $password) {
-            status
-            message
-            body
-        }
+  mutation registerMutation($phone: String!, $dateOfBirth: ISO8601DateTime!, $password: String!) {
+    register(phone: $phone, dateOfBirth: $dateOfBirth, password: $password) {
+      status
+      message
+      body
     }
+  }
 `
 
 const LOGIN = gql`
@@ -19,5 +19,6 @@ const LOGIN = gql`
 `
 
 export const mutations = {
-    REGISTER, LOGIN
+  REGISTER,
+  LOGIN,
 }

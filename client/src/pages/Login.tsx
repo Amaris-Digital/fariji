@@ -3,11 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import Logo from '../assets/images/auth/login/far2.png'
 import Fariji from '../assets/logo.svg'
-import {mutations} from "../graphql/auth";
-import {AppLoader} from "../components/utils/AppLoader";
-import {AppError} from "../components/utils/AppError";
-import {storeToken} from "../utils/config";
-
+import { mutations } from '../graphql/auth'
+import { AppLoader } from '../components/utils/AppLoader'
+import { AppError } from '../components/utils/AppError'
+import { storeToken } from '../utils/config'
 
 const Login = (): JSX.Element => {
   const [phone, setPhone] = useState('')
@@ -53,7 +52,7 @@ const Login = (): JSX.Element => {
         <div className='text-center'>
           <img src={Logo} alt='logo' />
           <div className='flex justify-center mt-2'>
-            <img src={Fariji} alt='logo' className='h-16' /> 
+            <img src={Fariji} alt='logo' className='h-16' />
           </div>
         </div>
       </div>
@@ -68,7 +67,7 @@ const Login = (): JSX.Element => {
             <h2 className='mt-3 mb-10 text-[var(--secondary)]'>Plan for the ones you love</h2>
           </div>
 
-          {<AppError error={errorMessage}/>}
+          {<AppError error={errorMessage} />}
 
           <form onSubmit={handleSignIn}>
             <label htmlFor='phoneNumber' className='text-sm font-inter text-[var(--tertiary)]'>
@@ -109,7 +108,7 @@ const Login = (): JSX.Element => {
               className='bg-[var(--primary)] text-white rounded-lg py-2 px-4 w-full mt-12'
               disabled={isLoading}
             >
-              {isLoading ? <AppLoader/> : 'Sign In'}
+              {isLoading ? <AppLoader /> : 'Sign In'}
             </button>
           </form>
           <p className='font-medium text-sm text-center mt-5 text-[var(--tertiary-dark)]'>
