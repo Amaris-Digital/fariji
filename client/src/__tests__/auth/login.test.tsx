@@ -3,7 +3,7 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import Login from '../../pages/Login';
-import {mockNavigate, useNavigate} from '../../utils/navigation';
+import {mockNavigate} from '../../utils/navigation';
 import {mutations} from "../../graphql/auth";
 
 jest.mock('react-router-dom', () => ({

@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const useHeader = () => {
+const useHeader = (): any => {
     const [header, setHeader] = useState<string>()
     return {header, setHeader}
 }

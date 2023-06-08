@@ -1,6 +1,2 @@
 export const mockNavigate = jest.fn()
-export const useNavigate = () => mockNavigate
-
-
-
-
+export const useNavigate = (): jest.Mock => mockNavigate

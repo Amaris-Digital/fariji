@@ -7,7 +7,7 @@ export const AppError = ({ error }: any): JSX.Element => {
 }
 
 // format array of errors into list items
-export const formatErrors = (errors: string[] | undefined) => {
+export const formatErrors = (errors: string[] | undefined): JSX.Element | undefined => {
     return ( errors &&
         <ol type={"i"}>
             {errors?.map((error, i) => <li className={"mt-1"} key={i}>{error}</li>)}

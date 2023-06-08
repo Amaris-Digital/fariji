@@ -7,7 +7,7 @@ const client = new ApolloClient({
   link,
 });
 
-const storeToken = (token: string) => {
+const storeToken = (token: string): void => {
   localStorage.setItem('token', token);
 }
 

@@ -9,7 +9,7 @@ import {AppError} from "../components/utils/AppError";
 import {storeToken} from "../utils/config";
 
 
-const Login = () => {
+const Login = (): JSX.Element => {
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
@@ -32,7 +32,7 @@ const Login = () => {
     },
   })
 
-  const handleSignIn = (e: React.FormEvent) => {
+  const handleSignIn = (e: React.FormEvent): void => {
     e.preventDefault()
     setErrorMessage('')
     setIsLoading(true)

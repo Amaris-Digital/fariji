@@ -22,18 +22,16 @@ export const Registration = ():JSX.Element => {
     const [user, setUser] = useState<User>()
     const navigate = useNavigate()
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>):void => {
         e.preventDefault()
         if(!user) return
         if(!user.dateOfBirth) return
-        registerUser({
+        void registerUser({
             variables: {
                 phone: user.phone,
                 dateOfBirth: new Date(user.dateOfBirth).toISOString().substring(0, 10),
                 password: user.password,
             }
-        }).then(r => {
-            console.log(r)
         })
     }
 
@@ -62,7 +60,7 @@ export const Registration = ():JSX.Element => {
 }
 
 // @ts-expect-error - Possible null
-export const swipeBack = () => document.querySelector('.swiper-container')?.swiper.slidePrev()
+export const swipeBack = (): void => document.querySelector('.swiper-container')?.swiper.slidePrev()
 // @ts-expect-error - Possible null
-export const swipe = () => document.querySelector('.swiper-container')?.swiper.slideNext()
+export const swipe = (): void => document.querySelector('.swiper-container')?.swiper.slideNext()
 
