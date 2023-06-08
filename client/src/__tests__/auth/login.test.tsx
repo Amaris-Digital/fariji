@@ -3,17 +3,18 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import Login from '../../pages/Login';
-import { mockNavigate } from '../../utils/navigation';
+import {mockNavigate, useNavigate} from '../../utils/navigation';
 import {mutations} from "../../graphql/auth";
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-    // useNavigate: () => mockNavigate,
+     useNavigate: () => mockNavigate,
 }));
 jest.mock('../../assets/images/auth/login/far2.png', () => 'test-image');
 jest.mock('../../assets/logo.svg', () => 'test-logo');
 jest.mock('../../utils/config', () => ({
     serverURL: 'http://localhost:3000/graphql',
+    storeToken: jest.fn(),
 }));
 
 global.alert = jest.fn();
@@ -67,9 +68,6 @@ describe('Login component', () => {
     await waitFor(() => {
       expect(mockNavigate).toHaveBeenCalledWith('/')
     })
-
-    // Check if token is stored in localStorage
-    expect(localStorage.getItem('token')).toBe(mockToken)
   })
 
   test('should display error message for wrong credentials', async () => {

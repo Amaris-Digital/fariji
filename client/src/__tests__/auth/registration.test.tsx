@@ -6,24 +6,23 @@ import { SignUpTwo } from "../../components/auth/SignUpTwo";
 import { SignUpThree } from "../../components/auth/SignUpThree";
 import { SignUpFour } from "../../components/auth/SignUpFour";
 import {mockNavigate} from "../../utils/navigation";
+import {BrowserRouter} from "react-router-dom";
+
 
 jest.mock("../../pages/Registration", () => ({
     swipe: jest.fn(),
     swipeBack: jest.fn(),
 }));
-
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
     useNavigate: () => mockNavigate,
 }));
-
 jest.mock("../../assets/uploadimage.svg", () => ({
     default: "mockedUploadImage",
 }));
 jest.mock('../../utils/config', () => ({
     serverURL: 'http://localhost:3000/graphql',
 }));
-
 
 describe("Existence of UI elements", () => {
     test("Page 1", () => {
@@ -42,7 +41,16 @@ describe("Existence of UI elements", () => {
 
     // broken test
      test("Page 2", () => {
-        const screen = render(<SignUpTwo />);
+        const screen = render(
+            <BrowserRouter>
+                <SignUpTwo
+                    handleSubmit={jest.fn()}
+                    setUser={jest.fn()}
+                    user={{}}
+                    isLoading={false}
+                />
+            </BrowserRouter>
+            );
         const step = screen.findByText("Step 2 of 4")
         const exit = screen.getByText("Exit")
         const form = screen.findByRole("form")
