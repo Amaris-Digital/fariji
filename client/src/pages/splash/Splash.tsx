@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Splash1Svg from '../../assets/Splash1.svg';
 import Splash2Svg from '../../assets/Splash2.svg';
@@ -144,56 +144,6 @@ export const Splash1: React.FC = () => {
     );
   };
 
-  // export const Splash: React.FC = () => {
-  //   const [isAppInstalled, setIsAppInstalled] = useState(false);
-  //   const [currentSplash, setCurrentSplash] = useState(1);
-  //   const navigate = useNavigate();
-  
-  //   useEffect(() => {
-  //     const storedIsAppInstalled = localStorage.getItem('isAppInstalled');
-  //     if (storedIsAppInstalled) {
-  //       setIsAppInstalled(true);
-  //     } else {
-  //       setIsAppInstalled(false);
-  //       setCurrentSplash(1);
-  //       localStorage.setItem('isAppInstalled', 'true');
-  //     }
-  //   }, []);
-  
-  //   const handleNextSplash = () => {
-  //     setCurrentSplash((prevSplash) => prevSplash + 1);
-  //   };
-  
-  //   useEffect(() => {
-  //     if (isAppInstalled) {
-  //       if (currentSplash !== 1) {
-  //         navigate(`/splash${currentSplash}`);
-  //       } else {
-  //         const timeout = setTimeout(() => {
-  //           handleNextSplash();
-  //         }, 10000); 
-  //         return () => {
-  //           clearTimeout(timeout);
-  //         };
-  //       }
-  //     }
-  //   }, [isAppInstalled, currentSplash, navigate]);
-  
-  //   return (
-  //     <div>
-  //       <Routes>
-  //         <Route path="/" element={<Splash1 />} />
-  //         {!isAppInstalled && (
-  //           <>
-  //             <Route path="/splash2" element={<Splash2 onNext={handleNextSplash} />} />
-  //             <Route path="/splash3" element={<Splash3 onNext={handleNextSplash} />} />
-  //             <Route path="/splash4" element={<Splash4 onNext={handleNextSplash} />} />
-  //           </>
-  //         )}
-  //       </Routes>
-  //     </div>
-  //   );
-  // };
   export const Splash: React.FC = () => {
     const [isAppInstalled, setIsAppInstalled] = useState(false);
     const [currentSplash, setCurrentSplash] = useState(1);
@@ -221,7 +171,7 @@ export const Splash1: React.FC = () => {
         } else {
           const timeout = setTimeout(() => {
             handleNextSplash();
-          }, 10000); // 10 seconds
+          }, 5000); // 5 seconds
           return () => {
             clearTimeout(timeout);
           };
