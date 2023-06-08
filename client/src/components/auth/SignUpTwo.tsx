@@ -1,8 +1,10 @@
 import React from "react";
 import {swipeBack} from "../../pages/Registration";
-import {AiOutlineLoading3Quarters} from "react-icons/ai";
+import {AppLoader} from "../utils/AppLoader";
+import {Link} from "react-router-dom";
+import {AppError} from "../utils/AppError";
 
-export const SignUpTwo = ({handleSubmit, setUser, user, isLoading}: any): JSX.Element => {
+export const SignUpTwo = ({handleSubmit, setUser, user, isLoading, error}: any): JSX.Element => {
     return (
         <div className='flex flex-col h-[100vh] justify-between'>
             <div className='flex justify-between p-4'>
@@ -21,6 +23,8 @@ export const SignUpTwo = ({handleSubmit, setUser, user, isLoading}: any): JSX.El
                     Tell us a bit about yourself for a more personalised and meaningful experience.
                 </p>
             </div>
+
+            {<AppError error={error}/>}
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-4 items-center justify-center'>
                 <div>
@@ -81,16 +85,8 @@ export const SignUpTwo = ({handleSubmit, setUser, user, isLoading}: any): JSX.El
                         style={{
                             borderRadius: '8px',
                         }}
-                        type='submit'
-
-                    >
-                        {isLoading ? (
-                            <div className='flex justify-center'>
-                                <AiOutlineLoading3Quarters className='animate-spin' />
-                            </div>
-                        ) : (
-                            'Create Now'
-                        )}
+                        type='submit'>
+                        {isLoading ? <AppLoader/> : 'Create Now'}
                     </button>
                 </div>
             </form>
@@ -101,7 +97,7 @@ export const SignUpTwo = ({handleSubmit, setUser, user, isLoading}: any): JSX.El
             </p>
             <p className='text-center flex justify-center pb-12 '>
                 Already have an account?&nbsp;
-                <span>Sign In</span>
+                <Link to='/login'>Sign In</Link>
             </p>
         </div>
     );

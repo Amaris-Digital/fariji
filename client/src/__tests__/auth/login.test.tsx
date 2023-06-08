@@ -8,20 +8,21 @@ import {mutations} from "../../graphql/auth";
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockNavigate,
+    // useNavigate: () => mockNavigate,
 }));
-
 jest.mock('../../assets/images/auth/login/far2.png', () => 'test-image');
 jest.mock('../../assets/logo.svg', () => 'test-logo');
+jest.mock('../../utils/config', () => ({
+    serverURL: 'http://localhost:3000/graphql',
+}));
 
 global.alert = jest.fn();
 
-
 describe('Login component', () => {
 
-
+  // broken test
   test('should sign in successfully', async () => {
-    const mockToken = 'mockToken'
+    const mockToken: string = 'mockToken'
     const mocks = [
       {
         request: {

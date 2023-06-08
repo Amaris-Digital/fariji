@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import Logo from '../assets/images/auth/login/far2.png'
-import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import Fariji from '../assets/logo.svg'
 import {mutations} from "../graphql/auth";
+import {AppLoader} from "../components/utils/AppLoader";
+import {AppError} from "../components/utils/AppError";
+import {storeToken} from "../utils/config";
 
 
 const Login = () => {
@@ -19,7 +21,7 @@ const Login = () => {
     onCompleted: (data) => {
       const token = data.signIn.token
       if (token) {
-        localStorage.setItem('token', token)
+        storeToken(token)
         navigate('/')
       } else {
         setErrorMessage('You have entered a wrong phone number or password')
@@ -65,7 +67,9 @@ const Login = () => {
             </h2>
             <h2 className='mt-3 mb-10 text-[var(--secondary)]'>Plan for the ones you love</h2>
           </div>
-          {errorMessage && <p className='bg-[#FF9549] text-white py-2 px-4 mb-4'>{errorMessage}</p>}
+
+          {<AppError error={errorMessage}/>}
+
           <form onSubmit={handleSignIn}>
             <label htmlFor='phoneNumber' className='text-sm font-inter text-[var(--tertiary)]'>
               Phone number
@@ -105,13 +109,7 @@ const Login = () => {
               className='bg-[var(--primary)] text-white rounded-lg py-2 px-4 w-full mt-12'
               disabled={isLoading}
             >
-              {isLoading ? (
-                <div className='flex justify-center'>
-                  <AiOutlineLoading3Quarters className='animate-spin' />
-                </div>
-              ) : (
-                'Sign In'
-              )}
+              {isLoading ? <AppLoader/> : 'Sign In'}
             </button>
           </form>
           <p className='font-medium text-sm text-center mt-5 text-[var(--tertiary-dark)]'>

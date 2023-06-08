@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
-import client from './utils/config';
+import { client } from './utils/config';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import {Registration} from "./pages/Registration";
