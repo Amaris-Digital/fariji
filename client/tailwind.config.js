@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        fira: ['Fira', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
+        'fira': ['Fira Sans'],
+        'inter': ['Inter'],
       },
       fontSize: {
         h1: '40px',

@@ -14,7 +14,7 @@ RSpec.describe Mutations::Auth::SignIn do
 
         result = signin_mutation.resolve(input: valid_input)
 
-        expect(result).to eq({ data: { token: expected_token }, message: 'user signed in successfully', status: 'success', token: expected_token })
+        expect(result).to eq({ data: { token: expected_token }, message: 'user signed in successfully', status: 'success', token: expected_token, user: user })
       end
     end
 
