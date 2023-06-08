@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import client from './utils/config';
 import { Splash } from './pages/splash/Splash';
-import Home from './pages/Home';
 import Login from './pages/Login';
 
 const App: React.FC = () => {
