@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Splash1Svg from '../../assets/Splash1.svg';
 import Splash2Svg from '../../assets/Splash2.svg';
 import Splash3Svg from '../../assets/Splash3.svg';
@@ -106,11 +105,8 @@ export const Splash1: React.FC = () => {
     );
   };
 
-  export const Splash4: React.FC<SplashProps> = ({ onNext }) => {
-    const handleNext = () => {
-      onNext();
-    };
-  
+  export const Splash4: React.FC = () => {
+
     return (
       <div className=" w-full h-screen bg-[#FFFFFF] ">
       <div className="flex flex-row justify-end items-center pt-[56px] px-[24px] pb-[16px] gap-[16px] absolute w-[360px] h-[102px] right-0 top-0">
@@ -188,7 +184,7 @@ export const Splash1: React.FC = () => {
         case 3:
           return <Splash3 onNext={handleNextSplash} />;
         case 4:
-          return <Splash4 onNext={handleNextSplash} />;
+          return <Splash4 />;
         default:
           return null;
       }
