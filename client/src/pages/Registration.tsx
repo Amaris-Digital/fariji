@@ -8,7 +8,6 @@ import { SignUpThree } from '../components/auth/SignUpThree'
 import { SignUpFour } from '../components/auth/SignUpFour'
 import { mutations } from '../graphql/auth'
 import { storeToken } from '../utils/config'
-import { useNavigate } from 'react-router-dom'
 import { formatErrors } from '../components/utils/AppError'
 
 interface User {
@@ -20,7 +19,6 @@ interface User {
 export const Registration = (): JSX.Element => {
   const [registerUser, { data, loading, error }] = useMutation(mutations.REGISTER)
   const [user, setUser] = useState<User>()
-  const navigate = useNavigate()
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
@@ -38,9 +36,9 @@ export const Registration = (): JSX.Element => {
   useEffect(() => {
     if (data?.register.body.authToken) {
       storeToken(data.register.body.authToken)
-      navigate('/')
+      swipe()
     }
-  }, [data?.register.body.authToken, navigate, user, error])
+  }, [data?.register.body.authToken, user, error])
 
   return (
     <Swiper loop={false} className='swiper-container'>
