@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Splash1Svg from '../../assets/Splash1.svg';
 import Splash2Svg from '../../assets/Splash2.svg';
 import Splash3Svg from '../../assets/Splash3.svg';
@@ -133,12 +134,11 @@ export const Splash1: React.FC = () => {
         Planning for the future can be a daunting task, but taking steps to prepare your loved ones in advance can alleviate the burden during challenging times.
         </p>
       </div>
-      <button 
-      className="flex flex-row justify-center items-center px-[24px] py-[10px] gap-[10px] w-[312px] h-[41px] bg-[#2A6476] rounded-lg"
-      onClick={handleNext}
-      >
-        Next
-      </button>
+      <Link 
+      to="/login" 
+      className="flex flex-row justify-center items-center px-[24px] py-[10px] gap-[10px] w-[312px] h-[41px] bg-[#2A6476] rounded-lg">
+          Next
+        </Link>
     </div>
   </div>
     );
