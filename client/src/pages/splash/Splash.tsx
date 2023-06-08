@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Splash1Svg from '../../assets/Splash1.svg';
 import Splash2Svg from '../../assets/Splash2.svg';
 import Splash3Svg from '../../assets/Splash3.svg';
@@ -8,7 +8,7 @@ import Splash4Svg from '../../assets/Splash4.svg';
 
 export interface SplashProps {
     onNext: () => void;
-  }
+}
 
 export const Splash1: React.FC = () => {
   return (
@@ -35,7 +35,7 @@ export const Splash1: React.FC = () => {
     return (
       <div className=" w-full h-screen bg-[#FFFFFF] ">
           <div className="flex flex-row justify-end items-center pt-[56px] px-[24px] pb-[16px] gap-[16px] absolute w-[360px] h-[102px] right-0 top-0">
-          <p className="w-[30px] h-[21px] font-sans font-normal font-medium text-[14px] leading-[150%] tracking-wide text-[#252626]" style={{ letterSpacing: '0.003em'}}>
+          <p className="w-[30px] h-[21px] font-sans font-normal text-[14px] leading-[150%] tracking-wide text-[#252626]" style={{ letterSpacing: '0.003em'}}>
           Skip
         </p>
       </div>
@@ -48,15 +48,15 @@ export const Splash1: React.FC = () => {
         
         <div className="flex flex-col items-center pt-0 px-[24px] pb-[56px] gap-[32px] absolute w-[360px] h-[297px] left-1/2 transform -translate-x-1/2 bottom-0">
           <div className="flex flex-col items-center p-0 gap-[16px] w-[287px] h-[168px]">
-            <h2 className="font-heading font-normal font-semibold text-[32px] leading-[125%] text-center text-[#252626] tracking-tighter-lg" style={{ letterSpacing: '-0.022em' }}>
+            <h2 className="font-heading font-normal text-[32px] leading-[125%] text-center text-[#252626] tracking-tighter-lg" style={{ letterSpacing: '-0.022em' }}>
               Leave your family in perfect order.
             </h2>
-            <p className=" font-sans font-normal font-medium text-[14px] leading-[150%] text-center tracking-wide text-[#373737]" style={{ letterSpacing: '0.003em' }}>
+            <p className=" font-sans font-normal text-[14px] leading-[150%] text-center tracking-wide text-[#373737]" style={{ letterSpacing: '0.003em' }}>
             Empower your loved ones with peace of mind. Let our funeral services ensure every detail is impeccably handled, leaving your family in perfect order.
             </p>
           </div>
           <button 
-          className="flex flex-row justify-center items-center px-[24px] py-[10px] gap-[10px] w-[312px] h-[41px] bg-[#2A6476] rounded-lg"
+          className="flex flex-row justify-center items-center px-[24px] py-[10px] gap-[10px] w-[312px] h-[41px] text-white bg-[#2A6476] rounded-lg"
           onClick={handleNext}
           >
             Next
@@ -74,7 +74,7 @@ export const Splash1: React.FC = () => {
     return (
       <div className=" w-full h-screen bg-[#FFFFFF] ">
       <div className="flex flex-row justify-end items-center pt-[56px] px-[24px] pb-[16px] gap-[16px] absolute w-[360px] h-[102px] right-0 top-0">
-      <p className="w-[30px] h-[21px] font-sans font-normal font-medium text-[14px] leading-[150%] tracking-wide text-[#252626]" style={{ letterSpacing: '0.003em'}}>
+      <p className="w-[30px] h-[21px] font-sans font-normal text-[14px] leading-[150%] tracking-wide text-[#252626]" style={{ letterSpacing: '0.003em'}}>
       Skip
     </p>
   </div>
@@ -87,15 +87,15 @@ export const Splash1: React.FC = () => {
     
     <div className="flex flex-col items-center pt-0 px-[24px] pb-[56px] gap-[32px] absolute w-[360px] h-[297px] left-1/2 transform -translate-x-1/2 bottom-0">
       <div className="flex flex-col items-center p-0 gap-[16px] w-[287px] h-[168px]">
-        <h2 className="font-heading font-normal font-semibold text-[32px] leading-[125%] text-center text-[#252626] tracking-tighter-lg" style={{ letterSpacing: '-0.022em' }}>
+        <h2 className="font-heading font-normal text-[32px] leading-[125%] text-center text-[#252626] tracking-tighter-lg" style={{ letterSpacing: '-0.022em' }}>
         Be remembered in your own words.
         </h2>
-        <p className=" font-sans font-normal font-medium text-[14px] leading-[150%] text-center tracking-wide text-[#373737]" style={{ letterSpacing: '0.003em' }}>
+        <p className=" font-sans font-normal text-[14px] leading-[150%] text-center tracking-wide text-[#373737]" style={{ letterSpacing: '0.003em' }}>
         Share your authentic self through your own words, leaving behind a lasting tribute that honors your life.
         </p>
       </div>
       <button 
-      className="flex flex-row justify-center items-center px-[24px] py-[10px] gap-[10px] w-[312px] h-[41px] bg-[#2A6476] rounded-lg"
+      className="flex flex-row justify-center items-center px-[24px] py-[10px] gap-[10px] w-[312px] h-[41px] bg-[#2A6476] text-white rounded-lg"
       onClick={handleNext}
       >
         Next
@@ -105,12 +105,15 @@ export const Splash1: React.FC = () => {
     );
   };
 
-  export const Splash4: React.FC = () => {
-
+  export const Splash4: React.FC<SplashProps> = ({ onNext }) => {
+    const handleNext = () => {
+      onNext();
+    };
+  
     return (
       <div className=" w-full h-screen bg-[#FFFFFF] ">
       <div className="flex flex-row justify-end items-center pt-[56px] px-[24px] pb-[16px] gap-[16px] absolute w-[360px] h-[102px] right-0 top-0">
-      <p className="w-[30px] h-[21px] font-sans font-normal font-medium text-[14px] leading-[150%] tracking-wide text-[#252626]" style={{ letterSpacing: '0.003em'}}>
+      <p className="w-[30px] h-[21px] font-sans font-normal text-[14px] leading-[150%] tracking-wide text-[#252626]" style={{ letterSpacing: '0.003em'}}>
       Skip
     </p>
   </div>
@@ -123,18 +126,19 @@ export const Splash1: React.FC = () => {
     
     <div className="flex flex-col items-center pt-0 px-[24px] pb-[56px] gap-[32px] absolute w-[360px] h-[297px] left-1/2 transform -translate-x-1/2 bottom-0">
       <div className="flex flex-col items-center p-0 gap-[16px] w-[287px] h-[168px]">
-        <h2 className="font-heading font-normal font-semibold text-[32px] leading-[125%] text-center text-[#252626] tracking-tighter-lg" style={{ letterSpacing: '-0.022em' }}>
+        <h2 className="font-heading font-normal text-[32px] leading-[125%] text-center text-[#252626] tracking-tighter-lg" style={{ letterSpacing: '-0.022em' }}>
         Prepare your loved ones in advance.
         </h2>
-        <p className=" font-sans font-normal font-medium text-[14px] leading-[150%] text-center tracking-wide text-[#373737]" style={{ letterSpacing: '0.003em' }}>
+        <p className=" font-sans font-normal text-[14px] leading-[150%] text-center tracking-wide text-[#373737]" style={{ letterSpacing: '0.003em' }}>
         Planning for the future can be a daunting task, but taking steps to prepare your loved ones in advance can alleviate the burden during challenging times.
         </p>
       </div>
-      <Link 
-      to="/login" 
-      className="flex flex-row justify-center items-center px-[24px] py-[10px] gap-[10px] w-[312px] h-[41px] bg-[#2A6476] rounded-lg">
-          Next
-        </Link>
+      <button 
+      className="flex flex-row justify-center items-center px-[24px] py-[10px] gap-[10px] w-[312px] h-[41px] bg-[#2A6476] text-white rounded-lg"
+      onClick={handleNext}
+      >
+        Next
+      </button>
     </div>
   </div>
     );
@@ -184,7 +188,7 @@ export const Splash1: React.FC = () => {
         case 3:
           return <Splash3 onNext={handleNextSplash} />;
         case 4:
-          return <Splash4 />;
+          return <Splash4 onNext={() => {navigate('/login');}} />;
         default:
           return null;
       }
