@@ -86,7 +86,7 @@ export const SignUpTwo = ({ handleSubmit, setUser, user, isLoading, error }: any
             type='submit'
             onClick={() => {
               if (user.phone === '' || user.dateOfBirth === '' || user.password === '') {
-                return
+                alert('Please fill in all fields')
               } else {
                 swipe()
               }
