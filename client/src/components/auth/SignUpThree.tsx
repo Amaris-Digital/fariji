@@ -27,14 +27,19 @@ export const SignUpThree = (): JSX.Element => (
     </div>
 
     <div className='justify-center pb-24 flex gap-4 flex-col text-center items-center'>
-      <button
-        className='w-[312px] h-[41px] text-white bg-[#2A6476]'
+      <input type='file' accept='image/*' style={{ display: 'none' }} id='uploadButton' />
+      <label
+        htmlFor='uploadButton'
+        className='w-[312px] h-[41px] flex justify-center items-center text-white bg-[#2A6476]'
         style={{
           borderRadius: '8px',
+
+          cursor: 'pointer',
         }}
       >
         Upload Photo
-      </button>
+      </label>
+
       <p className='text-[#2A6476] cursor-pointer' onClick={swipe}>
         Skip
       </p>
