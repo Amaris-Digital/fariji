@@ -11,6 +11,7 @@ export const SignUpOne = (): JSX.Element => (
         Exit
       </div>
     </div>
+    
 
     <div className='justify-center pb-12 flex gap-2 flex-col text-center items-center'>
       <p className='w-[298px] text-3xl font-bold'>Are you new in Fariji?</p>

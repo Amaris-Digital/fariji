@@ -42,8 +42,8 @@ export const Registration = (): JSX.Element => {
 
   return (
     <Swiper loop={false} className='swiper-container swiper-no-swiping'>
-      <SwiperSlide>{<SignUpOne />}</SwiperSlide>
-      <SwiperSlide>
+      <SwiperSlide className='flex  justify-center h-screen'>{<SignUpOne />}</SwiperSlide>
+      <SwiperSlide className='flex  justify-center h-screen'>
         {
           <SignUpTwo
             handleSubmit={handleSubmit}
