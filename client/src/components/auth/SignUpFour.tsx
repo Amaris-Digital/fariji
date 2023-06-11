@@ -19,7 +19,7 @@ export const SignUpFour = (): JSX.Element => (
 
     <div className='justify-center pb-24 flex gap-4 flex-col text-center items-center'>
       <button
-        className='w-[312px] h-[41px] border-[#a6a6a6] border-2 bg-white'
+        className='w-[312px] h-[41px] hover:bg-[#2A6476]  hover:text-white hover:border-white focus:bg-[#2A6476]  focus:text-white focus:border-white transition-all duration-500 ease-in-out  border-[#a6a6a6] border-2 bg-white'
         style={{
           borderRadius: '40px',
         }}
@@ -27,7 +27,7 @@ export const SignUpFour = (): JSX.Element => (
         To plan for my departure
       </button>
       <button
-        className='w-[312px] h-[41px] border-[#a6a6a6] border-2 bg-white'
+        className='w-[312px] h-[41px] hover:bg-[#2A6476] hover:text-white hover:border-white focus:bg-[#2A6476]  focus:text-white focus:border-white transition-all duration-500 ease-in-out  border-[#a6a6a6] border-2 bg-white'
         style={{
           borderRadius: '40px',
         }}

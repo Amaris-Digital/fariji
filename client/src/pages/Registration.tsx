@@ -41,7 +41,7 @@ export const Registration = (): JSX.Element => {
   }, [data?.register.body.authToken, user, error])
 
   return (
-    <Swiper loop={false} className='swiper-container'>
+    <Swiper loop={false} className='swiper-container swiper-no-swiping'>
       <SwiperSlide>{<SignUpOne />}</SwiperSlide>
       <SwiperSlide>
         {

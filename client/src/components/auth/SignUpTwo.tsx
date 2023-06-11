@@ -1,8 +1,8 @@
 import React from 'react'
-import { swipeBack } from '../../pages/Registration'
 import { AppLoader } from '../utils/AppLoader'
 import { Link } from 'react-router-dom'
 import { AppError } from '../utils/AppError'
+import { swipe, swipeBack } from '../../pages/Registration'
 
 export const SignUpTwo = ({ handleSubmit, setUser, user, isLoading, error }: any): JSX.Element => {
   return (
@@ -84,6 +84,13 @@ export const SignUpTwo = ({ handleSubmit, setUser, user, isLoading, error }: any
               borderRadius: '8px',
             }}
             type='submit'
+            onClick={() => {
+              if (user.phone === '' || user.dateOfBirth === '' || user.password === '') {
+                return
+              } else {
+                swipe()
+              }
+            }}
           >
             {isLoading ? <AppLoader /> : 'Create Now'}
           </button>
