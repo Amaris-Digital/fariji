@@ -30,6 +30,8 @@ export const SignUpThree = (): JSX.Element => (
       <input type='file' accept='image/*' style={{ display: 'none' }} id='uploadButton' />
       <label
         htmlFor='uploadButton'
+        role='button'
+        name='Upload Photo'
         className='w-[312px] h-[41px] flex justify-center items-center text-white bg-[#2A6476]'
         style={{
           borderRadius: '8px',
