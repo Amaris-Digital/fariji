@@ -48,8 +48,6 @@ export const SignUpThree = (): JSX.Element => (
         Upload Photo
       </label>
 
-      
-
       <p className='text-[#2A6476] cursor-pointer' onClick={swipe}>
         Skip
       </p>
