@@ -5,7 +5,6 @@ import Splash2Svg from '../../assets/Splash2.svg';
 import Splash3Svg from '../../assets/Splash3.svg';
 import Splash4Svg from '../../assets/Splash4.svg';
 import Fariji from '../../assets/logo.svg'
-import Logo from '../../assets/images/auth/login/far2.png'
 
 
 export interface SplashProps {
