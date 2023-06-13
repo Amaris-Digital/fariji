@@ -29,9 +29,15 @@ export const Splash1: React.FC = () => {
 };
 
   export const Splash2: React.FC<SplashProps> = ({ onNext }) => {
+    const navigate = useNavigate();
+
     const handleNext = () => {
       onNext();
     };
+
+    const handleSkip = () => {
+      navigate('/login');
+    };    
 
     return (
       <div className="flex w-full h-screen bg-[#FFFFFF]">
@@ -52,7 +58,7 @@ export const Splash1: React.FC = () => {
             <div className="flex flex-row justify-end items-center pt-8 pb-2 gap-2">
               <p 
               className="text-lg font-inter font-normal text-[#252626] cursor-pointer"
-              onClick={handleNext}
+              onClick={handleSkip}
               >
                 Skip
               </p>
@@ -86,9 +92,15 @@ export const Splash1: React.FC = () => {
   };
 
   export const Splash3: React.FC<SplashProps> = ({ onNext }) => {
+    const navigate = useNavigate();
+
     const handleNext = () => {
       onNext();
     };
+
+    const handleSkip = () => {
+      navigate('/login');
+    }; 
 
     return (
       <div className="flex w-full h-screen bg-[#FFFFFF]">
@@ -109,7 +121,7 @@ export const Splash1: React.FC = () => {
             <div className="flex flex-row justify-end items-center pt-8 pb-2 gap-2">
               <p 
               className="text-lg font-inter font-normal text-[#252626] cursor-pointer"
-              onClick={handleNext}
+              onClick={handleSkip}
               >
                 Skip
               </p>
@@ -142,9 +154,15 @@ export const Splash1: React.FC = () => {
   };
 
   export const Splash4: React.FC<SplashProps> = ({ onNext }) => {
+    const navigate = useNavigate();
+
     const handleNext = () => {
       onNext();
     };
+
+    const handleSkip = () => {
+      navigate('/login');
+    }; 
 
     return (
       <div className="flex w-full h-screen bg-[#FFFFFF]">
@@ -165,7 +183,7 @@ export const Splash1: React.FC = () => {
             <div className="flex flex-row justify-end items-center pt-8 pb-2 gap-2">
               <p 
               className="text-lg font-inter font-normal text-[#252626] cursor-pointer"
-              onClick={handleNext}
+              onClick={handleSkip}
               >
                 Skip
               </p>
