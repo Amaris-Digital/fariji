@@ -5,12 +5,13 @@ import { client } from './utils/config'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import { Registration } from './pages/Registration'
+import { Splash } from './pages/splash/Splash'
 
-function App(): JSX.Element {
+const App: React.FC = () => {
   return (
     <ApolloProvider client={client}>
       <Routes>
-        <Route path={'/'} element={<Home />} />
+        <Route path='*' element={<Splash />} />
         <Route path={'/login'} element={<Login />} />
         <Route path={'/registration'} element={<Registration />} />
       </Routes>

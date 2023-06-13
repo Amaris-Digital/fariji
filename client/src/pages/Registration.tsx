@@ -63,6 +63,6 @@ export const Registration = (): JSX.Element => {
 }
 
 // @ts-expect-error - Possible null
-export const swipeBack = (): void => document.querySelector('.swiper-container')?.swiper.slidePrev()
+export const swipeBack = (): void => document.querySelector('.swiper-container')?.swiper.slideTo(0)
 // @ts-expect-error - Possible null
 export const swipe = (): void => document.querySelector('.swiper-container')?.swiper.slideNext()
