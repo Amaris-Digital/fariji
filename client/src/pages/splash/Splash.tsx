@@ -51,7 +51,7 @@ export const Splash1: React.FC = () => {
           <div className="sm:w-96  p-6 ">
             <div className="flex flex-row justify-end items-center pt-8 pb-2 gap-2">
               <p 
-              className="text-xs font-inter font-normal text-[#252626] md:text-base cursor-pointer"
+              className="text-lg font-inter font-normal text-[#252626] cursor-pointer"
               onClick={handleNext}
               >
                 Skip
@@ -108,7 +108,7 @@ export const Splash1: React.FC = () => {
           <div className="sm:w-96  p-6 ">
             <div className="flex flex-row justify-end items-center pt-8 pb-2 gap-2">
               <p 
-              className="text-xs font-inter font-normal text-[#252626] md:text-base cursor-pointer"
+              className="text-lg font-inter font-normal text-[#252626] cursor-pointer"
               onClick={handleNext}
               >
                 Skip
@@ -164,7 +164,7 @@ export const Splash1: React.FC = () => {
           <div className="sm:w-96  p-6 ">
             <div className="flex flex-row justify-end items-center pt-8 pb-2 gap-2">
               <p 
-              className="text-xs font-inter font-normal text-[#252626] md:text-base cursor-pointer"
+              className="text-lg font-inter font-normal text-[#252626] cursor-pointer"
               onClick={handleNext}
               >
                 Skip
