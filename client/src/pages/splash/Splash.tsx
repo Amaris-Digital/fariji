@@ -23,11 +23,11 @@ export const Splash1: React.FC = () => {
 export const Splash2: React.FC<SplashProps> = ({ onNext }) => {
   const navigate = useNavigate()
 
-  const handleNext = () => {
+  const handleNext = (): void => {
     onNext()
   }
 
-  const handleSkip = () => {
+  const handleSkip = (): void => {
     navigate('/login')
   }
 
@@ -84,11 +84,11 @@ export const Splash2: React.FC<SplashProps> = ({ onNext }) => {
 export const Splash3: React.FC<SplashProps> = ({ onNext }) => {
   const navigate = useNavigate()
 
-  const handleNext = () => {
+  const handleNext = (): void => {
     onNext()
   }
 
-  const handleSkip = () => {
+  const handleSkip = (): void => {
     navigate('/login')
   }
 
@@ -145,11 +145,11 @@ export const Splash3: React.FC<SplashProps> = ({ onNext }) => {
 export const Splash4: React.FC<SplashProps> = ({ onNext }) => {
   const navigate = useNavigate()
 
-  const handleNext = () => {
+  const handleNext = (): void => {
     onNext()
   }
 
-  const handleSkip = () => {
+  const handleSkip = (): void => {
     navigate('/login')
   }
 
@@ -219,7 +219,7 @@ export const Splash: React.FC = () => {
     }
   }, [])
 
-  const handleNextSplash = () => {
+  const handleNextSplash = (): void => {
     setCurrentSplash((prevSplash) => prevSplash + 1)
   }
 
@@ -238,7 +238,7 @@ export const Splash: React.FC = () => {
     }
   }, [isAppInstalled, currentSplash, navigate])
 
-  const renderSplashScreen = () => {
+  const renderSplashScreen = (): JSX.Element | null => {
     switch (currentSplash) {
       case 1:
         return <Splash1 />
