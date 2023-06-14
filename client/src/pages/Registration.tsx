@@ -54,7 +54,7 @@ export const Registration = (): JSX.Element => {
           />
         }
       </SwiperSlide>
-      <SwiperSlide className='flex  justify-center h-screen'>{<SignUpThree />}</SwiperSlide>
+      <SwiperSlide className='flex  justify-center h-screen'><SignUpThree user={user}/></SwiperSlide>
       <SwiperSlide className='flex items-center  justify-center h-screen'>
         {<SignUpFour />}
       </SwiperSlide>

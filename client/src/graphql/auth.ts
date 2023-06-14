@@ -18,7 +18,19 @@ const LOGIN = gql`
   }
 `
 
+const UPLOAD_PROFILE_PHOTO = gql`
+  mutation UploadProfilePhotoMutation($avatar: Upload!, $phone: String!) {
+    uploadProfilePhoto(avatar: $avatar, phone: $phone) {
+      status
+      message
+    }
+  }
+`;
+
+
+
 export const mutations = {
   REGISTER,
   LOGIN,
+  UPLOAD_PROFILE_PHOTO,
 }

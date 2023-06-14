@@ -1,7 +1,8 @@
 import { ApolloClient, InMemoryCache, HttpLink, from } from '@apollo/client'
+import {createUploadLink} from 'apollo-upload-client'
 
 const serverURL = import.meta.env.VITE_GRAPHQL_SERVER_URL
-const link = from([new HttpLink({ uri: serverURL })])
+const link = from([new HttpLink({ uri: serverURL }), createUploadLink()])
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link,
