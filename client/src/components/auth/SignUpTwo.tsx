@@ -84,13 +84,13 @@ export const SignUpTwo = ({ handleSubmit, setUser, user, isLoading, error }: any
               borderRadius: '8px',
             }}
             type='submit'
-            onClick={() => {
-              if (user.phone === '' && user.dateOfBirth === '' && user.password === '') {
-                alert('Please fill in all fields')
-              } else {
-                swipe()
-              }
-            }}
+            // onClick={() => {
+            //   if (user.phone === '' && user.dateOfBirth === '' && user.password === '') {
+            //     alert('Please fill in all fields')
+            //   } else {
+            //     swipe()
+            //   }
+            // }}
           >
             {isLoading ? <AppLoader /> : 'Create Now'}
           </button>
