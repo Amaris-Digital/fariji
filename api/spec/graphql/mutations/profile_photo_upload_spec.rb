@@ -24,8 +24,8 @@ RSpec.describe Mutations::ProfilePhotoUpload, type: :request do
 
       post '/graphql', params: {
         "operations" => {
-          "query": profile_photo_upload_mutation(user.id),
-          "variables": { "avatar": avatar, "userId": user.id.to_s }
+          "query": profile_photo_upload_mutation,
+          "variables": { "avatar": avatar, "phone": user.phone }
         }.to_json,
         "map" => {
           "1" => ["variables.avatar"]
@@ -40,11 +40,11 @@ RSpec.describe Mutations::ProfilePhotoUpload, type: :request do
     end
   end
 
-  def profile_photo_upload_mutation(user_id)
+  def profile_photo_upload_mutation
     <<-GQL
-      mutation($avatar: Upload!) {
+      mutation($avatar: Upload!, $phone: String!) {
         uploadProfilePhoto(
-          userId: "#{user_id}",
+          phone: $phone,
           avatar: $avatar
         ) {
           status

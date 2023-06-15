@@ -32,6 +32,7 @@ module Api
 
     # Allow render hosts
     config.hosts << "fariji-staging.up.railway.app"
+    config.hosts << "fariji.onrender.com/"
 
     #
     # config.time_zone = "Central Time (US & Canada)"

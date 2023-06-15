@@ -20,7 +20,7 @@ module Types
     end
 
     field :uploadProfilePhoto, Types::AppResponseType, null: false, description: "Upload profile photo" do
-      argument :user_id, ID, required: true
+      argument :phone, String, required: true
       argument :avatar, ApolloUploadServer::Upload, required: true
     end
   
@@ -44,14 +44,14 @@ module Types
       end
     end
 
-    def uploadProfilePhoto(user_id:, avatar:)
-      user = User.find(user_id)
+    def uploadProfilePhoto(phone:, avatar:)
+      user = User.find_by(phone: phone)
       user.avatar.attach(io: avatar.tempfile, filename: avatar.original_filename, content_type: avatar.content_type) if avatar.present?
     
       {
         status: 'success',
         message: 'Profile photo uploaded successfully',
-        body: { user_id: user_id }
+        body: nil
       }
     end
 

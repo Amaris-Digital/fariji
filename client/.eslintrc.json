@@ -16,14 +16,19 @@
     "project": ["./tsconfig.json"]
   },
   "plugins": ["react"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-unused-vars": "warn",
-    "@typescript-eslint/no-floating-promises": "off",
+    "react/react-in-jsx-scope": "error",
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-floating-promises": "error",
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/no-empty-interface": "off",
-    "@typescript-eslint/promise-function-async": "off",
-    "@typescript-eslint/no-misused-promises": "off"
+    "@typescript-eslint/no-empty-interface": "error",
+    "@typescript-eslint/promise-function-async": "error",
+    "@typescript-eslint/no-misused-promises": "error"
   }
 }

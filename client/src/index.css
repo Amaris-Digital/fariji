@@ -5,17 +5,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    --primary: #2A6476;
-    --secondary: #252626;
-    --tertiary:  #787878;
-    --tertiary-dark: #3F3F3F;
+:root {
+  --primary: #2a6476;
+  --secondary: #252626;
+  --tertiary: #787878;
+  --tertiary-dark: #3f3f3f;
 }
 
-@layer base{
-    p{
-        @apply font-inter;
-        
-    }
+@layer base {
+  p {
+    @apply font-inter;
+  }
 }
-

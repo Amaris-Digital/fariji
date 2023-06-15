@@ -23,9 +23,10 @@ jobs:
       - run: make client-build
       - run: make client-test
 
-  linters:
+  linters_and_formatters:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: make client-npm-setup
       - run: make client-lint-check
+      - run: make client-prettier-check

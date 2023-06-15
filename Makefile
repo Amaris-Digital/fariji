@@ -48,6 +48,14 @@ client-lint-check:
 client-lint-fix:
 	cd client && npm run lint:fix
 
+## Prettier check
+client-prettier-check:
+	cd client && npm run format:check
+
+## Prettier auto-fix
+client-prettier-fix:
+	cd client && npm run format
+
 ## NPM tests
 client-test:
 	cd client && npm run test
@@ -72,7 +80,7 @@ stop:
 
 ## Display logs
 show-logs:
-	docker compose  logs
+	docker compose  logs --follow
 
 ## Remove Docker environment
 clean:

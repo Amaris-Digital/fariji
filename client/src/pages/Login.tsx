@@ -1,19 +1,14 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { gql, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import Logo from '../assets/images/auth/login/far2.png'
-import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import Fariji from '../assets/logo.svg'
+import { mutations } from '../graphql/auth'
+import { AppLoader } from '../components/utils/AppLoader'
+import { AppError } from '../components/utils/AppError'
+import { storeToken } from '../utils/config'
 
-export const SIGN_IN_MUTATION = gql`
-  mutation signIn($phone: String!, $password: String!) {
-    signIn(input: { phone: $phone, password: $password }) {
-      token
-    }
-  }
-`
-
-const Login = () => {
+const Login = (): JSX.Element => {
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
@@ -21,12 +16,12 @@ const Login = () => {
 
   const navigate = useNavigate()
 
-  const [signInData] = useMutation(SIGN_IN_MUTATION, {
+  const [signInData] = useMutation(mutations.LOGIN, {
     onCompleted: (data) => {
       const token = data.signIn.token
       if (token) {
-        localStorage.setItem('token', token)
-        navigate('/')
+        storeToken(token)
+        navigate('/home')
       } else {
         setErrorMessage('You have entered a wrong phone number or password')
       }
@@ -36,7 +31,7 @@ const Login = () => {
     },
   })
 
-  const handleSignIn = (e: React.FormEvent) => {
+  const handleSignIn = (e: React.FormEvent): void => {
     e.preventDefault()
     setErrorMessage('')
     setIsLoading(true)
@@ -57,7 +52,7 @@ const Login = () => {
         <div className='text-center'>
           <img src={Logo} alt='logo' />
           <div className='flex justify-center mt-2'>
-            <img src={Fariji} alt='logo' className='h-16' /> 
+            <img src={Fariji} alt='logo' className='h-16' />
           </div>
         </div>
       </div>
@@ -71,7 +66,9 @@ const Login = () => {
             </h2>
             <h2 className='mt-3 mb-10 text-[var(--secondary)]'>Plan for the ones you love</h2>
           </div>
-          {errorMessage && <p className='bg-[#FF9549] text-white py-2 px-4 mb-4'>{errorMessage}</p>}
+
+          {<AppError error={errorMessage} />}
+
           <form onSubmit={handleSignIn}>
             <label htmlFor='phoneNumber' className='text-sm font-inter text-[var(--tertiary)]'>
               Phone number
@@ -111,17 +108,11 @@ const Login = () => {
               className='bg-[var(--primary)] text-white rounded-lg py-2 px-4 w-full mt-12'
               disabled={isLoading}
             >
-              {isLoading ? (
-                <div className='flex justify-center'>
-                  <AiOutlineLoading3Quarters className='animate-spin' />
-                </div>
-              ) : (
-                'Sign In'
-              )}
+              {isLoading ? <AppLoader /> : 'Sign In'}
             </button>
           </form>
           <p className='font-medium text-sm text-center mt-5 text-[var(--tertiary-dark)]'>
-            Already have an account? <Link to='/signup'>Sign Up</Link>
+            Already have an account? <Link to='/registration'>Sign Up</Link>
           </p>
         </div>
       </div>
