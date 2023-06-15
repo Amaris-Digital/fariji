@@ -208,7 +208,7 @@ export const Splash4: React.FC<SplashProps> = ({ onNext }) => {
 export const Splash: React.FC = () => {
   const [isAppInstalled, setIsAppInstalled] = useState(false)
   const [currentSplash, setCurrentSplash] = useState(1)
-  const storedIsAppInstalled: string|null = localStorage.getItem('isAppInstalled')
+  const storedIsAppInstalled: string | null = localStorage.getItem('isAppInstalled')
   const navigate = useNavigate()
   const handleNextSplash = (): void => {
     setCurrentSplash((prevSplash) => prevSplash + 1)
@@ -225,9 +225,9 @@ export const Splash: React.FC = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if(!isAppInstalled){
+      if (!isAppInstalled) {
         handleNextSplash()
-      }else{
+      } else {
         navigate(`/login`)
       }
     }, 2000) // 2 seconds
