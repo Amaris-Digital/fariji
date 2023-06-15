@@ -2,7 +2,7 @@ import React from 'react'
 import { AppLoader } from '../utils/AppLoader'
 import { Link } from 'react-router-dom'
 import { AppError } from '../utils/AppError'
-import { swipe, swipeBack } from '../../pages/Registration'
+import { swipeBack } from '../../pages/Registration'
 
 export const SignUpTwo = ({ handleSubmit, setUser, user, isLoading, error }: any): JSX.Element => {
   return (
