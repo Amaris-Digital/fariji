@@ -1,6 +1,7 @@
 import { ApolloClient, InMemoryCache, HttpLink, from } from '@apollo/client'
 
 const serverURL = import.meta.env.VITE_GRAPHQL_SERVER_URL
+console.log('serverURL', serverURL)
 const link = from([new HttpLink({ uri: serverURL })])
 const client = new ApolloClient({
   cache: new InMemoryCache(),
