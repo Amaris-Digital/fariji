@@ -65,7 +65,7 @@ describe('Login component', () => {
 
     // Wait for the sign-in process to complete
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/')
+      expect(mockNavigate).toHaveBeenCalledWith('/home')
     })
   })
 
