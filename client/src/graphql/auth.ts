@@ -25,9 +25,7 @@ const UPLOAD_PROFILE_PHOTO = gql`
       message
     }
   }
-`;
-
-
+`
 
 export const mutations = {
   REGISTER,

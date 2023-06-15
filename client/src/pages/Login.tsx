@@ -21,7 +21,7 @@ const Login = (): JSX.Element => {
       const token = data.signIn.token
       if (token) {
         storeToken(token)
-        navigate('/')
+        navigate('/home')
       } else {
         setErrorMessage('You have entered a wrong phone number or password')
       }
