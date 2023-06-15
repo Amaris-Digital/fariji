@@ -13,7 +13,7 @@ export interface SplashProps {
 export const Splash1: React.FC = () => {
   return (
     <div className='relative w-full h-screen bg-[#FF9549] flex items-center justify-center'>
-      <div className='absolute '>
+      <div className='absolute'>
         <img src={Splash1Svg} alt='Logo' />
       </div>
     </div>
@@ -24,11 +24,13 @@ export const Splash2: React.FC<SplashProps> = ({ onNext }) => {
   const navigate = useNavigate()
 
   const handleNext = (): void => {
+    localStorage.setItem('isAppInstalled', 'true')
     onNext()
   }
 
   const handleSkip = (): void => {
-    navigate('/login')
+    localStorage.setItem('isAppInstalled', 'true')
+    navigate('/registration')
   }
 
   return (
@@ -89,7 +91,7 @@ export const Splash3: React.FC<SplashProps> = ({ onNext }) => {
   }
 
   const handleSkip = (): void => {
-    navigate('/login')
+    navigate('/registration')
   }
 
   return (
@@ -150,7 +152,7 @@ export const Splash4: React.FC<SplashProps> = ({ onNext }) => {
   }
 
   const handleSkip = (): void => {
-    navigate('/login')
+    navigate('/registration')
   }
 
   return (
@@ -206,38 +208,33 @@ export const Splash4: React.FC<SplashProps> = ({ onNext }) => {
 export const Splash: React.FC = () => {
   const [isAppInstalled, setIsAppInstalled] = useState(false)
   const [currentSplash, setCurrentSplash] = useState(1)
+  const storedIsAppInstalled: string|null = localStorage.getItem('isAppInstalled')
   const navigate = useNavigate()
-
-  useEffect(() => {
-    const storedIsAppInstalled = localStorage.getItem('isAppInstalled')
-    if (storedIsAppInstalled) {
-      setIsAppInstalled(true)
-      navigate('/login')
-    } else {
-      setIsAppInstalled(false)
-      setCurrentSplash(1)
-      localStorage.setItem('isAppInstalled', 'true')
-    }
-  }, [])
-
   const handleNextSplash = (): void => {
     setCurrentSplash((prevSplash) => prevSplash + 1)
   }
 
   useEffect(() => {
-    if (isAppInstalled) {
-      if (currentSplash !== 1) {
-        navigate(`/splash${currentSplash}`)
-      } else {
-        const timeout = setTimeout(() => {
-          handleNextSplash()
-        }, 2000) // 2 seconds
-        return () => {
-          clearTimeout(timeout)
-        }
-      }
+    if (storedIsAppInstalled === 'true') {
+      setIsAppInstalled(true)
+    } else {
+      setIsAppInstalled(false)
+      setCurrentSplash(1)
     }
-  }, [isAppInstalled, currentSplash, navigate])
+  }, [storedIsAppInstalled])
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if(!isAppInstalled){
+        handleNextSplash()
+      }else{
+        navigate(`/login`)
+      }
+    }, 2000) // 2 seconds
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [isAppInstalled, navigate])
 
   const renderSplashScreen = (): JSX.Element | null => {
     switch (currentSplash) {
