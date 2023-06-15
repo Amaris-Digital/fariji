@@ -212,6 +212,7 @@ export const Splash: React.FC = () => {
     const storedIsAppInstalled = localStorage.getItem('isAppInstalled')
     if (storedIsAppInstalled) {
       setIsAppInstalled(true)
+      navigate('/login')
     } else {
       setIsAppInstalled(false)
       setCurrentSplash(1)
@@ -230,7 +231,7 @@ export const Splash: React.FC = () => {
       } else {
         const timeout = setTimeout(() => {
           handleNextSplash()
-        }, 5000) // 5 seconds
+        }, 2000) // 2 seconds
         return () => {
           clearTimeout(timeout)
         }
