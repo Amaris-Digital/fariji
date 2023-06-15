@@ -46,8 +46,8 @@ export const SignUpFour = (): JSX.Element => {
             borderRadius: '8px',
           }}
           onClick={(): void => {
-            navigate('/home')}
-          }
+            navigate('/home')
+          }}
         >
           Continue
         </button>

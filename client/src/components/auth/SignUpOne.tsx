@@ -37,7 +37,9 @@ export const SignUpOne = (): JSX.Element => {
           style={{
             borderRadius: '8px',
           }}
-          onClick={(): void => {navigate('/login')}}
+          onClick={(): void => {
+            navigate('/login')
+          }}
         >
           No
         </button>
