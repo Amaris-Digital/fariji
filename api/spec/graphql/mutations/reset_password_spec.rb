@@ -23,24 +23,25 @@ RSpec.describe Mutations::ResetPassword, type: :request do
   end
   
   let(:new_password) { 'newpassword1' }
+  let(:confirm_password) {'newpassword1'}
 
   describe 'resetPassword' do
     context 'when the user is found and OTP is valid' do
       it 'resets the user password' do
         expect do
-          post '/graphql', params: { query: reset_password_mutation(phone: user.phone, otp: otp.otp, password: new_password) }
+          post '/graphql', params: { query: reset_password_mutation(phone: user.phone, otp: otp.otp, password: new_password, confirmPassword: confirm_password) }
         end.to change { user.reload.password_digest }
       end
 
       it 'marks the OTP as invalid' do
         expect do
-          post '/graphql', params: { query: reset_password_mutation(phone: user.phone, otp: otp.otp, password: new_password) }
+          post '/graphql', params: { query: reset_password_mutation(phone: user.phone, otp: otp.otp, password: new_password, confirmPassword: confirm_password) }
         end.to change { otp.reload.is_valid? }.to(false)
       end
 
       it 'returns success status and message' do
-        post '/graphql', params: { query: reset_password_mutation(phone: user.phone, otp: otp.otp, password: new_password) }
-
+        post '/graphql', params: { query: reset_password_mutation(phone: user.phone, otp: otp.otp, password: new_password, confirmPassword: confirm_password) }
+        
         json_response = JSON.parse(response.body)
         data = json_response['data']['resetPassword']
 
@@ -51,7 +52,7 @@ RSpec.describe Mutations::ResetPassword, type: :request do
 
     context 'when the user is not found' do
       it 'returns failed status and message' do
-        post '/graphql', params: { query: reset_password_mutation(phone: '+254703033658', otp: otp.otp, password: new_password) }
+        post '/graphql', params: { query: reset_password_mutation(phone: '+254703033658', otp: otp.otp, password: new_password, confirmPassword: confirm_password) }
 
         json_response = JSON.parse(response.body)
         data = json_response['data']['resetPassword']
@@ -67,7 +68,7 @@ RSpec.describe Mutations::ResetPassword, type: :request do
       end
 
       it 'returns failed status and message' do
-        post '/graphql', params: { query: reset_password_mutation(phone: user.phone, otp: otp.otp, password: new_password) }
+        post '/graphql', params: { query: reset_password_mutation(phone: user.phone, otp: otp.otp, password: new_password, confirmPassword: confirm_password) }
 
         json_response = JSON.parse(response.body)
         data = json_response['data']['resetPassword']
@@ -79,7 +80,7 @@ RSpec.describe Mutations::ResetPassword, type: :request do
 
     context 'when the OTP is invalid' do
       it 'returns failed status and message' do
-        post '/graphql', params: { query: reset_password_mutation(phone: user.phone, otp: 0000, password: new_password) }
+        post '/graphql', params: { query: reset_password_mutation(phone: user.phone, otp: 0000, password: new_password, confirmPassword: confirm_password) }
   
         json_response = JSON.parse(response.body)
         data = json_response['data']['resetPassword']
@@ -89,15 +90,14 @@ RSpec.describe Mutations::ResetPassword, type: :request do
       end
     end
   
-    # ...
-  
-    def reset_password_mutation(phone:, otp:, password:)
+    def reset_password_mutation(phone:, otp:, password:, confirmPassword:)
       <<~GQL
         mutation {
           resetPassword(
             phone: "#{phone}",
             otp: #{otp},
-            password: "#{password}"
+            password: "#{password}",
+            confirmPassword: "#{confirmPassword}"
           ) {
             status
             message
