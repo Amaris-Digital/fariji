@@ -2,7 +2,7 @@ require 'rails_helper'
 require_relative '../../spec_helper.rb'
 
 RSpec.describe 'user mutation', type: :request do
-  describe 'createUser' do
+  describe 'registerUser' do
     context 'when user is valid' do
       before do
         post '/graphql', params: { query: Queries::RegisterUserQuery.query(
@@ -16,7 +16,6 @@ RSpec.describe 'user mutation', type: :request do
 
       it 'returns a success message' do
         json = JSON.parse(response.body)
-        puts json
         expect(json['data']['register']['message']).to eq('user registered successfully')
       end
 
