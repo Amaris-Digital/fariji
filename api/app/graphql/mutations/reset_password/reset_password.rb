@@ -1,14 +1,17 @@
 module Mutations
+  module ResetPassword
   class ResetPassword < BaseMutation
-    argument :otp, Integer, required: true
-    argument :password, String, required: true
-    argument :confirmPassword, String, required: true
-    argument :phone, String, required: true
+    argument :input, Types::Inputs::ResetPasswordInput, required: true
 
     field :message, String, null: false
     field :status, String, null: false
 
-    def resolve(otp:, password:, confirmPassword:, phone:)
+    def resolve(input:)
+      otp = input[:otp]
+      password = input[:password]
+      confirmPassword = input[:confirmPassword]
+      phone = input[:phone]
+
       user = User.find_by(phone: phone)
 
       return { status: 'failed', message: 'User not found' } unless user
@@ -33,6 +36,7 @@ module Mutations
       end
 
       { status: 'failed', message: 'Invalid OTP' }
+      end
     end
   end
 end

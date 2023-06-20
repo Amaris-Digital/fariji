@@ -1,4 +1,7 @@
-RSpec.describe Mutations::VerifyOtp, type: :request do
+require 'rails_helper'
+require_relative '../../spec_helper.rb'
+
+RSpec.describe Mutations::OtpMutations::VerifyOtp, type: :request do
   let!(:user) do
     User.create!(
       phone: '+254704333658',
@@ -27,7 +30,7 @@ RSpec.describe Mutations::VerifyOtp, type: :request do
   describe 'verifyOtp' do
     context 'verify otp' do
       it 'verifies the OTP successfully' do
-        post '/graphql', params: { query: mutation(phone: @phone_number, otp: otp.otp) }
+        post '/graphql', params: { query: Queries::VerifyOtpQuery.query(phone: @phone_number, otp: otp.otp) }
 
         expect(response).to have_http_status(200)
         json_response = JSON.parse(response.body)
@@ -38,7 +41,7 @@ RSpec.describe Mutations::VerifyOtp, type: :request do
       end
 
       it 'returns an error message for an invalid OTP' do
-        post '/graphql', params: { query: mutation(phone: @phone_number, otp: 4242) }
+        post '/graphql', params: { query: Queries::VerifyOtpQuery.query(phone: @phone_number, otp: 4242) }
 
         expect(response).to have_http_status(200)
         json_response = JSON.parse(response.body)
@@ -51,7 +54,7 @@ RSpec.describe Mutations::VerifyOtp, type: :request do
       it 'returns an error message for an expired OTP' do
         otp.expiry = Time.current - 5.minutes
         otp.save!
-        post '/graphql', params: { query: mutation(phone: @phone_number, otp: otp.otp) }
+        post '/graphql', params: { query: Queries::VerifyOtpQuery.query(phone: @phone_number, otp: otp.otp) }
 
         expect(response).to have_http_status(200)
         json_response = JSON.parse(response.body)
@@ -61,16 +64,5 @@ RSpec.describe Mutations::VerifyOtp, type: :request do
         expect(data['message']).to eq('OTP has expired or is invalid')
       end
     end
-  end
-
-  def mutation(phone:, otp:)
-    <<~GQL
-      mutation {
-        verifyOtp(phone: "#{phone}", otp: #{otp}) {
-          status
-          message
-        }
-      }
-    GQL
   end
 end

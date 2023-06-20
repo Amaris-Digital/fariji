@@ -2,7 +2,7 @@ import { gql } from '@apollo/client'
 
 const REGISTER = gql`
   mutation registerMutation($phone: String!, $dateOfBirth: ISO8601DateTime!, $password: String!) {
-    register(phone: $phone, dateOfBirth: $dateOfBirth, password: $password) {
+    register(input: { phone: $phone, dateOfBirth: $dateOfBirth, password: $password }) {
       status
       message
       body
@@ -20,7 +20,7 @@ const LOGIN = gql`
 
 const UPLOAD_PROFILE_PHOTO = gql`
   mutation UploadProfilePhotoMutation($avatar: Upload!, $phone: String!) {
-    uploadProfilePhoto(avatar: $avatar, phone: $phone) {
+    uploadProfilePhoto(input: { avatar: $avatar, phone: $phone }) {
       status
       message
     }
