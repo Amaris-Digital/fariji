@@ -27,7 +27,7 @@ Response :
 Post data:
 
      resetPassword(
-       otp: 123456,
+       otp: 1234,
        password: "Andrew2023",
        phone: "+254798675342"
        )
