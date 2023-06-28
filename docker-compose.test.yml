@@ -40,3 +40,13 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: api_test
+
+    nginx:
+      build:
+        context: ./nginx
+        dockerfile: Dockerfile
+      ports:
+        -80:80
+      env_file:
+        - .env
+        - .env.test

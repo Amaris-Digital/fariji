@@ -37,5 +37,9 @@ class User < ApplicationRecord
       end
     end
     
+    # TODO: To check if account is deleted
+    def deletion_validation
+      null
+    end
 
 end
