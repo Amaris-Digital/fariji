@@ -11,7 +11,7 @@ module Types
     # Adding fields of active
     field :is_active, Boolean, null: false
     # Adding field deleted
-    field: is_deleted, Boolean, null: false
+    field :is_deleted, Boolean, null: false
     field :password_digest, String
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false

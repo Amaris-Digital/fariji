@@ -16,9 +16,6 @@ module Types
       argument  :email, String, required:false
       argument :date_of_birth, GraphQL::Types::ISO8601DateTime, required: true
       argument :isMuslim, Boolean, required: false
-      #adding fields of 'is_active' and 'is_deleted'
-      argument :is_active, Boolean, required: true
-      argument :is_deleted, Boolean, required: false
       argument :password, String, required: true
     end
 
