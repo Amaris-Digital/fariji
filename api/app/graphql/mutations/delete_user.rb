@@ -1,3 +1,4 @@
+#Mutation to delete user
 module Mutations
   class DeleteUser < BaseMutation
     argument :id, ID, required: true
