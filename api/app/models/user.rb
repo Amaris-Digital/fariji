@@ -6,6 +6,11 @@ class User < ApplicationRecord
 
     enum :status, { inactive: 0, active: 1 }
 
+    enum reason_for_joining: {
+      plan_for_departure: 0,
+      raise_funeral_expenses: 1
+    }
+
                                     
     validates :email, uniqueness: { allow_nil: true }, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i, allow_nil: true }
     validates :phone, presence: true, uniqueness: true, length: { minimum: 9, maximum: 15 }
