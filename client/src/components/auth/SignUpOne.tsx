@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 export const SignUpOne = (): JSX.Element => {
   const navigate = useNavigate()
   return (
+    <div className='form'>
     <div className='flex flex-col h-[100vh] justify-between'>
       <div className='flex justify-between p-4'>
         <div className='flex gap-1'>
@@ -45,5 +46,6 @@ export const SignUpOne = (): JSX.Element => {
         </button>
       </div>
     </div>
+  </div>
   )
 }
