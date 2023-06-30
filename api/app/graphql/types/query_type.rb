@@ -8,12 +8,31 @@ module Types
 
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
+    field :profile, AppResponseType, null: false, description: "Returns a user profile" do
+      argument :id, ID, required: true, description: "User ID"
+    end
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-                               description: 'An example field added by the generator'
-    def test_field
-      'Hello World!'
+
+    def profile(id:)
+      user = User.find_by(id: id)
+
+      unless user
+        return {
+          status: 'failed',
+          message: 'user profile not found',
+          body: { profile: nil}
+        }
+      end
+  
+      {
+        status: 'success',
+        message: 'user profile fetched successfully',
+        body: { profile: {  
+          email: user.email,
+          phone: user.phone,
+          dateJoined: user.created_at.strftime('%Y-%m-%d')
+        } }
+      }
     end
   end
 end
