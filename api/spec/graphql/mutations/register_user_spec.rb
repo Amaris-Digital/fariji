@@ -1,5 +1,5 @@
 require 'rails_helper'
-require_relative '../../spec_helper.rb'
+require 'spec_helper'
 
 RSpec.describe 'user mutation', type: :request do
   describe 'registerUser' do
