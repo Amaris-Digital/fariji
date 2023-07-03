@@ -17,8 +17,8 @@ interface User {
 }
 
 export const Registration = (): JSX.Element => {
-  const [ registerUser, { data, loading, error } ] = useMutation(mutations.REGISTER)
-  const [ user, setUser ] = useState<User>()
+  const [registerUser, { data, loading, error }] = useMutation(mutations.REGISTER)
+  const [user, setUser] = useState<User>()
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
@@ -38,7 +38,7 @@ export const Registration = (): JSX.Element => {
       storeToken(data.register.body.authToken)
       swipe()
     }
-  }, [ data?.register.body.authToken, user, error ])
+  }, [data?.register.body.authToken, user, error])
 
   return (
     <Swiper loop={false} className='swiper-container swiper-no-swiping'>

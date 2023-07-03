@@ -9,14 +9,14 @@ import { AppError } from '../components/utils/AppError'
 import { storeToken } from '../utils/config'
 
 const Login = (): JSX.Element => {
-  const [ phone, setPhone ] = useState('')
-  const [ password, setPassword ] = useState('')
-  const [ errorMessage, setErrorMessage ] = useState('')
-  const [ isLoading, setIsLoading ] = useState(false)
+  const [phone, setPhone] = useState('')
+  const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const navigate = useNavigate()
 
-  const [ signInData ] = useMutation(mutations.LOGIN, {
+  const [signInData] = useMutation(mutations.LOGIN, {
     onCompleted: (data) => {
       const token = data.signIn.token
       if (token) {
