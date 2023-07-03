@@ -29,7 +29,9 @@ module Types
         message: 'user profile fetched successfully',
         body: { profile: {  
           email: user.email,
+          name: user.name,
           phone: user.phone,
+          reason_for_joining: user.reason_for_joining,
           dateJoined: user.created_at.strftime('%Y-%m-%d')
         } }
       }
