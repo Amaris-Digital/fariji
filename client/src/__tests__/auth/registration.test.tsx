@@ -23,10 +23,10 @@ jest.mock('../../utils/config', () => ({
   serverURL: 'http://localhost:3000/graphql',
 }))
 jest.mock('../../assets/images/auth/login/far2.png', () => ({
-  default: 'mockedUploadImage'
+  default: 'mockedUploadImage',
 }))
 jest.mock('../../assets/logo.svg', () => ({
-  default: 'mockedUploadImage'
+  default: 'mockedUploadImage',
 }))
 
 describe('Existence of UI elements', () => {
