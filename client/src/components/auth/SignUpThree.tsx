@@ -1,6 +1,8 @@
 import uploadimage from '../../assets/uploadimage.svg'
 import React, { useState } from 'react'
 import { swipe, swipeBack } from '../../pages/Registration'
+import Logo from '../../assets/images/auth/login/far2.png'
+import Fariji from '../../assets/logo.svg'
 
 export const SignUpThree = ({ user }: any): JSX.Element => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -26,6 +28,17 @@ export const SignUpThree = ({ user }: any): JSX.Element => {
   } */
 
   return (
+    <div className='flex w-full'>
+      {/* left side */}
+      <div className='hidden sm:flex bg-[#FF9549] justify-center items-center flex-1 w-full'>
+        <div className='text-center'>
+          <img src={Logo} alt='logo' />
+          <div className='flex justify-center mt-2'>
+            <img src={Fariji} alt='logo' className='h-16' />
+          </div>
+        </div>
+      </div>
+
     <div className='flex flex-col h-[100vh] justify-between'>
       <div className='flex justify-between p-4'>
         <div className='flex gap-1'>
@@ -93,6 +106,7 @@ export const SignUpThree = ({ user }: any): JSX.Element => {
           Skip
         </p>
       </div>
+    </div>
     </div>
   )
 }

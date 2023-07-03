@@ -1,10 +1,14 @@
 import React from 'react'
 import { swipeBack } from '../../pages/Registration'
 import { useNavigate } from 'react-router-dom'
+import Logo from '../../assets/images/auth/login/far2.png'
+import Fariji from '../../assets/logo.svg'
 
 export const SignUpFour = (): JSX.Element => {
   const navigate = useNavigate()
   return (
+    <div className='flex w-full'>
+
     <div className='flex flex-col h-[100vh] justify-between'>
       <div className='flex justify-between p-4'>
         <div className='flex gap-1'>
@@ -52,6 +56,18 @@ export const SignUpFour = (): JSX.Element => {
           Continue
         </button>
       </div>
+    </div>
+
+      {/* left side */}
+      <div className='hidden sm:flex bg-[#FF9549] justify-center items-center flex-1 w-full'>
+        <div className='text-center'>
+            <img src={Logo} alt='logo' />
+              <div className='flex justify-center mt-2'>
+                <img src={Fariji} alt='logo' className='h-16' />
+              </div>
+          </div>
+      </div>
+
     </div>
   )
 }

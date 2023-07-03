@@ -20,7 +20,7 @@ export const SignUpOne = (): JSX.Element => {
       </div>
       
     <div className='flex flex-col h-[100vh] justify-between w-full flex-1'>
-      <div className='flex gap-[220px] mx-auto p-4'>
+      <div className='flex justify-between p-4'>
         <div className='flex gap-1'>
           Step 1<span className='text-[#626262]'>of 4</span>
         </div>
