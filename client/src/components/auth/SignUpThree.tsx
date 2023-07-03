@@ -39,7 +39,7 @@ export const SignUpThree = ({ user }: any): JSX.Element => {
         </div>
       </div>
 
-      <div className='flex flex-col h-[100vh] justify-between'>
+      <div className='flex flex-col h-[100vh] justify-between w-full flex-1'>
         <div className='flex justify-between p-4'>
           <div className='flex gap-1'>
             Step 3<span className='text-[#626262]'>of 4</span>

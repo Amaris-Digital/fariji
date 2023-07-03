@@ -8,7 +8,7 @@ export const SignUpFour = (): JSX.Element => {
   const navigate = useNavigate()
   return (
     <div className='flex w-full'>
-      <div className='flex flex-col h-[100vh] justify-between'>
+      <div className='flex flex-col h-[100vh] justify-between w-full flex-1'>
         <div className='flex justify-between p-4'>
           <div className='flex gap-1'>
             Step 4<span className='text-[#626262]'>of 4</span>
