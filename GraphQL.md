@@ -63,7 +63,7 @@ resetPassword(
   phone: "+254798675342"
 )
 ```
-### Resonse:
+### Response:
 ```json
 "resetPassword": {
     "message": "You have reset your password",
