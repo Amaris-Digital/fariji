@@ -28,3 +28,4 @@ Rspec.describe Mutations::DeleteUser, type: :request do
                 post '/graphql', params: { query: mutation, variables: { id: 'non-existing_id'}}
             end
         end
+    end 
