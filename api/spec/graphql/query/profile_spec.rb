@@ -1,4 +1,4 @@
-RSpec.describe 'user mutation', type: :request do
+RSpec.describe 'Query::Fetch user profile', type: :request do
     let!(:user) { User.create(phone: '+254704333658', date_of_birth: "1990-01-01", password: "Password1")}
 
     describe 'get profile' do
@@ -9,13 +9,11 @@ RSpec.describe 'user mutation', type: :request do
 
             it 'returns a success message' do
                 json = JSON.parse(response.body)
-                pp json
                 expect(json['data']['profile']['message']).to eq('user profile fetched successfully')
             end
 
             it 'returns a success status' do
                 json = JSON.parse(response.body)
-                pp json
                 expect(json['data']['profile']['status']).to eq('success')
             end
         end
