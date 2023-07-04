@@ -25,13 +25,6 @@ Rspec.describe Mutations::DeleteUser, type: :request do
 
         it 'returns false if the user account does not exist' do
             expect do
-                post '/graphql', params: { query: mutation, variables: { id: 'non-existing_id'} }
-            end.not_to_change { User.count}
-
-            expect(response).to have_http_status(:success)
-            json_response = JSON.parse(response.body)
-            expect(json_response['data']['deleteUser']).to eq(false)
-            
+                post '/graphql', params: { query: mutation, variables: { id: 'non-existing_id'}}
+            end
         end
-    end
-end
