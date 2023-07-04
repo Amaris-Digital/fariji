@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe Mutations::DeleteUser, type: :request do
+RSpec.describe Mutations::DeleteUser, type: :request do
     describe 'deleteuser' do
         let!(:user) { create(:user) }
         let(:mutation) do
