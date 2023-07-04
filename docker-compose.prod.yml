@@ -13,40 +13,32 @@ services:
       - api
     env_file:
       - .env
-      - .env.test
 
   api:
     build: 
       context: ./api
       dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
     volumes:
       - ./api:/app
     depends_on:
       - db
     env_file:
       - .env
-      - .env.test
-  
+
   db:
-    image: postgres:15-alpine
-    ports:
-      - "5432:5432"
+    image: postgres:13.3-alpine
     env_file:
       - .env
-      - .env.test
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: api_test
+      POSTGRES_DB: api_development
 
-    nginx:
-      build:
-        context: ./nginx
-        dockerfile: Dockerfile
-      ports:
-        -80:80
-      env_file:
-        - .env
-        - .env.test
+  # nginx:
+  #   build:
+  #     context: ./nginx
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     -80:80
+  #   env_file:
+  #     - .env
