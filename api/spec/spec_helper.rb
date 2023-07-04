@@ -98,9 +98,4 @@ require 'dotenv'
 require_relative '../lib/jwt_service'
 require_relative '../lib/app_messaging_service'
 require_relative '../lib/file_upload'
-require_relative './graphql/queries/reset_password_query'
-require_relative './graphql/queries/register_user_query'
-require_relative './graphql/queries/verify_otp_query'
-require_relative './graphql/queries/profile_photo_upload_query'
-
 end

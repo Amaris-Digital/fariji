@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'spec_helper'
+require_relative '../queries/profile_photo_upload_query'
 
 RSpec.describe Mutations::PhotoUpload::ProfilePhotoUpload, type: :request do
   let!(:user) do

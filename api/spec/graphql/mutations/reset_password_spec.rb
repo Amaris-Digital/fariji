@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'spec_helper'
+require_relative '../queries/reset_password_query'
 
 RSpec.describe Mutations::ResetPassword::ResetPassword, type: :request do
   let!(:user) do

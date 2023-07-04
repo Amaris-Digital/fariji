@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'spec_helper'
+require_relative '../queries/verify_otp_query'
 
 RSpec.describe Mutations::OtpMutations::VerifyOtp, type: :request do
   let!(:user) do
