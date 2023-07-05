@@ -61,10 +61,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_133351) do
     t.text "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "reason_for_joining"
-    t.string "name"
     t.boolean "is_active"
     t.boolean "is_deleted"
+    t.integer "reason_for_joining"
+    t.string "name"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

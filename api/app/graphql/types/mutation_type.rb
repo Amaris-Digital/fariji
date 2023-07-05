@@ -8,6 +8,7 @@ module Types
     field :reset_password, mutation: Mutations::ResetPassword
     field :send_otp, mutation: Mutations::SendOtp
     field :verify_otp, mutation: Mutations::VerifyOtp
+    field :delete_user, mutation: Mutations::DeleteUser
 
     include TokenAuthorization
     # TODO: remove me
@@ -54,7 +55,7 @@ module Types
         body: nil
       }
     end
-
+    
 
     field :sign_in, mutation: Mutations::Auth::SignIn
   end
