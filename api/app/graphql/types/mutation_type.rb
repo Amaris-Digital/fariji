@@ -5,28 +5,28 @@ require_all 'lib'
 module Types
   class MutationType < Types::BaseObject
 
-    field :reset_password, mutation: Mutations::ResetPassword
-    field :send_otp, mutation: Mutations::SendOtp
-    field :verify_otp, mutation: Mutations::VerifyOtp
+    field :reset_password, mutation: Mutations::ResetPassword::ResetPassword
+    field :verify_otp, mutation: Mutations::OtpMutations::VerifyOtp
 
     include TokenAuthorization
-    # TODO: remove me
     field :register, Types::AppResponseType, null: false, description: "Register a new user" do
-      argument :phone, String, required: true
-      argument  :email, String, required:false
-      argument :date_of_birth, GraphQL::Types::ISO8601DateTime, required: true
-      argument :isMuslim, Boolean, required: false
-      argument :password, String, required: true
+      argument :input, Types::Inputs::RegisterInput, required: true
     end
 
     field :uploadProfilePhoto, Types::AppResponseType, null: false, description: "Upload profile photo" do
-      argument :phone, String, required: true
-      argument :avatar, ApolloUploadServer::Upload, required: true
+      argument :input, Types::Inputs::UploadPhotoInput, required: true
     end
   
-    def register(**kwargs)
-    
-      user = User.new(kwargs)
+    def register(input:)
+      phone = input[:phone]
+      email = input[:email]
+      date_of_birth = input[:dateOfBirth]
+      isMuslim = input[:isMuslim]
+      password = input[:password]
+
+
+
+      user = User.new(input.to_h)
 
       if user.save
         authToken = TokenAuthorization.encode( { user_id: user.id } )
@@ -39,12 +39,15 @@ module Types
         {
           status: 'unprocessible_entity',
           message: 'user registration failed',
-          body:{ errors: user.errors.full_messages}
+          body: { errors: user.errors.full_messages }
         }
       end
     end
 
-    def uploadProfilePhoto(phone:, avatar:)
+    def uploadProfilePhoto(input:)
+      phone = input[:phone]
+      avatar = input[:avatar]
+
       user = User.find_by(phone: phone)
       user.avatar.attach(io: avatar.tempfile, filename: avatar.original_filename, content_type: avatar.content_type) if avatar.present?
     
