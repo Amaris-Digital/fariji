@@ -8,9 +8,9 @@ EXPOSE 3000
 RUN bundle config --global frozen 1
 
 WORKDIR /app
-COPY . /app
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
+COPY . /app
 
 CMD ["ruby", "fariji.rb"]

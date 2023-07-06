@@ -2,7 +2,7 @@
      module Auth
       class SignIn < BaseMutation
      
-         description "Signs In the user into the system"
+        description "Signs In the user into the system"
   
         argument :input, Types::Inputs::SignInInput, required: true
   
@@ -14,7 +14,7 @@
         def resolve(input:)
           phone = input[:phone]
           password = input[:password]
-         
+        
           user = User.find_by(phone: phone)
           unless user && user.authenticate(password)
             return { 
