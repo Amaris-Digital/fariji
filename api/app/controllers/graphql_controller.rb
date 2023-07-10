@@ -16,7 +16,20 @@ class GraphqlController < ApplicationController
       # current_user: current_user,
     }
     result = ApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
-    render json: result
+
+    if result.key?('errors')
+      render json: {
+        status: 'failed',
+        message: 'An unexpected error had occurred',
+        data: {}
+      }, status: :internal_server_error
+    else
+      render json: {
+        status: 'success',
+        message: 'Query executed successfully',
+        data: result['data']
+      }
+    end
   rescue StandardError => e
     raise e unless Rails.env.development?
 
