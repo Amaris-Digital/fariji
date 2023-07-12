@@ -102,3 +102,31 @@ verifyOtp(otp: 1023, phone: "+254798675342")
     "body": null
   }
 ```
+
+## Queries
+
+1. **VIEW USER PROFILE DATA** - Allows a user to view their profile data
+
+### Request Body:
+```javascript
+profile(
+  id: 1
+)
+```
+### Response:
+ ```json
+ "profile": {
+    "message": "user profile fetched successfully",
+    "status": "success",
+    "body": {
+      "profile": {
+          "email": "tosh@gmail.com",
+          "name": "Tosh",
+          "phone": "123456789",
+          "reason_for_joining": "raise_funeral_expenses",
+          "dateJoined": "2023-07-03"
+        }
+    }
+ }
+```
+
