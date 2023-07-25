@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
+  module OtpMutations
   class VerifyOtp < BaseMutation
     argument :otp, Integer, required: true
     argument :phone, String, required: true
@@ -27,6 +28,7 @@ module Mutations
       end
     
       { status: 'failed', message: 'Invalid OTP' }
+      end
     end
   end
 end

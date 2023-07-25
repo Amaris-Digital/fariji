@@ -1,4 +1,5 @@
 module Mutations
+  module PhotoUpload
   class ProfilePhotoUpload < BaseMutation
     description "Upload a profile photo for the user"
 
@@ -14,6 +15,7 @@ module Mutations
 
       upload_result = UploadImage.call({ avatar: avatar }, user)
       return { success: upload_result[:success] }
+      end
     end
   end
 end

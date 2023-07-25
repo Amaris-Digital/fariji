@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
+  module Otp
   class SendOtp < BaseMutation
     
     argument :phone, String, required: true
@@ -29,6 +30,7 @@ module Mutations
       AppMessagingService.send_otp(user, otp)
 
       { status: 'success', message: 'OTP sent successfully' }
+      end
     end
   end
 end

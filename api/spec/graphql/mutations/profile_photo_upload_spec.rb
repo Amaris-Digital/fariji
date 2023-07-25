@@ -1,11 +1,11 @@
 require 'rails_helper'
-require_relative '../../spec_helper.rb'
+require_relative '../queries/profile_photo_upload_query'
 
-RSpec.describe Mutations::ProfilePhotoUpload, type: :request do
+RSpec.describe Mutations::PhotoUpload::ProfilePhotoUpload, type: :request do
   let!(:user) do
     avatar_path = Rails.root.join('spec', 'fixtures', 'files', 'avatar_test.png')
     avatar = fixture_file_upload(avatar_path, 'image/png')
-  
+
     User.create!(
       phone: '+254704333658',
       email: 'johndoe89@gmail.com',
@@ -18,13 +18,12 @@ RSpec.describe Mutations::ProfilePhotoUpload, type: :request do
 
   describe 'ProfilePhotoUpload mutation' do
     it 'allows profile picture upload' do
-  
       avatar_path = Rails.root.join('spec', 'fixtures', 'files', 'download.jpeg')
       avatar = fixture_file_upload(avatar_path, 'image/jpeg')
 
       post '/graphql', params: {
         "operations" => {
-          "query": profile_photo_upload_mutation,
+          "query": Queries::ProfilePhotoUploadQuery.query,
           "variables": { "avatar": avatar, "phone": user.phone }
         }.to_json,
         "map" => {
@@ -34,23 +33,8 @@ RSpec.describe Mutations::ProfilePhotoUpload, type: :request do
       }
 
       json_response = JSON.parse(response.body)
-      puts json_response
       expect(json_response['data']['uploadProfilePhoto']['message']).to eq('Profile photo uploaded successfully')
       expect(json_response['data']['uploadProfilePhoto']['status']).to eq('success')
     end
-  end
-
-  def profile_photo_upload_mutation
-    <<-GQL
-      mutation($avatar: Upload!, $phone: String!) {
-        uploadProfilePhoto(
-          phone: $phone,
-          avatar: $avatar
-        ) {
-          status
-          message
-        }
-      }
-    GQL
   end
 end
